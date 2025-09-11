@@ -12,24 +12,61 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
+
   <script src="js/js.js"></script>
+
   <title>Pagina Inicial</title>
 </head>
 
 <body>
-  <h1><em>Temos uma Pagina</em> inicial aqui</h1>
-  <h2>Temos uma Pagina inicial aqui</h2>
-  <h3>Temos uma Pagina inicial <u>aqui</u></h3>
-  <strike>
-    <h4>Temos uma Pagina inicial aqui</h4>
-  </strike>
+  <header>
+    <h1>Minha logo</h1>
+    <h2>Leitor XML</h2>
+    <div id="cadastro">
+      <a href="">Login</a> |
+      <a href="">Cadastro</a>
+    </div>
 
-  <ul>
-    <li>Home</li>
-    <li>Fale Conosco</li>
-    <li>Dashboard</li>
-  </ul>
+  </header>
+
+  <hr>
+
+  <nav>
+    <div id="lateral">
+      <ul>
+        <li>Home</li>
+        <li>Fale Conosco</li>
+        <li>Dashboard</li>
+      </ul>
+    </div>
+  </nav>
+
+  <div>
+    <div style="background: white;">
+      <div class="input">
+
+        <input type="file" id="file" name="file[]" multiple accept=".xml" />
+
+        <div>
+          <button onclick="mostrarArquivos()">Submit</button>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <h4 style="clear: both;">Os arquivos devem aparecer abaixo</h4>
+
+    <div id="listaArquivos"></div>
+
+
+  </div>
+
+  <footer>
+    <p>&copy; 2025 - Todos os direitos reservados</p>
+  </footer>
 
 </body>
+
+
 
 </html>

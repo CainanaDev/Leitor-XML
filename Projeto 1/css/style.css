@@ -1,4 +1,67 @@
 body{
-  background-color: rgba(110, 85, 248, 0.168);
+  background-color: rgba(209, 228, 84, 0.168);
+  border: 1px solid blue;
+  padding: 10px;
+  margin: 0;
   
+}
+header{
+   border: 1px solid red;
+}
+header h1{
+  text-align: left; 
+  display:inline; 
+  border: 1px solid green
+}
+header h2{
+  text-align: center;
+  display: inline-block;
+  border: 1px solid brown;
+  width: 50%;
+}
+
+footer{
+  border: 1px solid red;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+#lateral{
+  border: 1px solid red;
+  background-color:#DDD;
+  margin-right: 10px;
+  float: left;
+  padding-right: 10px;
+  padding-left: 0px;
+  margin-left: 0px;
+ 
+  
+}
+#cadastro{
+   float: right;
+   border: 1px solid red;
+  
+}
+
+.input{
+  border: 1px solid red;
+  background-color:#fff; 
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding: 15px;
+  width: auto;
+  height: 83px;
+  display: inline-block;
+
+ 
+  
+}
+
+#listaArquivos{
+  border: 1px solid red;
+  background-color:#fff; 
+  padding: 10px;
+  margin-top: 5px;
+  clear: both;
 }
