@@ -20,7 +20,7 @@
 
 <body>
   <header>
-    <h1>Minha logo</h1>
+    <div id="logo">Minha logo</div>
     <h2>Leitor XML</h2>
     <div id="cadastro">
       <a href="">Login</a> |
@@ -34,15 +34,15 @@
   <nav>
     <div id="lateral">
       <ul>
-        <li>Home</li>
-        <li>Fale Conosco</li>
-        <li>Dashboard</li>
+        <li><a href="">Home</a></li>
+        <li><a href="">Fale Conosco</a></li>
+        <li><a href="">Dashboard</a></li>
       </ul>
     </div>
   </nav>
 
   <div>
-    <div style="background: white;">
+    <div class="mae">
       <div class="input">
 
         <input type="file" id="file" name="file[]" multiple accept=".xml" />
