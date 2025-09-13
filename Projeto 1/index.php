@@ -19,14 +19,16 @@
 </head>
 
 <body>
+
   <header>
     <div id="logo">Minha logo</div>
-    <h2>Leitor XML</h2>
-    <div id="cadastro">
-      <a href="">Login</a> |
-      <a href="">Cadastro</a>
+    <div id="texto">
+      <h2>Leitor XML</h2>
     </div>
-
+    <div id="cadastro">
+      <a href="#">Login</a> |
+      <a href="#">Cadastro</a>
+    </div>
   </header>
 
   <hr>
@@ -41,7 +43,7 @@
     </div>
   </nav>
 
-  <div>
+  <div id="a">
     <div class="mae">
       <div class="input">
 
@@ -52,14 +54,14 @@
         </div>
       </div>
     </div>
-    <hr>
 
-    <h4 style="clear: both;">Os arquivos devem aparecer abaixo</h4>
+    <hr>
+    <h4 style="clear: both; margin:10px">Os arquivos devem aparecer abaixo</h4>
 
     <div id="listaArquivos"></div>
 
-
   </div>
+
 
   <footer>
     <p>&copy; 2025 - Todos os direitos reservados</p>
