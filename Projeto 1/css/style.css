@@ -3,65 +3,99 @@
   padding: 0;
 }
 
-#cadastro, #logo, #texto, 
-#lateral,#listaArquivos, #a, .mae,
-.input, .teste, header, footer{
+#cadastro, #principal, #logo, #texto, 
+#listaArquivos, .mae,
+ .teste, header, footer{
   border: 1px solid red;
 }
 
 body{
-  /*background-color: rgba(209, 228, 84, 0.168);*/
+  background-color: rgba(209, 228, 84, 0.081);
   border: 1px solid blue;
-  padding: 15px;
+  padding-top: 10px;
   margin: 0;
   font-size: 1em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   
 }
 header{
-  align-content: center;
-  height: auto;
+  display: flex;
+  height: 60px;
   width: auto;
   margin: auto;
- 
   text-align: center;
+  align-items: center;
+
 }
 
-#logo{
-  display:inline; 
-  float: left;
-  padding: 10px;
-  margin-left: 10px ;
+#logo, #cadastro{
+ 
+  width: 18%;
+  margin: 10px auto ;
 }
 #texto{
-  display: inline-block;
+  width: 60%;
   padding: 0px 10px;
 }
-
-#cadastro{
-  float: right;
-  padding: 10px 5px;
-  margin-right: 10px;
-}
-
-
 
 
 footer{
   text-align: center;
-  padding: 10px;
+  padding: 10px auto;
+  margin: 10px auto;
+}
+
+#principal{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu{
+  width: 12%;
+  flex-shrink: 1;
+  font-size: 1em;
+  text-align: center;
+}
+
+.conteudo{
+ 
+  width: 90%;
   margin: 10px;
+  flex-shrink: 5;
+  text-align: center; 
+
+}
+
+
+#listaArquivos{
+
+  background-color:#fff; 
+  padding: 10px;
+  margin-top: 5px;
+  
 }
 
 ul{
-    list-style-type: none;
-    margin: 0px;
-    padding: 10px 5px;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+   
+}
+li{
+ margin: 8px;
 }
 
-a{
+a, a:link, a:hover, a:active{
   text-decoration: none;
+  color: rgb(27, 109, 50);
 }
+
+
+
+/*
 
 a:link{
   text-decoration: none;
@@ -83,11 +117,7 @@ a:active{
 }
 
 
-#lateral{
-  background-color:#DDD;
-  margin: 5px 10px;
-  float: left;
-}
+
 
 .input{
   background-color:#fff; 
@@ -102,13 +132,13 @@ a:active{
   background-color:#fff; 
   padding: 10px;
   margin-top: 5px;
-  clear: both;
+  
 }
 
 .mae{
-  /*background: rgba(193, 23, 23, 0.319);*/
+  /*background: rgba(193, 23, 23, 0.319);
   position: relative;
   padding: 0px;
   text-align: center;
-}
+}*/
 

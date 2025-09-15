@@ -33,18 +33,38 @@
 
   <hr>
 
-  <nav>
-    <div id="lateral">
-      <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="">Fale Conosco</a></li>
-        <li><a href="">Dashboard</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div id="container">
+    <div id="principal">
+      <div class="menu">
+        <nav>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Fale Conosco</a></li>
+            <li><a href="">Dashboard</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="conteudo">
+        <div>
 
-  <div id="a">
-    <div class="mae">
+          <input type="file" id="file" name="file[]" multiple accept=".xml" />
+          <br>
+          <div>
+            <button onclick="mostrarArquivos()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <h4 style="margin: 10px;">Os arquivos devem aparecer abaixo</h4>
+
+    <div id="listaArquivos">
+      <h1>Teste</h1>
+    </div>
+
+
+    <!--<div class="mae">
       <div class="input">
 
         <input type="file" id="file" name="file[]" multiple accept=".xml" />
@@ -53,12 +73,22 @@
           <button onclick="mostrarArquivos()">Submit</button>
         </div>
       </div>
+
+      <nav id="lateral">
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">Fale Conosco</a></li>
+          <li><a href="">Dashboard</a></li>
+        </ul>
+      </nav>
+
     </div>
 
     <hr>
     <h4 style="clear: both; margin:10px">Os arquivos devem aparecer abaixo</h4>
 
     <div id="listaArquivos"></div>
+    -->
 
   </div>
 
