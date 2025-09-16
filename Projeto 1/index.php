@@ -18,10 +18,10 @@
   <title>Pagina Inicial</title>
 </head>
 
-<body>
+<body id="home">
 
   <header>
-    <div id="logo">Minha logo</div>
+    <div id="logo">Minha logomarca</div>
     <div id="texto">
       <h2>Leitor XML</h2>
     </div>
@@ -38,15 +38,14 @@
       <div class="menu">
         <nav>
           <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Fale Conosco</a></li>
-            <li><a href="">Dashboard</a></li>
+            <li class="home"><a href="">Home</a></li>
+            <li class="contato"><a href="">Fale Conosco</a></li>
+            <li class="backend"><a href="">Dashboard</a></li>
           </ul>
         </nav>
       </div>
       <div class="conteudo">
         <div>
-
           <input type="file" id="file" name="file[]" multiple accept=".xml" />
           <br>
           <div>
@@ -57,8 +56,29 @@
     </div>
 
     <hr>
+    <div id=dados>
+      <table>
+        <tr>
+          <th>CHAVE</th>
+          <th>Data Emissão</th>
+          <th>CFOP</th>
+          <th>Valor</th>
+          <th>Modelo</th>
+          <th>Status</th>
+          <th>Cancelado</th>
+        </tr>
+        <tr>
+          <td>29250813998613000101650030001458881340264748</td>
+          <td>01/08/25</td>
+          <td>6102</td>
+          <td>7,40</td>
+          <td>65</td>
+          <td>Aprovado</td>
+          <td>Não</td>
+        </tr>
+      </table>
+    </div>
     <h4 style="margin: 10px;">Os arquivos devem aparecer abaixo</h4>
-
     <div id="listaArquivos">
       <h1>Teste</h1>
     </div>
