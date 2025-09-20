@@ -46,10 +46,11 @@
       </div>
       <div class="conteudo">
         <div>
+          <label for="file">Clique no botão PROCURAR para carregar o arquivo:</label><br>
           <input type="file" id="file" name="file[]" multiple accept=".xml" />
           <br>
-          <div>
-            <button onclick="mostrarArquivos()">Submit</button>
+          <div><br>
+            <button onclick="mostrarArquivos()">Analisar informações</button>
           </div>
         </div>
       </div>
