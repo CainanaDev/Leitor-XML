@@ -5,41 +5,52 @@
 
 #principal, 
 #listaArquivos, .mae,
- .teste,th,td, header, footer{
+ .teste,th,td, footer{
+  
   border: 1px solid red;
 }
 
+
 body{
-  background: #f7b5002f;
+  background: #7a51ff2f;
   border: 1px solid blue;
   padding-top: 10px;
-  margin: 0;
+  margin: 0 auto;
   font-size: 1em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 97%;
+  align-content: center;
   
 }
 header{
-  display: flex;
   height: 60px;
   width: auto;
   margin: auto;
-  text-align: center;
   align-items: center;
 
+}
+
+header a:hover {
+  color: #fff;
+  background-color: rgba(27, 109, 50, 0.372);
+  border-radius: 5px;
+  padding: 0.2em 0px;
+  font-size: 1.1em;
 }
 
 #logo, #cadastro{
   height: auto;
   width: auto;
-  margin: 0.5em auto ;
-}
-#texto{
-  height: auto;
-  width: 60%;
-  padding: 0px 10px;
-  margin: auto;
+  margin: 0.2em 0.5em ;
 }
 
+#texto{
+  width: 60%;
+  margin: auto;
+  text-shadow: 20px -10px white;
+  font-size: 2em;
+ 
+}
 
 footer{
   text-align: center;
@@ -81,11 +92,6 @@ footer{
   
 }
 
-ul {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;  
-}
 li {
   padding: 0.3em 0px;
 }
@@ -97,24 +103,20 @@ a, a:link, a:hover, a:active{
 
 ul a:hover{
   color: #fff;
-  background-color: rgb(27, 109, 50);
-  border-radius: 5px;
-  padding: 0.5em 0px;
-}
-
-header a:hover {
-  color: #fff;
   background-color: rgba(27, 109, 50, 0.372);
   border-radius: 5px;
-  padding: 0.5em 0px;
+  padding: 0.2em 0px;
+  font-size: 1.1em;
 }
 
+
+/*
 #home .home a{
   color: #fff;
   background-color: rgb(27, 109, 50);
   border-radius: 5px;
-  padding: 5px 0px;
-}
+  padding: 0.3em;
+}*/
 
 
 #dados table{

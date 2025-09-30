@@ -3,9 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!--Namalize CSS-->
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 
   <!--Font Awesome-->
   <script src="https://kit.fontawesome.com/1b112f6203.js" crossorigin="anonymous"></script>
@@ -20,10 +22,10 @@
 
 <body id="home">
 
-  <header>
-    <div id="logo">Minha logomarca</div>
+  <header class="d-flex text-center">
+    <div class="lead text-monospace" id="logo">XML<span class="font-italic">Analyse</span></div>
     <div id="texto">
-      <h2>Leitor XML</h2>
+      <h2 class="font-weight-bold text-uppercase">Leitor XML</h2>
     </div>
     <div id="cadastro">
       <a href="#">Login</a> |
@@ -37,7 +39,7 @@
     <div id="principal">
       <div class="menu">
         <nav>
-          <ul>
+          <ul class="list-unstyled">
             <li class="home"><a href="">Home</a></li>
             <li class="contato"><a href="">Fale Conosco</a></li>
             <li class="backend"><a href="">Dashboard</a></li>
@@ -47,17 +49,17 @@
       <div class="conteudo">
         <div>
           <label for="file">Clique no botão PROCURAR para carregar o arquivo:</label><br>
-          <input type="file" id="file" name="file[]" multiple accept=".xml" />
+          <input class="btn" type="file" id="file" name="file[]" multiple accept=".xml" />
           <br>
           <div><br>
-            <button onclick="mostrarArquivos()">Analisar informações</button>
+            <button class="btn btn-danger" onclick="mostrarArquivos()">Analisar informações</button>
           </div>
         </div>
       </div>
     </div>
 
     <hr>
-    <div id=dados>
+    <div class="lead" id=dados>
       <table>
         <tr>
           <th>CHAVE</th>
@@ -67,6 +69,7 @@
           <th>Modelo</th>
           <th>Status</th>
           <th>Cancelado</th>
+          <th>CSOSN/CST</th>
         </tr>
         <tr>
           <td>29250813998613000101650030001458881340264748</td>
@@ -76,6 +79,7 @@
           <td>65</td>
           <td>Aprovado</td>
           <td>Não</td>
+          <td>500</td>
         </tr>
       </table>
     </div>
@@ -117,6 +121,13 @@
   <footer>
     <p>&copy; 2025 - Todos os direitos reservados</p>
   </footer>
+
+
+  <!-- JavaScript (Opcional) -->
+  <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 
