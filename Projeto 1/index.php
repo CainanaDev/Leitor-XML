@@ -14,6 +14,7 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/midia.css">
 
   <script src="js/js.js"></script>
 
@@ -28,14 +29,14 @@
       <h2 class="font-weight-bold text-uppercase">Leitor XML</h2>
     </div>
     <div id="cadastro">
-      <a href="#">Login</a> |
-      <a href="#">Cadastro</a>
+      <a class="btn" href="#">Login</a> |
+      <a class="btn" href="#">Cadastro</a>
     </div>
   </header>
 
   <hr>
 
-  <div id="container">
+  <div class="container-fluid">
     <div id="principal">
       <div class="menu">
         <nav>
