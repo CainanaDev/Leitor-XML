@@ -1,12 +1,22 @@
 /* Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
 
-  body {background: yellow};
+ body {
+  background: rgb(176, 176, 131);
+  width: auto;
+  height: auto
+ };
 }
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767.98px) { 
 
-  body {background:green}
+  body { background: #7a51ff2f;}
+  header a {
+  border-radius: 5px;
+  padding: 0.2em 0px;
+  font-size: 1.1em; 
+}
+
 }
 
 /* Medium devices (tablets, 768px and up)*/
@@ -25,5 +35,5 @@
 /* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {  
 
-  body {background: rgb(0, 255, 17)}
+  body { background: #7a51ff2f;}
 }

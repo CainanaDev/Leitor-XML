@@ -1,5 +1,5 @@
 
-alert('Passou por ai');
+//alert('Passou por ai');
 
 function mostrarArquivos() {
   const input = document.getElementById("file");
@@ -37,7 +37,22 @@ function mostrarArquivos() {
   }
   console.log(leitor);
 
-  
 };
+
+
+function VerCancelado() {
+  let x = null;
+
+  const c = document.querySelectorAll('td[headers="canc"]');
+  const b = c[0];
+  console.log(b.textContent);
+
+  if (b.textContent == "Sim") {
+    x = true;
+  } else {
+    x = false;
+  }
+  console.log(x);
+}
 
 

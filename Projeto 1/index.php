@@ -52,35 +52,38 @@
           <label for="file">Clique no botão PROCURAR para carregar o arquivo:</label><br>
           <input class="btn" type="file" id="file" name="file[]" multiple accept=".xml" />
           <br>
-          <div><br>
+          <div>
             <button class="btn btn-danger" onclick="mostrarArquivos()">Analisar informações</button>
+          </div>
+          <div>
+            <button class="btn btn-success m-2" onclick="VerCancelado()">Analisar</button>
           </div>
         </div>
       </div>
     </div>
 
     <hr>
-    <div class="lead" id=dados>
+    <div class="lead" id="dados">
       <table>
         <tr>
-          <th>CHAVE</th>
-          <th>Data Emissão</th>
-          <th>CFOP</th>
-          <th>Valor</th>
-          <th>Modelo</th>
-          <th>Status</th>
-          <th>Cancelado</th>
-          <th>CSOSN/CST</th>
+          <th id="chave">CHAVE</th>
+          <th id="data">Data Emissão</th>
+          <th id="cfop">CFOP</th>
+          <th id="valor">Valor</th>
+          <th id="modelo">Modelo</th>
+          <th id=status>Status</th>
+          <th id="canc">Cancelado</th>
+          <th id="tributacao">CSOSN/CST</th>
         </tr>
         <tr>
-          <td>29250813998613000101650030001458881340264748</td>
-          <td>01/08/25</td>
-          <td>6102</td>
-          <td>7,40</td>
-          <td>65</td>
-          <td>Aprovado</td>
-          <td>Não</td>
-          <td>500</td>
+          <td headers="chave">29250813998613000101650030001458881340264748</td>
+          <td headers="data">01/08/25</td>
+          <td headers="cfop">6102</td>
+          <td headers="valor">7,40</td>
+          <td headers="modelo">65</td>
+          <td headers="status">Aprovado</td>
+          <td headers="canc">Sim</td>
+          <td headers="tributacao">500</td>
         </tr>
       </table>
     </div>
