@@ -29,8 +29,8 @@
       <h2 class="font-weight-bold text-uppercase">Leitor XML</h2>
     </div>
     <div id="cadastro">
-      <a class="btn" href="#">Login</a> |
-      <a class="btn" href="#">Cadastro</a>
+      <a class="btn disabled" href="#">Login</a> |
+      <a class="btn disabled" href="#">Cadastro</a>
     </div>
   </header>
 
@@ -40,12 +40,25 @@
     <div id="principal">
       <div class="menu">
         <nav>
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Fale Conosco</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled"  href="">Dashboard</a>
+            </li>
+          </ul>
+        </nav>
+        <!-- <nav>
           <ul class="list-unstyled">
             <li class="home"><a href="">Home</a></li>
             <li class="contato"><a href="">Fale Conosco</a></li>
             <li class="backend"><a href="">Dashboard</a></li>
           </ul>
-        </nav>
+        </nav> -->
       </div>
       <div class="conteudo">
         <div>
