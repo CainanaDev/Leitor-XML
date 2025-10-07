@@ -23,47 +23,43 @@
 
 <body id="home">
 
-  <header class="d-flex text-center">
-    <div class="lead text-monospace" id="logo">XML<span class="font-italic">Analyse</span></div>
+  <header class="d-flex text-center bg-primary m-0 h-0">
+    <div class="lead text-monospace" id="logo">
+      XML<span class="font-italic">Analyse</span>
+    </div>
     <div id="texto">
       <h2 class="font-weight-bold text-uppercase">Leitor XML</h2>
     </div>
     <div id="cadastro">
-      <a class="btn disabled" href="#">Login</a> |
-      <a class="btn disabled" href="#">Cadastro</a>
+      <a class="btn btn-light" href="#">Login</a> |
+      <a class="btn btn-light" href="#">Cadastro</a>
     </div>
   </header>
 
-  <hr>
+  <hr class="mb-4 mt-4">
 
   <div class="container-fluid">
     <div id="principal">
-      <div class="menu">
-        <nav>
+      <div class="menu mr-3">
+        <nav id="lateral">
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="">Home</a>
+              <a class="nav-link btn" href="">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Fale Conosco</a>
+              <a class="nav-link btn" href="">Fale Conosco</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled"  href="">Dashboard</a>
+            <li class="nav-item btn">
+              <a class="nav-link btn" href="">Dashboard</a>
             </li>
           </ul>
         </nav>
-        <!-- <nav>
-          <ul class="list-unstyled">
-            <li class="home"><a href="">Home</a></li>
-            <li class="contato"><a href="">Fale Conosco</a></li>
-            <li class="backend"><a href="">Dashboard</a></li>
-          </ul>
-        </nav> -->
       </div>
-      <div class="conteudo">
-        <div>
+      <div class="conteudo bg-light">
+        <div class="form-group">
           <label for="file">Clique no botão PROCURAR para carregar o arquivo:</label><br>
-          <input class="btn" type="file" id="file" name="file[]" multiple accept=".xml" />
+          <input class="btn form-control bg-light" type="file" id="file" name="file[]" multiple accept=".xml" />
+
           <br>
           <div>
             <button class="btn btn-danger" onclick="mostrarArquivos()">Analisar informações</button>
@@ -74,34 +70,73 @@
         </div>
       </div>
     </div>
+    <br>
+    <div class="progress">
+      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated w-75">75%</div>
+    </div>
 
-    <hr>
-    <div class="lead" id="dados">
-      <table>
-        <tr>
-          <th id="chave">CHAVE</th>
-          <th id="data">Data Emissão</th>
-          <th id="cfop">CFOP</th>
-          <th id="valor">Valor</th>
-          <th id="modelo">Modelo</th>
-          <th id=status>Status</th>
-          <th id="canc">Cancelado</th>
-          <th id="tributacao">CSOSN/CST</th>
-        </tr>
-        <tr>
-          <td headers="chave">29250813998613000101650030001458881340264748</td>
-          <td headers="data">01/08/25</td>
-          <td headers="cfop">6102</td>
-          <td headers="valor">7,40</td>
-          <td headers="modelo">65</td>
-          <td headers="status">Aprovado</td>
-          <td headers="canc">Sim</td>
-          <td headers="tributacao">500</td>
-        </tr>
+    <hr class="mb-4 mt-4">
+
+    <div class="table-responsive" id="dados">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th id="chave">CHAVE</th>
+            <th id="data">Data Emissão</th>
+            <th id="cfop">CFOP</th>
+            <th id="valor">Valor</th>
+            <th id="modelo">Modelo</th>
+            <th id=status>Status</th>
+            <th id="canc">Cancelado</th>
+            <th id="tributacao">CSOSN/CST</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+          <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+          <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+          <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <h4 style="margin: 10px;">Os arquivos devem aparecer abaixo</h4>
-    <div id="listaArquivos">
+    <div class="bg-light mb-5" id="listaArquivos">
       <h1>Teste</h1>
     </div>
 
@@ -134,8 +169,8 @@
 
   </div>
 
-
-  <footer>
+  <hr>
+  <footer class="mt-2 mb-0 h-2 w-5 pt-2 pb-0 bg-dark fixed-bottom">
     <p>&copy; 2025 - Todos os direitos reservados</p>
   </footer>
 

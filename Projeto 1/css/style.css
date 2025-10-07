@@ -2,61 +2,81 @@
   margin: 0;
   padding: 0;
 }
-
-#principal, 
-#listaArquivos, .mae,
- .teste,th,td, footer{
-  
+.mae,
+ .teste{  
   border: 1px solid red;
+}
+label{
+  font-size: 1.2em;
+  font-weight: 700;
 }
 
 
+
+#lateral a{
+  border: 1px solid #fff
+
+}
+#lateral a:hover{
+  border: 1px solid #fff;
+  background: #FFF;
+  color: black;
+  transition: 700ms;
+
+}
+
 body{
-  background: #7a51ff2f;
-  border: 1px solid blue;
-  padding-top: 10px;
-  margin: 0 auto;
+  background: #928e9f2f;
   font-size: 1em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 97%;
+  width: 100%;
   align-content: center;
   
 }
 header{
-  height: 60px;
+  height: 6em;
+  padding: 1.5em;
   width: auto;
-  margin: auto;
+  margin: auto ;
   align-items: center;
-
+  border-bottom: rgba(253, 253, 253, 0.227) 4px solid;
+  
 }
 
-header a:hover {
-  color: #fff;
-  background-color: rgba(27, 109, 50, 0.372);
-  border-radius: 5px;
-  padding: 0.2em 0px;
-  font-size: 1.1em;
-}
-
-#logo, #cadastro{
+ #cadastro{
   height: auto;
   width: auto;
-  margin: 0.2em 0.5em ;
+  color: #FFF
 }
-
+#logo{
+  height: auto;
+  width: auto;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
 #texto{
   width: 60%;
   margin: auto;
-  text-shadow: 20px -10px white;
+  color: #fff;
   font-size: 2em;
+  
  
 }
 
-footer{
-  text-align: center;
-  padding: 10px auto;
-  margin: 10px auto;
+a{
+  color: #fff;
 }
+ #cadastro a{
+  color: #007bff;
+  transition: 500ms;
+ }
+
+ #cadastro a:hover{
+  background: #007bff;
+  color: #FFF;
+ }
 
 #principal{
   width: 100%;
@@ -68,20 +88,38 @@ footer{
 }
 
 .menu{
-  width: auto;
+  width: 200px;
+  height: 250px;
   font-size: 1em;
   text-align: center;
-  margin: auto 10px;
-  box-sizing:content-box  ;
+  margin: auto;
+  box-sizing:content-box ;
+  background-color: rgb(53, 50, 50);
+  border-radius: 30px 0px;
 }
 
 .conteudo{
-  width: 90%;
-  margin: 10px;
+  width: 100%;
+  height: 250px;
   flex-shrink: 5;
   text-align: center; 
+  border-radius: 30px 0px;
+  align-content: center;
+  box-shadow: 5px 5px rgb(145, 139, 139);
 
 }
+
+footer{
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  align-items: center;
+  align-content: center;
+  color: #FFF;
+
+}
+
+
 
 
 #listaArquivos{
@@ -92,41 +130,20 @@ footer{
   
 }
 
-li {
-  padding: 0.3em 0px;
+ul, li{
+  margin: 0;
+  padding: 1em;
+  height: auto;
+  width: auto;
 }
 
-a, a:link, a:hover, a:active{
-  text-decoration: none;
-  color: rgb(27, 109, 50);
-}
-
-ul a:hover{
-  color: #fff;
-  background-color: rgba(27, 109, 50, 0.372);
-  border-radius: 5px;
-  padding: 0.2em 0px;
-  font-size: 1.1em;
-}
-
-
-/*
-#home .home a{
-  color: #fff;
-  background-color: rgb(27, 109, 50);
-  border-radius: 5px;
-  padding: 0.3em;
-}*/
 
 
 #dados table{
-  width: 90%;
-  margin: 10px auto;
   text-align: center;
-
  
 }
-
+/*
 th, td{
   padding: 5px 0px;
   margin: 5px auto; 
@@ -136,53 +153,6 @@ th{
   text-transform: uppercase;
   font-size: 90%;
  
-}
-
-
-/*
-
-a:link{
-  text-decoration: none;
-  color: rgb(27, 109, 50);
-
-  
-}
-a:visited{
-  color: blue;
-  background-color: #fff;
-}
-a:hover{
-  color: #fff;
-  background-color: blanchedalmond;
-}
-a:active{
-  color: red;
-  background-color: black;
-}
-
-
-
-
-.input{
-  background-color:#fff; 
-  margin: 10px 5px;
-  padding: 15px 10px;
-  display: inline-block;
- 
-}
-
-#listaArquivos{
-
-  background-color:#fff; 
-  padding: 10px;
-  margin-top: 5px;
-  
-}
-
-.mae{
-  /*background: rgba(193, 23, 23, 0.319);
-  position: relative;
-  padding: 0px;
-  text-align: center;
 }*/
+
 
