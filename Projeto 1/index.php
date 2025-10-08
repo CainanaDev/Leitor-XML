@@ -75,11 +75,21 @@
       <div class="progress-bar bg-success progress-bar-striped progress-bar-animated w-75">75%</div>
     </div>
 
-    <hr class="mb-4 mt-4">
+    <hr class="mb-2 mt-4">
+    <div class="sticky-top bg-light d-flex flex-row justify-content-around align-items-center text-arround" id="dados3">
+      <p>Total arquivos:</p>
+      <p>Valor total:</p>
+      <p>Valor Valido:</p>
+      <p>Valor Contigencia:</p>
+      <p>Modelos carregados:</p>
+      <p>Contigencias:</p>
+     
+    </div>
+    
 
     <div class="table-responsive" id="dados">
-      <table class="table table-striped">
-        <thead>
+      <table class="table table-striped table-hover">
+        <thead class="thead-light">
           <tr>
             <th id="chave">CHAVE</th>
             <th id="data">Data Emissão</th>
@@ -105,6 +115,26 @@
           <tr>
             <td headers="chave">29250813998613000101650030001458881340264748</td>
             <td headers="data">01/08/25</td>
+            <td headers="cfop">5102</td>
+            <td headers="valor">8,44</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Contigencia</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+          <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+          <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
             <td headers="valor">7,40</td>
             <td headers="modelo">65</td>
@@ -132,6 +162,87 @@
             <td headers="canc">Sim</td>
             <td headers="tributacao">500</td>
           </tr>
+          <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+          <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+            <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+            <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+            <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+            <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+            <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+            <tr>
+            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Aprovado</td>
+            <td headers="canc">Sim</td>
+            <td headers="tributacao">500</td>
+          </tr>
+
         </tbody>
       </table>
     </div>

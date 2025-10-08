@@ -77,7 +77,12 @@ a{
   background: #007bff;
   color: #FFF;
  }
-
+#dados3{
+  width: auto;
+  height: 50px;
+  border: 1px solid red;
+  
+}
 #principal{
   width: 100%;
   display: flex;
