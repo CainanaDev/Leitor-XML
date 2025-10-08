@@ -43,6 +43,8 @@ header{
   
 }
 
+
+
  #cadastro{
   height: auto;
   width: auto;
@@ -77,12 +79,23 @@ a{
   background: #007bff;
   color: #FFF;
  }
+
 #dados3{
   width: auto;
   height: 50px;
-  border: 1px solid red;
-  
+  font-size: 0.8em;
+  padding: auto;
+  box-shadow: #007bff 3px 2px;
+  border-radius: 10px 5px;
 }
+#dados3 span{
+color: #007bff;
+text-align: center;
+font-size: 1.2em;
+font-weight: 600;
+
+}
+
 #principal{
   width: 100%;
   display: flex;

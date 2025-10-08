@@ -43,11 +43,12 @@ function mostrarArquivos() {
 function VerCancelado() {
   let x = null;
 
-  const c = document.querySelectorAll('td[headers="canc"]');
-  const b = c[0];
+  const c = document.querySelectorAll('td[headers="status"]');
+  const b = c[7];
   console.log(b.textContent);
 
-  if (b.textContent == "Sim") {
+  if (b.textContent == "Cancelamento NF" || 
+    b.textContent == 'Cancelamento, Fora do Prazo') {
     x = true;
   } else {
     x = false;

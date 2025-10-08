@@ -9,6 +9,7 @@
  #cadastro a{
     margin: 0.1em;
     font-size: 0.9em;
+    width: 95px;
   };
  #texto h2{
     font-size: 0.8em;
@@ -23,6 +24,12 @@
   width: 90px;
   color: #007bff;
   margin-right: -15px;
+  }
+ #dados3{
+    display: none;
+    visibility: hidden;
+   
+    
   }
 }
 
@@ -46,6 +53,11 @@ body {
   margin-right: -15px;
   color: #007bff;
 }
+#dados3{
+    margin: 10px 10px ;
+    height: auto;
+
+  }
 
 }
 
@@ -67,7 +79,10 @@ body {
   margin-right: -15px;
   color: #007bff;
 }
-    
+#dados3{
+    margin: 10px 0px ;
+    height: auto;
+  }
   
 }
 

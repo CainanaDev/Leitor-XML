@@ -18,11 +18,14 @@
 
   <script src="js/js.js"></script>
 
-  <title>Pagina Inicial</title>
+  <title>
+    Pagina Inicial
+  
+  </title>
 </head>
 
 <body id="home">
-
+<!--Cabeçalho-->
   <header class="d-flex text-center bg-primary m-0 h-0">
     <div class="lead text-monospace" id="logo">
       XML<span class="font-italic">Analyse</span>
@@ -35,12 +38,13 @@
       <a class="btn btn-light" href="#">Cadastro</a>
     </div>
   </header>
-
+<!--Cabeçalho /fim-->
   <hr class="mb-4 mt-4">
 
   <div class="container-fluid">
-    <div id="principal">
-      <div class="menu mr-3">
+    <div class="row" id="principal"> <!--Parte Central do Site-->
+     
+      <div class="col-lg-2 menu mr-2 ml-2"> <!--Menu Lateral-->
         <nav id="lateral">
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
@@ -54,8 +58,9 @@
             </li>
           </ul>
         </nav>
-      </div>
-      <div class="conteudo bg-light">
+      </div>  <!--Menu Lateral /fim-->
+    
+      <div class=" col-lg-9 conteudo bg-light">   <!--Forms e Buttons-->
         <div class="form-group">
           <label for="file">Clique no botão PROCURAR para carregar o arquivo:</label><br>
           <input class="btn form-control bg-light" type="file" id="file" name="file[]" multiple accept=".xml" />
@@ -68,215 +73,235 @@
             <button class="btn btn-success m-2" onclick="VerCancelado()">Analisar</button>
           </div>
         </div>
-      </div>
-    </div>
+      </div>  <!--Forms e Buttons /fim-->
+    </div><!--Parte Central do Site /fim-->
     <br>
-    <div class="progress">
+
+    <div class="progress"><!--Barra progresso-->
       <div class="progress-bar bg-success progress-bar-striped progress-bar-animated w-75">75%</div>
-    </div>
+    </div><!--Barra progresso/fim-->
 
     <hr class="mb-2 mt-4">
-    <div class="sticky-top bg-light d-flex flex-row justify-content-around align-items-center text-arround" id="dados3">
-      <p>Total arquivos:</p>
-      <p>Valor total:</p>
-      <p>Valor Valido:</p>
-      <p>Valor Contigencia:</p>
-      <p>Modelos carregados:</p>
-      <p>Contigencias:</p>
-     
-    </div>
-    
 
+    <!--Barra Totalizadores-->
+    <div class=" row sticky-top bg-light d-flex flex-row justify-content-around align-items-center text-arround" id="dados3">
+      <div class="col-2">  
+        <p >Total arquivos: <span>50</span></p>
+      </div>
+      <div class="col-2">
+       <p >Valor total R$: <span>50,00</span></p>
+      </div>
+      <div class="col-2">
+       <p >Valor Valido R$: <span>25,00</span></p>
+      </div>
+      <div class="col-2">
+       <p >Valor Contigencia R$: <span>25,00</span></p>
+      </div>
+      <div class="col-2">
+       <p>Modelos carregados: <span>55</span></p>
+      </div>
+      <div class="col-2">
+      <p>Contigencias: <span>25</span></p>
+      </div>
+    </div><!--Barra Totalizadores /fim-->
+
+    
+    <!--Tabela informções-->
     <div class="table-responsive" id="dados">
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover table-sm">
         <thead class="thead-light">
           <tr>
             <th id="chave">CHAVE</th>
             <th id="data">Data Emissão</th>
             <th id="cfop">CFOP</th>
+            <th id="nOp">Nat. Op.</th>
             <th id="valor">Valor</th>
             <th id="modelo">Modelo</th>
             <th id=status>Status</th>
-            <th id="canc">Cancelado</th>
+            <th id="nNum">NFe Numero</th>
+            <th id="nSerie">Nº Serie</th>
             <th id="tributacao">CSOSN/CST</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+          <tr class="autorizado">
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
+            <td headers="nOp">Venda Fora Estado</td>
             <td headers="valor">7,40</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Autorizado</td>
+            <td headers="nNum">001</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
           <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">5102</td>
-            <td headers="valor">8,44</td>
+             <td headers="nOp">Venda Dentro Estado</td>
+            <td headers="valor">0,00</td>
             <td headers="modelo">65</td>
             <td headers="status">Contigencia</td>
-            <td headers="canc">Sim</td>
+            <td headers="nNum">002</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
           <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
-            <td headers="valor">7,40</td>
+            <td headers="nOp">Venda Dentro Estado</td>
+            <td headers="valor">0,00</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Cancelamento NF</td>
+            <td headers="nNum">003</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
           <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
-            <td headers="valor">7,40</td>
+            <td headers="nOp">Venda Dentro Estado</td>
+            <td headers="valor">0,00</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Inutilização Nº</td>
+            <td headers="nNum">004</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
           <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
-            <td headers="valor">7,40</td>
+            <td headers="nOp">Venda Dentro Estado</td>
+            <td headers="valor">0,00</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Denegado</td>
+            <td headers="nNum">005</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
           <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
+            <td headers="nOp">Venda Dentro Estado</td>
             <td headers="valor">7,40</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">EPEC Autorizado	</td>
+            <td headers="nNum">006</td>
+            <td headers="nSerie">001</td>
+            <td headers="tributacao">500</td>
+          </tr>
+          <tr class="autorizado">
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
+            <td headers="data">01/08/25</td>
+            <td headers="cfop">6102</td>
+            <td headers="nOp">Venda Dentro Estado</td>
+            <td headers="valor">7,40</td>
+            <td headers="modelo">65</td>
+            <td headers="status">Autorizado, Fora do Prazo</td>
+            <td headers="nNum">007</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
           <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
-            <td headers="valor">7,40</td>
+            <td headers="nOp">Venda Dentro Estado</td>
+            <td headers="valor">0,00</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Cancelamento, Fora do Prazo</td>
+            <td headers="nNum">008</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <tr class="autorizado">
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
+            <td headers="nOp">Venda Dentro Estado</td>
             <td headers="valor">7,40</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Autorizado</td>
+            <td headers="nNum">009</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <tr class="autorizado">
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
+            <td headers="nOp">Venda Dentro Estado</td>
             <td headers="valor">7,40</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Autorizado</td>
+            <td headers="nNum">010</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <tr class="autorizado">
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
+            <td headers="nOp">Venda Dentro Estado</td>
             <td headers="valor">7,40</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Autorizado</td>
+            <td headers="nNum">011</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <tr class="autorizado">
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
+            <td headers="nOp">Venda Dentro Estado</td>
             <td headers="valor">7,40</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Autorizado</td>
+            <td headers="nNum">012</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <tr class="autorizado">
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
+            <td headers="nOp">Venda Dentro Estado</td>
             <td headers="valor">7,40</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Autorizado</td>
+            <td headers="nNum">013</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
+            <tr class="autorizado">
+            <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
+            <td headers="nOp">Venda Dentro Estado</td>
             <td headers="valor">7,40</td>
             <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
-            <td headers="tributacao">500</td>
-          </tr>
-            <tr>
-            <td headers="chave">29250813998613000101650030001458881340264748</td>
-            <td headers="data">01/08/25</td>
-            <td headers="cfop">6102</td>
-            <td headers="valor">7,40</td>
-            <td headers="modelo">65</td>
-            <td headers="status">Aprovado</td>
-            <td headers="canc">Sim</td>
+            <td headers="status">Autorizado</td>
+            <td headers="nNum">014</td>
+            <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
 
         </tbody>
       </table>
     </div>
+    <!--Tabela informções /fim-->
+
     <h4 style="margin: 10px;">Os arquivos devem aparecer abaixo</h4>
     <div class="bg-light mb-5" id="listaArquivos">
       <h1>Teste</h1>
-    </div>
-
-
-    <!--<div class="mae">
-      <div class="input">
-
-        <input type="file" id="file" name="file[]" multiple accept=".xml" />
-
-        <div>
-          <button onclick="mostrarArquivos()">Submit</button>
-        </div>
-      </div>
-
-      <nav id="lateral">
-        <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="">Fale Conosco</a></li>
-          <li><a href="">Dashboard</a></li>
-        </ul>
-      </nav>
-
-    </div>
-
-    <hr>
-    <h4 style="clear: both; margin:10px">Os arquivos devem aparecer abaixo</h4>
-
-    <div id="listaArquivos"></div>
-    -->
+    </div
 
   </div>
 
