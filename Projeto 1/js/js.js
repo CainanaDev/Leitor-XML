@@ -7,14 +7,20 @@ let vValido = null;
 let vContigencia = null;
 let modelo = null;
 let tContigencia = null;
-let cancelado = null
+let cancelado = null;
+//let aleatorio = prompt('Teste aqui')
+//toString() /parseInt() /parseFloat
+
+
+//let ternario = <condição ex. 5>2> ? <condicição se verdadeiro> : <condição se falso>
+
 
 function mostrarArquivos() {
   const input = document.getElementById("file");
   const arquivos = input.files; // FileList
   const lista = document.getElementById("listaArquivos");
   lista.innerHTML = ""; // Limpa o conteúdo anterior
-  const dados = document.getElementById("dados")
+  const dados = document.getElementById("dados");
   dados.innerHTML=""
 
 
@@ -54,7 +60,7 @@ function VerCancelado() {
   const c = document.querySelectorAll('td[headers="status"]');
   const b = c[10];
   console.log(b.textContent);
-
+  //let ternario = <condição ex. 5>2> ? <condicição se verdadeiro> : <condição se falso>
   if (b.textContent == "Cancelamento NF" || 
     b.textContent == 'Cancelamento, Fora do Prazo') {
     cancelado = true;

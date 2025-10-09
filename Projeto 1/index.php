@@ -88,7 +88,7 @@
     <!--Barra Totalizadores-->
     <div class="sticky-top bg-light d-flex flex-row   justify-content-around   align-items-center text-arround no-gutters pl-3 pr-3 pt-3" id="dados3">
       <div class="col-2">  
-        <p >Total arquivos: <span>50</span></p>
+        <p >Total arquivos: <span id="vTotal">50</span></p>
       </div>
       <div class="col-2">
        <p >Valor total R$: <span>50,00</span></p>
@@ -322,5 +322,5 @@
 </body>
 
 
-
+<script src="js/js.js"></script>
 </html>
