@@ -26,17 +26,19 @@
 
 <body id="home">
 <!--Cabeçalho-->
-  <header class="d-flex text-center bg-primary m-0 h-0">
-    <div class="lead text-monospace" id="logo">
-      XML<span class="font-italic">Analyse</span>
-    </div>
-    <div id="texto">
-      <h2 class="font-weight-bold text-uppercase">Leitor XML</h2>
-    </div>
-    <div id="cadastro">
-      <a class="btn btn-light" href="#">Login</a> |
-      <a class="btn btn-light" href="#">Cadastro</a>
-    </div>
+  <header class=" d-flex text-center bg-primary m-0 h-0">
+   
+      <div class="lead text-monospace" id="logo">
+        XML<span class="font-italic">Analyse</span>
+      </div>
+      <div  id="texto">
+        <h2 class="font-weight-bold text-uppercase">Leitor XML</h2>
+      </div>
+      <div  id="cadastro">
+        <a class="btn btn-light" href="#">Login</a> <span id="marcador">|</span>
+        <a class="btn btn-light" href="#">Cadastro</a>
+      </div>
+  
   </header>
 <!--Cabeçalho /fim-->
   <hr class="mb-4 mt-4">
@@ -84,7 +86,7 @@
     <hr class="mb-2 mt-4">
 
     <!--Barra Totalizadores-->
-    <div class=" row sticky-top bg-light d-flex flex-row justify-content-around align-items-center text-arround" id="dados3">
+    <div class="sticky-top bg-light d-flex flex-row   justify-content-around   align-items-center text-arround no-gutters pl-3 pr-3 pt-3" id="dados3">
       <div class="col-2">  
         <p >Total arquivos: <span>50</span></p>
       </div>
@@ -108,7 +110,7 @@
     
     <!--Tabela informções-->
     <div class="table-responsive" id="dados">
-      <table class="table table-striped table-hover table-sm">
+      <table class="table table-hover table-sm">
         <thead class="thead-light">
           <tr>
             <th id="chave">CHAVE</th>
@@ -220,7 +222,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr class="autorizado">
+          <tr class="autorizado">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -232,7 +234,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr class="autorizado">
+          <tr class="autorizado">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -244,7 +246,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr class="autorizado">
+          <tr class="autorizado">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -256,7 +258,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr class="autorizado">
+          <tr class="autorizado">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -268,7 +270,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr class="autorizado">
+          <tr class="autorizado">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -280,7 +282,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-            <tr class="autorizado">
+          <tr class="autorizado">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -301,9 +303,9 @@
     <h4 style="margin: 10px;">Os arquivos devem aparecer abaixo</h4>
     <div class="bg-light mb-5" id="listaArquivos">
       <h1>Teste</h1>
-    </div
+   </div>
 
-  </div>
+  
 
   <hr>
   <footer class="mt-2 mb-0 h-2 w-5 pt-2 pb-0 bg-dark fixed-bottom">

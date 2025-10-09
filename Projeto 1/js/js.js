@@ -1,6 +1,14 @@
 
 //alert('Passou por ai');
 
+let tArquivos = null;
+let vTotal = null;
+let vValido = null;
+let vContigencia = null;
+let modelo = null;
+let tContigencia = null;
+let cancelado = null
+
 function mostrarArquivos() {
   const input = document.getElementById("file");
   const arquivos = input.files; // FileList
@@ -41,19 +49,19 @@ function mostrarArquivos() {
 
 
 function VerCancelado() {
-  let x = null;
+
 
   const c = document.querySelectorAll('td[headers="status"]');
-  const b = c[7];
+  const b = c[10];
   console.log(b.textContent);
 
   if (b.textContent == "Cancelamento NF" || 
     b.textContent == 'Cancelamento, Fora do Prazo') {
-    x = true;
+    cancelado = true;
   } else {
-    x = false;
+    cancelado = false;
   }
-  console.log(x);
+  console.log(cancelado);
 }
 
 
