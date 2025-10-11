@@ -11,12 +11,11 @@
 
   <!--Font Awesome-->
   <script src="https://kit.fontawesome.com/1b112f6203.js" crossorigin="anonymous"></script>
+  
 
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/midia.css">
-
-  <script src="js/js.js"></script>
 
   <title>
     Pagina Inicial
@@ -86,24 +85,25 @@
     <hr class="mb-2 mt-4">
 
     <!--Barra Totalizadores-->
-    <div class="sticky-top bg-light d-flex flex-row   justify-content-around   align-items-center text-arround no-gutters pl-3 pr-3 pt-3" id="dados3">
+    <div class="sticky-top bg-light d-flex flex-row   justify-content-around   text-arround no-gutters pl-3 pr-3 pt-3" id="dados3">
       <div class="col-2">  
-        <p >Total arquivos: <span id="vTotal">50</span></p>
+        <p >Total arquivos: <span id="tArquivos"></span></p>
       </div>
       <div class="col-2">
-       <p >Valor total R$: <span>50,00</span></p>
+       <p >Valor total R$: <span id="vTotal"></span></p>
       </div>
       <div class="col-2">
-       <p >Valor Valido R$: <span>25,00</span></p>
+       <p >Valor Valido R$: <span id="vValido"></span></p>
       </div>
       <div class="col-2">
-       <p >Valor Contigencia R$: <span>25,00</span></p>
+
+       <p >Valor Contigencia R$: <span id="vContigencia"></span></p>
       </div>
       <div class="col-2">
-       <p>Modelos carregados: <span>55</span></p>
+       <p>Modelos carregados: <span id="tModelo" ></span></p>
       </div>
       <div class="col-2">
-      <p>Contigencias: <span>25</span></p>
+      <p>Contigencias: <span id="tContigencia"></span></p>
       </div>
     </div><!--Barra Totalizadores /fim-->
 
@@ -138,7 +138,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr>
+          <tr class="text-danger">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">5102</td>
@@ -150,7 +150,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr>
+          <tr class="text-info">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -162,7 +162,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr>
+          <tr class="text-secondary">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -174,7 +174,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr>
+          <tr class="denegado">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -210,7 +210,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr>
+          <tr class="text-info">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -222,7 +222,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr class="autorizado">
+          <tr class="autorizado ">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -234,7 +234,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr class="autorizado">
+          <tr class="autorizado ">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -246,7 +246,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr class="autorizado">
+          <tr class="autorizado ">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -258,7 +258,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr class="autorizado">
+          <tr class="autorizado ">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -270,7 +270,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr class="autorizado">
+          <tr class="autorizado ">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -282,7 +282,7 @@
             <td headers="nSerie">001</td>
             <td headers="tributacao">500</td>
           </tr>
-          <tr class="autorizado">
+          <tr class="autorizado ">
             <td headers="chave">29250812300010000101980030001234567890123456</td>
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
@@ -312,7 +312,7 @@
     <p>&copy; 2025 - Todos os direitos reservados</p>
   </footer>
 
-
+  <script src="js/js.js"></script>
   <!-- JavaScript (Opcional) -->
   <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -322,5 +322,5 @@
 </body>
 
 
-<script src="js/js.js"></script>
+
 </html>

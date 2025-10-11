@@ -1,20 +1,30 @@
 
 //alert('Passou por ai');
-
-let tArquivos = null;
-let vTotal = null;
-let vValido = null;
-let vContigencia = null;
-let modelo = null;
-let tContigencia = null;
+//barra totalizadores
+const tArquivos = document.querySelectorAll('#tArquivos');
+const vTotal = document.querySelectorAll('#vTotal');
+const vValido = document.querySelectorAll('#vValido');
+const vContigencia = document.querySelectorAll('#vContigencia');
+const tModelo = document.querySelectorAll('#tModelo');
+const tContigencia = document.querySelectorAll('#tContigencia');
 let cancelado = null;
-//let aleatorio = prompt('Teste aqui')
+
+/*let aleatorio = prompt('Teste aqui')
 //toString() /parseInt() /parseFloat
 
+console.log(tArquivos[0].textContent)
+console.log(tArquivos[0])
+console.log(tArquivos)
+
+//const teste = document.querySelectorAll('tr[class="autorizado"]')
+//console.log(teste)*/
+
+let testando = undefined;
+let testando2= null ;
 
 //let ternario = <condição ex. 5>2> ? <condicição se verdadeiro> : <condição se falso>
 
-
+/*
 function mostrarArquivos() {
   const input = document.getElementById("file");
   const arquivos = input.files; // FileList
@@ -38,10 +48,6 @@ function mostrarArquivos() {
   leitor.readAsText(arquivo);
 
   
-
-
-
-  
   for (let i = 0; i < arquivos.length; i++) {
     const item = document.createElement("p");
     item.textContent = `Arquivo ${i + 1}: ${arquivos[i].name} - (${
@@ -51,13 +57,31 @@ function mostrarArquivos() {
   }
   console.log(leitor);
 
-};
-
+};*/
 
 function VerCancelado() {
+  tArquivos[0].innerHTML = ""
+  vTotal[0].innerHTML = ""
+  vValido[0].innerHTML = ""
+  vContigencia[0].innerHTML=""
+  tModelo[0].innerHTML=""
+  tContigencia[0].innerHTML=""
+
+  console.log(tArquivos[0].textContent)
+  console.log(tArquivos[0])
+  console.log(tArquivos)
+
+  tArquivos[0].innerHTML = testando
+  vValido[0].innerHTML = testando2
+
+  console.log(tArquivos[0].textContent)
+  console.log(tArquivos[0])
+  console.log(tArquivos)
 
 
-  const c = document.querySelectorAll('td[headers="status"]');
+
+
+ /* const c = document.querySelectorAll('td[headers="status"]');
   const b = c[10];
   console.log(b.textContent);
   //let ternario = <condição ex. 5>2> ? <condicição se verdadeiro> : <condição se falso>
@@ -67,7 +91,18 @@ function VerCancelado() {
   } else {
     cancelado = false;
   }
-  console.log(cancelado);
+  console.log(cancelado);*/
 }
 
+
+//manipular string
+/*
+if (Nome XML text.lenght > 44){
+não valida o xml
+} else{
+  pode validar}
+
+.trim() para tirar espaços
+
+  */
 

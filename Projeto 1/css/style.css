@@ -161,6 +161,14 @@ ul, li{
   text-align: center;
  
 }
+
+
+.autorizado{
+ color: #28a745;
+}
+.denegado{
+  color: orange
+}
 /*
 th, td{
   padding: 5px 0px;
