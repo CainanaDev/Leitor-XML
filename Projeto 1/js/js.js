@@ -7,7 +7,14 @@ const vValido = document.querySelectorAll('#vValido');
 const vContigencia = document.querySelectorAll('#vContigencia');
 const tModelo = document.querySelectorAll('#tModelo');
 const tContigencia = document.querySelectorAll('#tContigencia');
-let cancelado = null;
+//fim barra totalizadores
+let cancelado = null; //
+const input = document.getElementById("file")
+let valorValido = null;
+let valorTotal = null;
+let valorContigencia = null;
+let tipoModelo = null;
+let totalContigencia = null;
 
 /*let aleatorio = prompt('Teste aqui')
 //toString() /parseInt() /parseFloat
@@ -16,11 +23,10 @@ console.log(tArquivos[0].textContent)
 console.log(tArquivos[0])
 console.log(tArquivos)
 
+
 //const teste = document.querySelectorAll('tr[class="autorizado"]')
 //console.log(teste)*/
 
-let testando = undefined;
-let testando2= null ;
 
 //let ternario = <condição ex. 5>2> ? <condicição se verdadeiro> : <condição se falso>
 
@@ -59,14 +65,33 @@ function mostrarArquivos() {
 
 };*/
 
+function limpaInfo(){
+
+ 
+}
+
 function VerCancelado() {
-  tArquivos[0].innerHTML = ""
+
+  const c = document.querySelectorAll('td[headers="valor"]');
+  b = c[0].textContent
+
+
+ /* tArquivos[0].innerHTML = ""
   vTotal[0].innerHTML = ""
   vValido[0].innerHTML = ""
   vContigencia[0].innerHTML=""
   tModelo[0].innerHTML=""
   tContigencia[0].innerHTML=""
 
+  tArquivos[0].innerHTML = input.files.length
+  vTotal[0].innerHTML = valorTotal
+  vValido[0].innerHTML = valorValido
+  vContigencia[0].innerHTML= valorContigencia
+  tModelo[0].innerHTML=tipoModelo
+  tContigencia[0].innerHTML= totalContigencia
+*/
+
+  /*
   console.log(tArquivos[0].textContent)
   console.log(tArquivos[0])
   console.log(tArquivos)
@@ -76,7 +101,14 @@ function VerCancelado() {
 
   console.log(tArquivos[0].textContent)
   console.log(tArquivos[0])
-  console.log(tArquivos)
+  console.log(tArquivos)*/
+
+
+  console.log(c.value)
+
+
+
+  //console.log(input.files.length)
 
 
 
@@ -106,3 +138,10 @@ não valida o xml
 
   */
 
+
+//selecionando o elemento e mudando seu estilo
+
+//document.getElementById('id elemento').style.elementostyle = valor de elemento
+
+//modificar a classe do elemento
+//document.getElementById(Id elemento).className = 'Nome_Class'

@@ -131,7 +131,7 @@
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
             <td headers="nOp">Venda Fora Estado</td>
-            <td headers="valor">7,40</td>
+            <td headers="valor">7.40</td>
             <td headers="modelo">65</td>
             <td headers="status">Autorizado</td>
             <td headers="nNum">001</td>
@@ -191,7 +191,7 @@
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
             <td headers="nOp">Venda Dentro Estado</td>
-            <td headers="valor">7,40</td>
+            <td headers="valor">7.40</td>
             <td headers="modelo">65</td>
             <td headers="status">EPEC Autorizado	</td>
             <td headers="nNum">006</td>
@@ -203,7 +203,7 @@
             <td headers="data">01/08/25</td>
             <td headers="cfop">6102</td>
             <td headers="nOp">Venda Dentro Estado</td>
-            <td headers="valor">7,40</td>
+            <td headers="valor">2,60</td>
             <td headers="modelo">65</td>
             <td headers="status">Autorizado, Fora do Prazo</td>
             <td headers="nNum">007</td>
