@@ -71,7 +71,7 @@
             <button class="btn btn-danger" onclick="mostrarArquivos()">Analisar informações</button>
           </div>
           <div>
-            <button class="btn btn-success m-2" onclick="VerCancelado()">Analisar</button>
+            <button class="btn btn-success m-2" onclick="debug()">Debug</button>
           </div>
         </div>
       </div>  <!--Forms e Buttons /fim-->

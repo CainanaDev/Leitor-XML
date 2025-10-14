@@ -9,12 +9,19 @@ const tModelo = document.querySelectorAll('#tModelo');
 const tContigencia = document.querySelectorAll('#tContigencia');
 //fim barra totalizadores
 let cancelado = null; //
+
 const input = document.getElementById("file")
 let valorValido = null;
 let valorTotal = null;
 let valorContigencia = null;
 let tipoModelo = null;
 let totalContigencia = null;
+
+
+function debug(){
+  alert('Passou por ai')
+  console.log(input.files)
+}
 
 /*let aleatorio = prompt('Teste aqui')
 //toString() /parseInt() /parseFloat
@@ -40,7 +47,7 @@ function mostrarArquivos() {
   dados.innerHTML=""
 
 
-
+  /*
   const arquivo = arquivos[0]; // Apenas o primeiro arquivo, no caso de múltiplos uploads
   const leitor = new FileReader();
 
@@ -51,9 +58,9 @@ function mostrarArquivos() {
   };
 
   // Lê o arquivo como texto
-  leitor.readAsText(arquivo);
+  leitor.readAsText(arquivo);*/
 
-  
+  /*
   for (let i = 0; i < arquivos.length; i++) {
     const item = document.createElement("p");
     item.textContent = `Arquivo ${i + 1}: ${arquivos[i].name} - (${
@@ -65,10 +72,7 @@ function mostrarArquivos() {
 
 };*/
 
-function limpaInfo(){
 
- 
-}
 
 function VerCancelado() {
 
