@@ -44,7 +44,7 @@ function mostrarArquivos() {
   const lista = document.getElementById("listaArquivos");
   lista.innerHTML = ""; // Limpa o conteúdo anterior
   const dados = document.getElementById("dados");
-  dados.innerHTML=""1
+  dados.innerHTML=""
 
 
   /*
