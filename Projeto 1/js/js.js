@@ -9,8 +9,9 @@ const tModelo = document.querySelectorAll('#tModelo');
 const tContigencia = document.querySelectorAll('#tContigencia');
 //fim barra totalizadores
 let cancelado = null; //
-
+///////////////////////////////
 const input = document.getElementById("file")
+///////////////////////////////
 let valorValido = null;
 let valorTotal = null;
 let valorContigencia = null;
@@ -19,9 +20,100 @@ let totalContigencia = null;
 
 
 function debug(){
-  alert('Passou por ai')
-  console.log(input.files)
+  //alert('Passou por ai')
+  //console.log(input.files)
+  const dados = document.getElementById("dados");
+  //dados.innerHTML=""
+  const lista = document.getElementById("listaArquivos");
+  //lista.innerHTML = ""; // Limpa o conteúdo anterior
+
+  //criar elementos
+  let criarTabela = document.createElement("table")
+  criarTabela.className = "table table-hover table-sm"
+  
+  let criarThead = document.createElement("thead")
+  criarThead.className = "thead-light"
+
+  let criarTrThead = document.createElement("tr")
+
+  let cabeçalhoTable = [
+    "CHAVE", 
+    "DATA EMISSÃO",
+    "CFOP",
+    "NAT. OP",
+    "VALOR",
+    "MODELO",
+    "STATUS",
+    "NFE NUMERO",
+    "Nº SERIE",
+    "CSOSN/CST"
+  ];
+  //console.log(criarTabela)
+  //console.log(cabeçalhoTable)
+
+  for (var i = 0; i < cabeçalhoTable.length; i++){
+    console.log(cabeçalhoTable[i])
+
+   };
 }
+
+
+
+
+/*
+para apagar depois
+// 1. Criar a tabela
+let tabela = document.createElement('table');
+
+// 2. Criar o thead e a linha (tr) do cabeçalho
+let thead = document.createElement('thead');
+let trCabeçalho = document.createElement('tr');
+
+// 3. Criar as células de cabeçalho (th)
+for (let i = 1; i <= 5; i++) {
+    let th = document.createElement('th');
+    th.textContent = `Coluna ${i}`;  // Texto da célula do cabeçalho
+    trCabeçalho.appendChild(th);  // Adicionar a célula à linha do cabeçalho
+}
+
+// Adicionar a linha ao thead
+thead.appendChild(trCabeçalho);
+
+// 4. Criar o tbody (corpo da tabela)
+let tbody = document.createElement('tbody');
+
+// 5. Criar algumas linhas e células no tbody
+for (let i = 1; i <= 3; i++) {  // Aqui, vamos criar 3 linhas de dados
+    let tr = document.createElement('tr');
+    
+    // Adicionar 5 células (td) a cada linha
+    for (let j = 1; j <= 5; j++) {
+        let td = document.createElement('td');
+        td.textContent = `Dado ${i}-${j}`;  // Texto da célula
+        tr.appendChild(td);  // Adicionar a célula à linha
+    }
+    
+    // Adicionar a linha ao corpo da tabela
+    tbody.appendChild(tr);
+}
+
+// 6. Adicionar o thead e tbody à tabela
+tabela.appendChild(thead);
+tabela.appendChild(tbody);
+
+// 7. Adicionar a tabela ao corpo da página
+document.body.appendChild(tabela);
+
+
+
+
+prompt{
+ola, para fins educacionais, vamos recriar uma sala de aula/aprendizagem, onde voce assumirá o papel de professor e eu de aluno. NA aula de hoje estamos falando APENAS da função "document.createElement()", estamos na primeira aula para criação de uma tabela através do js que contenha apenas o minimo: thead, tbory, cabeçalho e 5 colunas. professor, poderia me explicar como criar essa tabela? Sem Css, nem recursos avançados
+}
+
+*/
+
+
 
 /*let aleatorio = prompt('Teste aqui')
 //toString() /parseInt() /parseFloat
@@ -73,14 +165,14 @@ function mostrarArquivos() {
 };*/
 
 
-
+/*
 function VerCancelado() {
 
   const c = document.querySelectorAll('td[headers="valor"]');
   b = c[0].textContent
 
 
- /* tArquivos[0].innerHTML = ""
+  tArquivos[0].innerHTML = ""
   vTotal[0].innerHTML = ""
   vValido[0].innerHTML = ""
   vContigencia[0].innerHTML=""
@@ -93,9 +185,9 @@ function VerCancelado() {
   vContigencia[0].innerHTML= valorContigencia
   tModelo[0].innerHTML=tipoModelo
   tContigencia[0].innerHTML= totalContigencia
-*/
 
-  /*
+
+  
   console.log(tArquivos[0].textContent)
   console.log(tArquivos[0])
   console.log(tArquivos)
@@ -105,19 +197,19 @@ function VerCancelado() {
 
   console.log(tArquivos[0].textContent)
   console.log(tArquivos[0])
-  console.log(tArquivos)*/
+  console.log(tArquivos)
 
 
   console.log(c.value)
 
 
 
-  //console.log(input.files.length)
+  console.log(input.files.length)
 
 
 
 
- /* const c = document.querySelectorAll('td[headers="status"]');
+  const c = document.querySelectorAll('td[headers="status"]');
   const b = c[10];
   console.log(b.textContent);
   //let ternario = <condição ex. 5>2> ? <condicição se verdadeiro> : <condição se falso>
@@ -127,8 +219,8 @@ function VerCancelado() {
   } else {
     cancelado = false;
   }
-  console.log(cancelado);*/
-}
+  console.log(cancelado);
+}*/
 
 
 //manipular string
@@ -149,3 +241,16 @@ não valida o xml
 
 //modificar a classe do elemento
 //document.getElementById(Id elemento).className = 'Nome_Class'
+
+// Exemplo com for...of (recomendado para coleções)
+//for (const file of meuFileList) {
+//  console.log(file.name);
+//}
+  /*
+  // Exemplo com for tradicional (recomendado)
+for (let i = 0; i < meuFileList.length; i++) {
+  const file = meuFileList[i];
+  console.log(file.name);
+}arguments
+  */ 
+
