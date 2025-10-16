@@ -23,9 +23,9 @@ function debug(){
   //alert('Passou por ai')
   //console.log(input.files)
   const dados = document.getElementById("dados");
-  //dados.innerHTML=""
+  dados.innerHTML=""
   const lista = document.getElementById("listaArquivos");
-  //lista.innerHTML = ""; // Limpa o conteúdo anterior
+  lista.innerHTML = ""; // Limpa o conteúdo anterior
 
   //criar elementos
   let criarTabela = document.createElement("table")
@@ -51,10 +51,21 @@ function debug(){
   //console.log(criarTabela)
   //console.log(cabeçalhoTable)
 
-  for (var i = 0; i < cabeçalhoTable.length; i++){
-    console.log(cabeçalhoTable[i])
+
+  
+  for (let i = 0; i < cabeçalhoTable.length; i++){
+    //console.log(cabeçalhoTable[i])
+    let criarTh = document.createElement('th');
+    criarTh.textContent = `${cabeçalhoTable[i]}`
+    criarTrThead.appendChild(criarTh)
+    //console.log(criarTh)
 
    };
+
+   
+   console.log(criarTrThead)
+
+   
 }
 
 
