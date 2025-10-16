@@ -19,24 +19,42 @@ let tipoModelo = null;
 let totalContigencia = null;
 
 
+
+const CHAVE= "29250812300010000101980030001234567890123456" ;
+const DATA_EMISSAO= '01/08/25';
+const CFOP= "6102";
+const NAT_OP= 'Venda Fora Estado';
+const VALOR= "7.40";
+const MODELO= "65";
+const STATUS= 'Autorizado';
+const NFE_NUMERO= "1";
+const N_SERIE= "1";
+const CSOSN_CST= "500";
+
+
+
 function debug(){
-  //alert('Passou por ai')
+
+  
   //console.log(input.files)
   const dados = document.getElementById("dados");
   dados.innerHTML=""
   const lista = document.getElementById("listaArquivos");
   lista.innerHTML = ""; // Limpa o conteúdo anterior
 
-  //criar elementos
-  let criarTabela = document.createElement("table")
+
+  //1. criar elementos
+  const criarTabela = document.createElement("table")
   criarTabela.className = "table table-hover table-sm"
   
-  let criarThead = document.createElement("thead")
+  // 2. Criar o thead e a linha (tr) do cabeçalho
+  const criarThead = document.createElement("thead")
   criarThead.className = "thead-light"
-
-  let criarTrThead = document.createElement("tr")
-
-  let cabeçalhoTable = [
+  
+  const criarTrThead = document.createElement("tr")
+  
+  //nomes dos th's a serem criados no loop
+  const cabeçalhoTable = [
     "CHAVE", 
     "DATA EMISSÃO",
     "CFOP",
@@ -48,24 +66,130 @@ function debug(){
     "Nº SERIE",
     "CSOSN/CST"
   ];
-  //console.log(criarTabela)
-  //console.log(cabeçalhoTable)
 
-
-  
+ 
+  // 3. Criar as células de cabeçalho (th)
   for (let i = 0; i < cabeçalhoTable.length; i++){
-    //console.log(cabeçalhoTable[i])
-    let criarTh = document.createElement('th');
-    criarTh.textContent = `${cabeçalhoTable[i]}`
+    
+    const criarTh = document.createElement('th');
+    criarTh.textContent = `${cabeçalhoTable[i]}` // Texto da célula do cabeçalho
+
+   //Logica para id de cada Th
+    switch (cabeçalhoTable[i]) {
+      case "CHAVE":      
+       criarTh.id='chave'
+      break;
+      case "DATA EMISSÃO":      
+        criarTh.id='data'
+      break;
+      case "CFOP":      
+          criarTh.id='cfop'
+      break;
+      case "NAT. OP":      
+          criarTh.id='nOp'
+      break;
+      case "VALOR":      
+        criarTh.id='valor'
+      break;
+      case "MODELO":      
+        criarTh.id='modelo'
+      break;
+      case "STATUS":      
+        criarTh.id='status'
+      break;
+      case "NFE NUMERO":      
+        criarTh.id='nNum'
+      break;
+      case "Nº SERIE":      
+        criarTh.id='nSerie'
+      break;
+      case "CSOSN/CST":      
+        criarTh.id='tributacao'
+      break;
+    };
+    // Adicionar a célula à linha do cabeçalho
     criarTrThead.appendChild(criarTh)
-    //console.log(criarTh)
+  };
+  // Adicionar a linha ao thead
+ criarThead.appendChild(criarTrThead);
 
-   };
+ // 4. Criar o tbody (corpo da tabela)
+ const criaTbody = document.createElement('tbody')
 
+
+ //5. Criar  linhas e células no tbody (baseado do atributo input.files.length)
+  for (let i = 0; i < cabeçalhoTable[i]; i++) {
+    const criarTr = document.createElement('tr')
+    //logica para estilar tr com base nas informações
+    /* if(autorizado){
+        criarTr.className='Autorizado'
+      } else {
+        criarTr.className='contigencia'
+      }
+    */
+    for(let j = 0; j <= 10; j++){
+      let criarTd = document.createElement('td')
+
+      switch (cabeçalhoTable[i]) {
+        case "CHAVE":      
+         criarTd.headers='chave'
+         criarTd.innerHTML = CHAVE
+        break;
+        case "DATA EMISSÃO":      
+          criarTd.headers='data'
+          criarTd.innerHTML = DATA_EMISSAO
+        break;
+        case "CFOP":      
+            criarTd.headers='cfop'
+            criarTd.innerHTML = CFOP
+        break;
+        case "NAT. OP":      
+            criarTd.headers='nOp'
+            criarTd.innerHTML = NAT_OP
+        break;
+        case "VALOR":      
+          criarTd.headers='valor'
+          criarTd.innerHTML = VALOR
+        break;
+        case "MODELO":      
+          criarTd.headers='modelo'
+          criarTd.innerHTML = MODELO
+        break;
+        case "STATUS":      
+          criarTd.headers='status'
+          criarTd.innerHTML = STATUS
+        break;
+        case "NFE NUMERO":      
+          criarTd.headers='nNum'
+          criarTd.innerHTML = NFE_NUMERO
+        break;
+        case "Nº SERIE":      
+          criarTd.headers='nSerie'
+          criarTd.innerHTML = N_SERIE
+        break;
+        case "CSOSN/CST":      
+          criarTd.headers='tributacao'
+          criarTd.innerHTML = CSOSN_CST
+        break;
+      };
    
-   console.log(criarTrThead)
+      criarTr.appendChild(criarTd)
+    }
+    criaTbody.appendChild(criarTr)
+    console.log(cabeçalhoTable[i])
+  }
+  
 
-   
+
+
+
+
+
+ 
+  criarTabela.appendChild(criarThead)
+  criarTabela.appendChild(criaTbody)
+
+  dados.appendChild(criarTabela)
 }
 
 
