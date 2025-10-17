@@ -68,7 +68,7 @@
 
           <br>
           <div>
-            <button class="btn btn-danger" onclick="mostrarArquivos()">Analisar informações</button>
+            <button id="meu" class="btn btn-danger" onclick="mostrarArquivos()">Analisar informações</button>
           </div>
           <div>
             <button class="btn btn-success m-2" onclick="debug()">Debug</button>

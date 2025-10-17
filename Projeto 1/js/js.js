@@ -1,6 +1,6 @@
 
 //alert('Passou por ai');
-//barra totalizadores
+//seletores barra totalizadores
 const tArquivos = document.querySelectorAll('#tArquivos');
 const vTotal = document.querySelectorAll('#vTotal');
 const vValido = document.querySelectorAll('#vValido');
@@ -12,11 +12,8 @@ let cancelado = null; //
 ///////////////////////////////
 const input = document.getElementById("file")
 ///////////////////////////////
-let valorValido = null;
-let valorTotal = null;
-let valorContigencia = null;
-let tipoModelo = null;
-let totalContigencia = null;
+
+
 
 
 
@@ -32,10 +29,16 @@ const N_SERIE= "001";
 const CSOSN_CST= "500";
 
 
-
 function debug(){
+  //////////////////////////
+  /*Atualização da barra de totalizadores*/
+  let valorValido = null;
+  let valorTotal = null;
+  let valorContigencia = null;
+  let tipoModelo = null;
+  let totalContigencia = null;
+  ////////////////
 
-  
   //console.log(input.files)
   const dados = document.getElementById("dados");
   dados.innerHTML=""
@@ -83,46 +86,14 @@ function debug(){
     "NFE NUMERO": "nNum",
     "Nº SERIE": "nSerie",
     "CSOSN/CST": "tributacao"
-  };
+    };
+    
+    const valorId = idMap[cabeçalhoTable[i]];
+    if (valorId) {
+      criarTh.id = valorId;
+    }
   
-  const valorId = idMap[cabeçalhoTable[i]];
-  if (valorId) {
-    criarTh.id = valorId;
-  }
-  
-   /*
-    switch (cabeçalhoTable[i]) {
-      case "CHAVE":      
-       criarTh.id='chave'
-      break;
-      case "DATA EMISSÃO":      
-        criarTh.id='data'
-      break;
-      case "CFOP":      
-          criarTh.id='cfop'
-      break;
-      case "NAT. OP":      
-          criarTh.id='nOp'
-      break;
-      case "VALOR":      
-        criarTh.id='valor'
-      break;
-      case "MODELO":      
-        criarTh.id='modelo'
-      break;
-      case "STATUS":      
-        criarTh.id='status'
-      break;
-      case "NFE NUMERO":      
-        criarTh.id='nNum'
-      break;
-      case "Nº SERIE":      
-        criarTh.id='nSerie'
-      break;
-      case "CSOSN/CST":      
-        criarTh.id='tributacao'
-      break;
-    };*/
+   
     // Adicionar a célula à linha do cabeçalho
     criarTrThead.appendChild(criarTh)
   };
@@ -135,7 +106,7 @@ function debug(){
 
  //5. Criar  linhas e células no tbody (baseado do atributo input.files.length)
   
- for (let i = 0; i < 10; i++) {
+ for (let i = 0; i < input.files.length; i++) {
     const criarTr = document.createElement('tr')
     //logica para estilar tr com base nas informações
      if(STATUS === "Contigencia"){
@@ -156,89 +127,54 @@ function debug(){
     
     //Cria as Td's dentro das linhas
     for(let j = 0; j < cabeçalhoTable.length; j++){
-    
-     const criarTd = document.createElement('td')
-     const tdMap = {
-      "CHAVE": { headers: "chave", valor: CHAVE },
-      "DATA EMISSÃO": { headers: "data", valor: DATA_EMISSAO },
-      "CFOP": { headers: "cfop", valor: CFOP },
-      "NAT. OP": { headers: "nOp", valor: NAT_OP },
-      "VALOR": { headers: "valor", valor: VALOR },
-      "MODELO": { headers: "modelo", valor: MODELO },
-      "STATUS": { headers: "status", valor: STATUS },
-      "NFE NUMERO": { headers: "nNum", valor: NFE_NUMERO },
-      "Nº SERIE": { headers: "nSerie", valor: N_SERIE },
-      "CSOSN/CST": { headers: "tributacao", valor: CSOSN_CST }
-    };
-    
-    const tdInfo = tdMap[cabeçalhoTable[j]];
-    if (tdInfo) {
-      criarTd.headers = tdInfo.headers;
-      criarTd.innerHTML = tdInfo.valor;
-    }
-      /*
-     switch (cabeçalhoTable[j]) {
-        case "CHAVE":  
-         criarTd.headers='chave'
-         criarTd.innerHTML =  CHAVE
-        break;
-        case "DATA EMISSÃO":  
-              
-          criarTd.headers='data'
-          criarTd.innerHTML = DATA_EMISSAO
-        break;
-        case "CFOP":      
-            criarTd.headers='cfop'
-            criarTd.innerHTML = CFOP
-        break;
-        case "NAT. OP":      
-            criarTd.headers='nOp'
-            criarTd.innerHTML = NAT_OP
-        break;
-        case "VALOR":      
-          criarTd.headers='valor'
-          criarTd.innerHTML = VALOR
-        break;
-        case "MODELO":      
-          criarTd.headers='modelo'
-          criarTd.innerHTML = MODELO
-        break;
-        case "STATUS":      
-          criarTd.headers='status'
-          criarTd.innerHTML = STATUS
-        break;
-        case "NFE NUMERO":      
-          criarTd.headers='nNum'
-          criarTd.innerHTML = NFE_NUMERO
-        break;
-        case "Nº SERIE":      
-          criarTd.headers='nSerie'
-          criarTd.innerHTML = N_SERIE
-        break;
-        case "CSOSN/CST":      
-          criarTd.headers='tributacao'
-          criarTd.innerHTML = CSOSN_CST
-        break;
-        
-
-      }; */
-     
-     
-     
-   
-      criarTr.appendChild(criarTd)
       
-    }
-    criaTbody.appendChild(criarTr)
-    
+      const criarTd = document.createElement('td')
+      const tdMap = {
+        "CHAVE": { headers: "chave", valor: CHAVE },
+        "DATA EMISSÃO": { headers: "data", valor: DATA_EMISSAO },
+        "CFOP": { headers: "cfop", valor: CFOP },
+        "NAT. OP": { headers: "nOp", valor: NAT_OP },
+        "VALOR": { headers: "valor", valor: VALOR },
+        "MODELO": { headers: "modelo", valor: MODELO },
+        "STATUS": { headers: "status", valor: STATUS },
+        "NFE NUMERO": { headers: "nNum", valor: NFE_NUMERO },
+        "Nº SERIE": { headers: "nSerie", valor: N_SERIE },
+        "CSOSN/CST": { headers: "tributacao", valor: CSOSN_CST },
+      };
    
+      const tdInfo = tdMap[cabeçalhoTable[j]];
+      if (tdInfo) {
+        criarTd.headers = tdInfo.headers;
+        criarTd.innerHTML = tdInfo.valor;
+        let temp = tdMap["VALOR"].valor 
+      }
+      
+      criarTr.appendChild(criarTd)
+        
+        
+  }
+      
+      criaTbody.appendChild(criarTr)
+      if(STATUS === "Contigencia"){
+          totalContigencia ++
+        }
+
+       
+      
   }
   
+ 
+  valorTabela = document.querySelectorAll('td[headers="valor"]')
+  tArquivos[0].innerHTML = input.files.length
+  vTotal[0].innerHTML = valorTotal
+  vValido[0].innerHTML = valorValido
+  vContigencia[0].innerHTML= valorContigencia
+  tModelo[0].innerHTML=tipoModelo
+  tContigencia[0].innerHTML= totalContigencia
 
 
 
 
-console.log(criarTabela)
 
  
   criarTabela.appendChild(criarThead)
@@ -246,6 +182,8 @@ console.log(criarTabela)
 
   dados.appendChild(criarTabela)
   
+  
+
 }
 
 
