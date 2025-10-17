@@ -72,6 +72,25 @@ function debug(){
     criarTh.textContent = `${cabeçalhoTable[i]}` // Texto da célula do cabeçalho
 
    //Logica para id de cada Th
+   const idMap = {
+    "CHAVE": "chave",
+    "DATA EMISSÃO": "data",
+    "CFOP": "cfop",
+    "NAT. OP": "nOp",
+    "VALOR": "valor",
+    "MODELO": "modelo",
+    "STATUS": "status",
+    "NFE NUMERO": "nNum",
+    "Nº SERIE": "nSerie",
+    "CSOSN/CST": "tributacao"
+  };
+  
+  const valorId = idMap[cabeçalhoTable[i]];
+  if (valorId) {
+    criarTh.id = valorId;
+  }
+  
+   /*
     switch (cabeçalhoTable[i]) {
       case "CHAVE":      
        criarTh.id='chave'
@@ -103,43 +122,65 @@ function debug(){
       case "CSOSN/CST":      
         criarTh.id='tributacao'
       break;
-    };
+    };*/
     // Adicionar a célula à linha do cabeçalho
     criarTrThead.appendChild(criarTh)
   };
   // Adicionar a linha ao thead
  criarThead.appendChild(criarTrThead);
 
- // 4. Criar o tbody (corpo da tabela)
- const criaTbody = document.createElement('tbody')
+  // 4. Criar o tbody (corpo da tabela)
+  const criaTbody = document.createElement('tbody')
 
-
-  
-  //cabeçalhoTable.length
 
  //5. Criar  linhas e células no tbody (baseado do atributo input.files.length)
   
  for (let i = 0; i < 10; i++) {
     const criarTr = document.createElement('tr')
     //logica para estilar tr com base nas informações
-     if(STATUS === "Autorizado"){
-        criarTr.className='autorizado'
-      } else {
-        criarTr.className= "text-danger"
+     if(STATUS === "Contigencia"){
+       criarTr.className= "text-danger"
+       VALOR = "0.00"
+      } else if (STATUS === "Cancelamento NF" || STATUS === "Cancelamento, Fora do Prazo") {
+        criarTr.className='text-info'
         VALOR = "0.00"
+      } else if (STATUS === 'Inutilização Nº'){
+        criarTr.className='text-secondary'
+        VALOR = "0.00"
+      }else if(STATUS==='Denegado'){
+        criarTr.className='denegado'
+        VALOR = "0.00"
+      } else {
+        criarTr.className='autorizado'
       }
     
-    
+    //Cria as Td's dentro das linhas
     for(let j = 0; j < cabeçalhoTable.length; j++){
     
      const criarTd = document.createElement('td')
+     const tdMap = {
+      "CHAVE": { headers: "chave", valor: CHAVE },
+      "DATA EMISSÃO": { headers: "data", valor: DATA_EMISSAO },
+      "CFOP": { headers: "cfop", valor: CFOP },
+      "NAT. OP": { headers: "nOp", valor: NAT_OP },
+      "VALOR": { headers: "valor", valor: VALOR },
+      "MODELO": { headers: "modelo", valor: MODELO },
+      "STATUS": { headers: "status", valor: STATUS },
+      "NFE NUMERO": { headers: "nNum", valor: NFE_NUMERO },
+      "Nº SERIE": { headers: "nSerie", valor: N_SERIE },
+      "CSOSN/CST": { headers: "tributacao", valor: CSOSN_CST }
+    };
     
-    
+    const tdInfo = tdMap[cabeçalhoTable[j]];
+    if (tdInfo) {
+      criarTd.headers = tdInfo.headers;
+      criarTd.innerHTML = tdInfo.valor;
+    }
+      /*
      switch (cabeçalhoTable[j]) {
         case "CHAVE":  
          criarTd.headers='chave'
          criarTd.innerHTML =  CHAVE
-         
         break;
         case "DATA EMISSÃO":  
               
@@ -180,7 +221,7 @@ function debug(){
         break;
         
 
-      }; 
+      }; */
      
      
      
@@ -210,58 +251,6 @@ console.log(criarTabela)
 
 
 
-/*
-para apagar depois
-// 1. Criar a tabela
-let tabela = document.createElement('table');
-
-// 2. Criar o thead e a linha (tr) do cabeçalho
-let thead = document.createElement('thead');
-let trCabeçalho = document.createElement('tr');
-
-// 3. Criar as células de cabeçalho (th)
-for (let i = 1; i <= 5; i++) {
-    let th = document.createElement('th');
-    th.textContent = `Coluna ${i}`;  // Texto da célula do cabeçalho
-    trCabeçalho.appendChild(th);  // Adicionar a célula à linha do cabeçalho
-}
-
-// Adicionar a linha ao thead
-thead.appendChild(trCabeçalho);
-
-// 4. Criar o tbody (corpo da tabela)
-let tbody = document.createElement('tbody');
-
-// 5. Criar algumas linhas e células no tbody
-for (let i = 1; i <= 3; i++) {  // Aqui, vamos criar 3 linhas de dados
-    let tr = document.createElement('tr');
-    
-    // Adicionar 5 células (td) a cada linha
-    for (let j = 1; j <= 5; j++) {
-        let td = document.createElement('td');
-        td.textContent = `Dado ${i}-${j}`;  // Texto da célula
-        tr.appendChild(td);  // Adicionar a célula à linha
-    }
-    
-    // Adicionar a linha ao corpo da tabela
-    tbody.appendChild(tr);
-}
-
-// 6. Adicionar o thead e tbody à tabela
-tabela.appendChild(thead);
-tabela.appendChild(tbody);
-
-// 7. Adicionar a tabela ao corpo da página
-document.body.appendChild(tabela);
-
-
-
-
-prompt{
-ola, para fins educacionais, vamos recriar uma sala de aula/aprendizagem, onde voce assumirá o papel de professor e eu de aluno. NA aula de hoje estamos falando APENAS da função "document.createElement()", estamos na primeira aula para criação de uma tabela através do js que contenha apenas o minimo: thead, tbory, cabeçalho e 5 colunas. professor, poderia me explicar como criar essa tabela? Sem Css, nem recursos avançados
-}
-
-*/
 
 
 
