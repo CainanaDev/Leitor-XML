@@ -24,11 +24,11 @@ const CHAVE= "29250812300010000101980030001234567890123456" ;
 const DATA_EMISSAO= '01/08/25';
 const CFOP= "6102";
 const NAT_OP= 'Venda Fora Estado';
-const VALOR= "7.40";
+let VALOR= "7.40";
 const MODELO= "65";
 const STATUS= 'Autorizado';
-const NFE_NUMERO= "1";
-const N_SERIE= "1";
+const NFE_NUMERO= "001";
+const N_SERIE= "001";
 const CSOSN_CST= "500";
 
 
@@ -39,9 +39,6 @@ function debug(){
   //console.log(input.files)
   const dados = document.getElementById("dados");
   dados.innerHTML=""
-  const lista = document.getElementById("listaArquivos");
-  lista.innerHTML = ""; // Limpa o conteúdo anterior
-
 
   //1. criar elementos
   const criarTabela = document.createElement("table")
@@ -117,25 +114,35 @@ function debug(){
  const criaTbody = document.createElement('tbody')
 
 
+  
+  //cabeçalhoTable.length
+
  //5. Criar  linhas e células no tbody (baseado do atributo input.files.length)
-  for (let i = 0; i < cabeçalhoTable[i]; i++) {
+  
+ for (let i = 0; i < 10; i++) {
     const criarTr = document.createElement('tr')
     //logica para estilar tr com base nas informações
-    /* if(autorizado){
-        criarTr.className='Autorizado'
+     if(STATUS === "Autorizado"){
+        criarTr.className='autorizado'
       } else {
-        criarTr.className='contigencia'
+        criarTr.className= "text-danger"
+        VALOR = "0.00"
       }
-    */
-    for(let j = 0; j <= 10; j++){
-      let criarTd = document.createElement('td')
-
-      switch (cabeçalhoTable[i]) {
-        case "CHAVE":      
+    
+    
+    for(let j = 0; j < cabeçalhoTable.length; j++){
+    
+     const criarTd = document.createElement('td')
+    
+    
+     switch (cabeçalhoTable[j]) {
+        case "CHAVE":  
          criarTd.headers='chave'
-         criarTd.innerHTML = CHAVE
+         criarTd.innerHTML =  CHAVE
+         
         break;
-        case "DATA EMISSÃO":      
+        case "DATA EMISSÃO":  
+              
           criarTd.headers='data'
           criarTd.innerHTML = DATA_EMISSAO
         break;
@@ -171,25 +178,33 @@ function debug(){
           criarTd.headers='tributacao'
           criarTd.innerHTML = CSOSN_CST
         break;
-      };
+        
+
+      }; 
+     
+     
+     
    
       criarTr.appendChild(criarTd)
+      
     }
     criaTbody.appendChild(criarTr)
-    console.log(cabeçalhoTable[i])
+    
+   
   }
   
 
 
 
 
-
+console.log(criarTabela)
 
  
   criarTabela.appendChild(criarThead)
   criarTabela.appendChild(criaTbody)
 
   dados.appendChild(criarTabela)
+  
 }
 
 

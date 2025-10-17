@@ -300,11 +300,8 @@
     </div>
     <!--Tabela informções /fim-->
 
-    <h4 style="margin: 10px;">Os arquivos devem aparecer abaixo</h4>
-    <div class="bg-light mb-5" id="listaArquivos">
-      <h1>Teste</h1>
-   </div>
-
+    
+   
   
 
   <hr>
