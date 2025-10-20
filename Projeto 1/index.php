@@ -100,7 +100,7 @@
        <p >Valor Contigencia R$: <span id="vContigencia"></span></p>
       </div>
       <div class="col-2">
-       <p>Modelos carregados: <span id="tModelo" ></span></p>
+       <p>Total Valido: <span id="tArquivosValidos" ></span></p>
       </div>
       <div class="col-2">
       <p>Contigencias: <span id="tContigencia"></span></p>

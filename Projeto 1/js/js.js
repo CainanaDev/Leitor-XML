@@ -5,7 +5,7 @@ const tArquivos = document.querySelectorAll('#tArquivos');
 const vTotal = document.querySelectorAll('#vTotal');
 const vValido = document.querySelectorAll('#vValido');
 const vContigencia = document.querySelectorAll('#vContigencia');
-const tModelo = document.querySelectorAll('#tModelo');
+const tArquivosValidos = document.querySelectorAll('#tArquivosValidos');
 const tContigencia = document.querySelectorAll('#tContigencia');
 //fim barra totalizadores
 let cancelado = null; //
@@ -16,27 +16,29 @@ const input = document.getElementById("file")
 
 
 
-
+//Valores para alimentar a tabela
 const CHAVE= "29250812300010000101980030001234567890123456" ;
 const DATA_EMISSAO= '01/08/25';
 const CFOP= "6102";
 const NAT_OP= 'Venda Fora Estado';
-let VALOR= "7.40";
+let VALOR = null;
 const MODELO= "65";
-const STATUS= 'Autorizado';
-const NFE_NUMERO= "001";
+let STATUS= null;
+let NFE_NUMERO= null;
+parseInt(NFE_NUMERO)
 const N_SERIE= "001";
 const CSOSN_CST= "500";
 
-
+ 
 function debug(){
   //////////////////////////
   /*Atualização da barra de totalizadores*/
-  let valorValido = null;
-  let valorTotal = null;
-  let valorContigencia = null;
-  let tipoModelo = null;
+  let valorValido = 0;
+  let valorTotal = 0;
+  let valorContigencia = 0;
+  let totalValido = 0;
   let totalContigencia = null;
+  let temporario = null;
   ////////////////
 
   //console.log(input.files)
@@ -87,13 +89,10 @@ function debug(){
     "Nº SERIE": "nSerie",
     "CSOSN/CST": "tributacao"
     };
-    
-    const valorId = idMap[cabeçalhoTable[i]];
+   const valorId = idMap[cabeçalhoTable[i]];
     if (valorId) {
       criarTh.id = valorId;
     }
-  
-   
     // Adicionar a célula à linha do cabeçalho
     criarTrThead.appendChild(criarTh)
   };
@@ -105,30 +104,65 @@ function debug(){
 
 
  //5. Criar  linhas e células no tbody (baseado do atributo input.files.length)
-  
- for (let i = 0; i < input.files.length; i++) {
+  let somaValores = 0
+  for (let i = 0; i < input.files.length; i++) {
     const criarTr = document.createElement('tr')
-    //logica para estilar tr com base nas informações
-     if(STATUS === "Contigencia"){
-       criarTr.className= "text-danger"
-       VALOR = "0.00"
-      } else if (STATUS === "Cancelamento NF" || STATUS === "Cancelamento, Fora do Prazo") {
-        criarTr.className='text-info'
-        VALOR = "0.00"
-      } else if (STATUS === 'Inutilização Nº'){
-        criarTr.className='text-secondary'
-        VALOR = "0.00"
-      }else if(STATUS==='Denegado'){
-        criarTr.className='denegado'
-        VALOR = "0.00"
-      } else {
-        criarTr.className='autorizado'
+    
+    const numero = (Math.random() * 5).toFixed(2)
+      VALOR = parseFloat(numero) 
+      NFE_NUMERO +=1
+    
+      
+      valorTotal += VALOR
+      
+      STATUS = ((Math.random() *4)+1).toFixed()
+      if (STATUS == 1) {
+        STATUS = "Autorizado"
+      } else if (STATUS == 2){
+        STATUS = "Contigencia"
+      }else if (STATUS == 3){
+        STATUS = "Cancelamento NF"
+      }else if (STATUS == 4){
+        STATUS = "Inutilização Nº"
+      }else if (STATUS == 5){
+        STATUS = "Denegado"
       }
+
+    //logica para estilizar tr com base nas informações
+     if(STATUS === "Contigencia"){
+      valorContigencia += VALOR
+       criarTr.className= "text-danger"
+      
+       totalContigencia ++
+      } else if (STATUS === "Cancelamento NF" || STATUS === "Cancelamento, Fora do Prazo") {
+        valorContigencia += VALOR
+        criarTr.className='text-info'
+        totalContigencia ++
+      } else if (STATUS === "Inutilização Nº"){
+        valorContigencia += VALOR
+        criarTr.className='text-secondary'
+        totalContigencia ++
+      }else if(STATUS==="Denegado"){
+        valorContigencia += VALOR
+        criarTr.className='denegado'
+        totalContigencia ++
+      } else if (STATUS === "Autorizado") {
+        valorValido += VALOR
+        criarTr.className='autorizado'
+        totalValido ++
+        
+      }
+      //atribução do status da nota de forma randomica, temporaria
+        
+      
+      //
     
     //Cria as Td's dentro das linhas
     for(let j = 0; j < cabeçalhoTable.length; j++){
       
-      const criarTd = document.createElement('td')
+     
+
+     const criarTd = document.createElement('td')
       const tdMap = {
         "CHAVE": { headers: "chave", valor: CHAVE },
         "DATA EMISSÃO": { headers: "data", valor: DATA_EMISSAO },
@@ -146,30 +180,31 @@ function debug(){
       if (tdInfo) {
         criarTd.headers = tdInfo.headers;
         criarTd.innerHTML = tdInfo.valor;
-        let temp = tdMap["VALOR"].valor 
+         
+       
       }
+       
       
-      criarTr.appendChild(criarTd)
-        
-        
-  }
+      criarTr.appendChild(criarTd)      
+    }
       
-      criaTbody.appendChild(criarTr)
-      if(STATUS === "Contigencia"){
+    criaTbody.appendChild(criarTr)
+     /* if(STATUS === "Contigencia"){
           totalContigencia ++
-        }
+        }*/
 
        
+      
       
   }
   
  
   valorTabela = document.querySelectorAll('td[headers="valor"]')
   tArquivos[0].innerHTML = input.files.length
-  vTotal[0].innerHTML = valorTotal
-  vValido[0].innerHTML = valorValido
-  vContigencia[0].innerHTML= valorContigencia
-  tModelo[0].innerHTML=tipoModelo
+  vTotal[0].innerHTML = valorTotal.toFixed(2)
+  vValido[0].innerHTML = valorValido.toFixed(2)
+  vContigencia[0].innerHTML= valorContigencia.toFixed(2)
+  tArquivosValidos[0].innerHTML= totalValido
   tContigencia[0].innerHTML= totalContigencia
 
 
