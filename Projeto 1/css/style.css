@@ -2,10 +2,7 @@
   margin: 0;
   padding: 0;
 }
-.mae,
- .teste{  
-  border: 1px solid red;
-}
+
 label{
   font-size: 1.2em;
   font-weight: 700;
@@ -31,6 +28,7 @@ body{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
   align-content: center;
+
   
 }
 header{

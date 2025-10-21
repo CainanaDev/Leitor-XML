@@ -61,7 +61,7 @@
         </nav>
       </div>  <!--Menu Lateral /fim-->
     
-      <div class=" col-lg-9 conteudo bg-light">   <!--Forms e Buttons-->
+      <div class=" col-lg-9 conteudo bg-light align-center">   <!--Forms e Buttons-->
         <div class="form-group">
           <label for="file">Clique no botão PROCURAR para carregar o arquivo:</label><br>
           <input class="btn form-control bg-light" type="file" id="file" name="file[]" multiple accept=".xml" />
@@ -114,8 +114,8 @@
     </div>
     <!--Tabela informções /fim-->
 
-  <hr>
-  <footer class="mt-2 mb-0 h-2 w-5 pt-2 pb-0 bg-dark fixed-bottom mt-5">
+  <hr class="mt-5  mb-2">
+  <footer class=" mb-0 h-2 w-5 pt-2 pb-0 bg-dark fixed-bottom">
     <p>&copy; 2025 - Todos os direitos reservados</p>
   </footer>
 

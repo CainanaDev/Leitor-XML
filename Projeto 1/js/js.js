@@ -37,7 +37,7 @@ function debug(){
   let valorTotal = 0;
   let valorContigencia = 0;
   let totalValido = 0;
-  let totalContigencia = null;
+  let totalContigencia = 0;
   let temporario = null;
   ////////////////
 
@@ -104,11 +104,11 @@ function debug(){
 
 
  //5. Criar  linhas e células no tbody (baseado do atributo input.files.length)
-  let somaValores = 0
+  
   for (let i = 0; i < input.files.length; i++) {
     const criarTr = document.createElement('tr')
     
-    const numero = (Math.random() * 5).toFixed(2)
+    const numero = (Math.random() * 50).toFixed(2)
       VALOR = parseFloat(numero) 
       NFE_NUMERO +=1
     
@@ -132,9 +132,9 @@ function debug(){
      if(STATUS === "Contigencia"){
       valorContigencia += VALOR
        criarTr.className= "text-danger"
-      
        totalContigencia ++
-      } else if (STATUS === "Cancelamento NF" || STATUS === "Cancelamento, Fora do Prazo") {
+      } else if (STATUS === "Cancelamento NF" || 
+        STATUS === "Cancelamento, Fora do Prazo") {
         valorContigencia += VALOR
         criarTr.className='text-info'
         totalContigencia ++
@@ -199,7 +199,7 @@ function debug(){
   }
   
  
-  valorTabela = document.querySelectorAll('td[headers="valor"]')
+  //valorTabela = document.querySelectorAll('td[headers="valor"]')
   tArquivos[0].innerHTML = input.files.length
   vTotal[0].innerHTML = valorTotal.toFixed(2)
   vValido[0].innerHTML = valorValido.toFixed(2)
