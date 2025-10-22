@@ -13,7 +13,58 @@ let cancelado = null; //
 const input = document.getElementById("file")
 ///////////////////////////////
 
+/*
+input.addEventListener("change", function() {
+  const arquivo = input.files[0];
+  if (!arquivo) return;
 
+  <script>
+  const input = document.getElementById("arquivoXML");
+  const dados = document.getElementById("dados");
+  ///////button//////
+  botao.addEventListener("click", function() {
+    const arquivo = input.files[0];
+    if (!arquivo) {
+      alert("Por favor, selecione um arquivo XML primeiro.");
+      return;
+    }
+
+
+
+  /////////////////
+
+  input.addEventListener("change", function() {
+    const arquivo = input.files[0];
+    if (!arquivo) return;
+
+    const leitor = new FileReader();
+
+    // Quando o arquivo for carregado
+    leitor.onload = function(event) {
+      const conteudo = event.target.result; // Texto do XML
+      dados.textContent = conteudo; // Exibe o conteúdo bruto no HTML
+
+      // Faz o parse do XML
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(conteudo, "text/xml");
+
+      console.log("Documento XML:", xmlDoc); // Exibe o objeto XML no console
+
+      // Exemplo: acessar elementos do XML
+      const elementos = xmlDoc.getElementsByTagName("nome"); // Altere para a tag desejada
+      for (let i = 0; i < elementos.length; i++) {
+        console.log("Elemento <nome>:", elementos[i].textContent);
+      }
+    };
+
+    leitor.readAsText(arquivo); // Inicia a leitura do arquivo
+  });
+</script>
+
+
+
+
+*/
 
 
 //Valores para alimentar a tabela
