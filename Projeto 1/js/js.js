@@ -67,18 +67,6 @@ input.addEventListener("change", function() {
 */
 
 
-//Valores para alimentar a tabela
-const CHAVE= "29250812300010000101980030001234567890123456" ;
-const DATA_EMISSAO= '01/08/25';
-const CFOP= "6102";
-const NAT_OP= 'Venda Fora Estado';
-let VALOR = null;
-const MODELO= "65";
-let STATUS= null;
-let NFE_NUMERO= null;
-parseInt(NFE_NUMERO)
-const N_SERIE= "001";
-const CSOSN_CST= "500";
 
  
 function debug(){
@@ -91,6 +79,19 @@ function debug(){
   let totalContigencia = 0;
   let temporario = null;
   ////////////////
+
+  //Valores para alimentar a tabela
+  let CHAVE = '' ;
+  let DATA_EMISSAO= '';
+  let NAT_OP= '';
+  let VALOR = '';
+  let MODELO= '';
+  let STATUS= '';
+  let NFE_NUMERO= null;
+  parseInt(NFE_NUMERO)
+  let N_SERIE= '';
+  let contador = 0
+
 
   //console.log(input.files)
   const dados = document.getElementById("dados");
@@ -110,14 +111,13 @@ function debug(){
   const cabeçalhoTable = [
     "CHAVE", 
     "DATA EMISSÃO",
-    "CFOP",
     "NAT. OP",
     "VALOR",
     "MODELO",
     "STATUS",
     "NFE NUMERO",
     "Nº SERIE",
-    "CSOSN/CST"
+
   ];
 
  
@@ -131,14 +131,13 @@ function debug(){
    const idMap = {
     "CHAVE": "chave",
     "DATA EMISSÃO": "data",
-    "CFOP": "cfop",
     "NAT. OP": "nOp",
     "VALOR": "valor",
     "MODELO": "modelo",
     "STATUS": "status",
     "NFE NUMERO": "nNum",
     "Nº SERIE": "nSerie",
-    "CSOSN/CST": "tributacao"
+
     };
    const valorId = idMap[cabeçalhoTable[i]];
     if (valorId) {
@@ -157,8 +156,52 @@ function debug(){
  //5. Criar  linhas e células no tbody (baseado do atributo input.files.length)
   
   for (let i = 0; i < input.files.length; i++) {
+
+    ///////Função para leitura dos arquivos////////
+    const arquivo = input.files[i]  //seleciona o arquivo com base no indice
+    const leitor = new FileReader()  //cria uma nova instancia do Leitor de Arquivos
+  
+    leitor.onload = function (event) {
+      const conteudo = event.target.result; // O conteúdo do arquivo como texto
+      const parser = new DOMParser() //Paeser e exibição do conteudo no console
+      const DOMxml = parser.parseFromString(conteudo, 'text/xml')
+      contador +=1
+      //console.log(DOMxml)
+      //console.log(contador)
+      const testeXML = DOMxml.documentElement
+
+      const chNFe = testeXML.querySelectorAll("chNFe");
+      const dhEmi = testeXML.querySelectorAll('dhEmi')
+      const natOp = testeXML.querySelectorAll('natOp')
+      const mod   = testeXML.querySelectorAll('mod')
+      const cStat = testeXML.querySelectorAll('cStat')
+      const vNF   = testeXML.querySelectorAll('vNF')
+      const nNF   = testeXML.querySelectorAll('nNF')
+      const serie = testeXML.querySelectorAll('serie')
+
+      CHAVE = chNFe[0].textContent ;
+      DATA_EMISSAO= dhEmi[0].textContent;
+      NAT_OP= natOp[0].textContent;
+      VALOR = vNF[0].textContent;
+      MODELO= mod[0].textContent;
+      STATUS= cStat[0].textContent;
+      NFE_NUMERO= nNF[0].textContent;
+      parseInt(NFE_NUMERO)
+      N_SERIE= serie[0].textContent;
+     
+
+
+      console.log(serie[0].textContent)
+
+      
+    };
+    leitor.readAsText(arquivo)
+   
+    ///////Função para leitura dos arquivos////////
+
+
     const criarTr = document.createElement('tr')
-    
+
     const numero = (Math.random() * 50).toFixed(2)
       VALOR = parseFloat(numero) 
       NFE_NUMERO +=1
@@ -217,14 +260,12 @@ function debug(){
       const tdMap = {
         "CHAVE": { headers: "chave", valor: CHAVE },
         "DATA EMISSÃO": { headers: "data", valor: DATA_EMISSAO },
-        "CFOP": { headers: "cfop", valor: CFOP },
         "NAT. OP": { headers: "nOp", valor: NAT_OP },
         "VALOR": { headers: "valor", valor: VALOR },
         "MODELO": { headers: "modelo", valor: MODELO },
         "STATUS": { headers: "status", valor: STATUS },
         "NFE NUMERO": { headers: "nNum", valor: NFE_NUMERO },
-        "Nº SERIE": { headers: "nSerie", valor: N_SERIE },
-        "CSOSN/CST": { headers: "tributacao", valor: CSOSN_CST },
+        "Nº SERIE": { headers: "nSerie", valor: N_SERIE }
       };
    
       const tdInfo = tdMap[cabeçalhoTable[j]];
@@ -249,7 +290,7 @@ function debug(){
       
   }
   
- 
+ //////// Informações dinamicas Barra de Totalizadores
   //valorTabela = document.querySelectorAll('td[headers="valor"]')
   tArquivos[0].innerHTML = input.files.length
   vTotal[0].innerHTML = valorTotal.toFixed(2)
@@ -257,18 +298,42 @@ function debug(){
   vContigencia[0].innerHTML= valorContigencia.toFixed(2)
   tArquivosValidos[0].innerHTML= totalValido
   tContigencia[0].innerHTML= totalContigencia
-
-
-
-
-
  
+
+
+
+
+
+ ////////Montando a tabela com os dados////////
   criarTabela.appendChild(criarThead)
   criarTabela.appendChild(criaTbody)
-
   dados.appendChild(criarTabela)
+
+  ///////  Debugs ////////////
+
+  /*
+  ///////Função para leitura dos arquivos////////
+  const arquivo = input.files[1]  //seleciona o arquivo com base no indice
+  const leitor = new FileReader()  //cria uma nova instancia do Leitor de Arquivos
+
+  leitor.onload = function (event) {
+    const conteudo = event.target.result; // O conteúdo do arquivo como texto
+    
+    //Paeser e exibição do conteudo no console
+    const parser = new DOMParser()
+    const DOMxml = parser.parseFromString(conteudo, 'text/xml')
+    console.log(DOMxml)
+  };
+
+  leitor.readAsText(arquivo)
+  ///////Função para leitura dos arquivos////////
   
-  
+*/
+
+
+
+  //console.log(leitor)
+  //console.log(arquivo)
 
 }
 
