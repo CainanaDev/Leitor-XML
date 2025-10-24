@@ -71,7 +71,7 @@ input.addEventListener("change", function() {
  
 function debug(){
   //////////////////////////
-  /*Atualização da barra de totalizadores*/
+  /*barra totalizadores*/
   let valorValido = 0;
   let valorTotal = 0;
   let valorContigencia = 0;
@@ -80,7 +80,7 @@ function debug(){
   let temporario = null;
   ////////////////
 
-  //Valores para alimentar a tabela
+  //Variaveis para alimentar a tabela
   let CHAVE = '' ;
   let DATA_EMISSAO= '';
   let NAT_OP= '';
@@ -191,13 +191,16 @@ function debug(){
      
 
 
-      console.log(serie[0].textContent)
 
-      
+
+
+
+
+      console.log(NFE_NUMERO)//[0].textContent)
     };
     leitor.readAsText(arquivo)
    
-    ///////Função para leitura dos arquivos////////
+    ///////FIM-Função para leitura dos arquivos////////
 
 
     const criarTr = document.createElement('tr')
@@ -246,10 +249,6 @@ function debug(){
         totalValido ++
         
       }
-      //atribução do status da nota de forma randomica, temporaria
-        
-      
-      //
     
     //Cria as Td's dentro das linhas
     for(let j = 0; j < cabeçalhoTable.length; j++){
