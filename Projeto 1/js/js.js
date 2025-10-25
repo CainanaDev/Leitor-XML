@@ -96,6 +96,12 @@ function debug(){
   //console.log(input.files)
   const dados = document.getElementById("dados");
   dados.innerHTML=""
+  vTotal[0].innerHTML=""
+  tArquivos[0].innerHTML=""
+  vValido[0].innerHTML=""
+  vContigencia[0].innerHTML=""
+  tArquivosValidos[0].innerHTML=""
+  tContigencia[0].innerHTML=""
 
   //1. criar elementos
   const criarTabela = document.createElement("table")
@@ -179,125 +185,118 @@ function debug(){
       const nNF   = testeXML.querySelectorAll('nNF')
       const serie = testeXML.querySelectorAll('serie')
 
+      //Informações para alimentar a tabela
       CHAVE = chNFe[0].textContent ;
       DATA_EMISSAO= dhEmi[0].textContent;
       NAT_OP= natOp[0].textContent;
       VALOR = vNF[0].textContent;
+      let tot = parseFloat(VALOR)
       MODELO= mod[0].textContent;
       STATUS= cStat[0].textContent;
       NFE_NUMERO= nNF[0].textContent;
-      parseInt(NFE_NUMERO)
       N_SERIE= serie[0].textContent;
+      valorTotal += tot
+      if (STATUS === '100') {
+         valorValido += tot
+         totalValido ++
+         
+       }else if (STATUS == 2){
+        
+        valorContigencia += tot
+        totalContigencia ++
+        
+      }
+
+      vTotal[0].innerHTML = valorTotal.toFixed(2)
+      vValido[0].innerHTML = valorValido.toFixed(2)
+      vContigencia[0].innerHTML= valorContigencia.toFixed(2)
+      tArquivosValidos[0].innerHTML= totalValido
+      tContigencia[0].innerHTML= totalContigencia
+     /////////TESTES//////////
+
+     
+     const criarTr = document.createElement('tr')
+     
+       
+     
+       
+     
+       
+       
+       if (STATUS === '100') {
+         STATUS = "Autorizado"
+         criarTr.className='autorizado'
+       } else if (STATUS == 2){
+         STATUS = "Contigencia"
+         criarTr.className= "text-danger"
+       }else if (STATUS == 3){
+         STATUS = "Cancelamento NF"
+         valorContigencia += VALOR
+         criarTr.className='text-info'
+         totalContigencia ++
+       }else if (STATUS == 4){
+         STATUS = "Inutilização Nº"
+         valorContigencia += VALOR
+         criarTr.className='text-secondary'
+         totalContigencia ++
+       }else if (STATUS == 5){
+         STATUS = "Denegado"
+         valorContigencia += VALOR
+         criarTr.className='denegado'
+         totalContigencia ++
+       }
+     
+     //Cria as Td's dentro das linhas
+     for(let j = 0; j < cabeçalhoTable.length; j++){
+       
+      
+ 
+      const criarTd = document.createElement('td')
+       const tdMap = {
+         "CHAVE": { headers: "chave", valor: CHAVE },
+         "DATA EMISSÃO": { headers: "data", valor: DATA_EMISSAO },
+         "NAT. OP": { headers: "nOp", valor: NAT_OP },
+         "VALOR": { headers: "valor", valor: VALOR },
+         "MODELO": { headers: "modelo", valor: MODELO },
+         "STATUS": { headers: "status", valor: STATUS },
+         "NFE NUMERO": { headers: "nNum", valor: NFE_NUMERO },
+         "Nº SERIE": { headers: "nSerie", valor: N_SERIE }
+       };
+    
+       const tdInfo = tdMap[cabeçalhoTable[j]];
+       if (tdInfo) {
+         criarTd.headers = tdInfo.headers;
+         criarTd.innerHTML = tdInfo.valor;
+          
+        
+       }
+        
+       
+       criarTr.appendChild(criarTd)      
+     }
+       
+     criaTbody.appendChild(criarTr)
+  
+ 
+        
+       
      
 
 
 
 
-
-
-
-      console.log(NFE_NUMERO)//[0].textContent)
+      
     };
     leitor.readAsText(arquivo)
    
     ///////FIM-Função para leitura dos arquivos////////
 
 
-    const criarTr = document.createElement('tr')
-
-    const numero = (Math.random() * 50).toFixed(2)
-      VALOR = parseFloat(numero) 
-      NFE_NUMERO +=1
-    
-      
-      valorTotal += VALOR
-      
-      STATUS = ((Math.random() *4)+1).toFixed()
-      if (STATUS == 1) {
-        STATUS = "Autorizado"
-      } else if (STATUS == 2){
-        STATUS = "Contigencia"
-      }else if (STATUS == 3){
-        STATUS = "Cancelamento NF"
-      }else if (STATUS == 4){
-        STATUS = "Inutilização Nº"
-      }else if (STATUS == 5){
-        STATUS = "Denegado"
-      }
-
-    //logica para estilizar tr com base nas informações
-     if(STATUS === "Contigencia"){
-      valorContigencia += VALOR
-       criarTr.className= "text-danger"
-       totalContigencia ++
-      } else if (STATUS === "Cancelamento NF" || 
-        STATUS === "Cancelamento, Fora do Prazo") {
-        valorContigencia += VALOR
-        criarTr.className='text-info'
-        totalContigencia ++
-      } else if (STATUS === "Inutilização Nº"){
-        valorContigencia += VALOR
-        criarTr.className='text-secondary'
-        totalContigencia ++
-      }else if(STATUS==="Denegado"){
-        valorContigencia += VALOR
-        criarTr.className='denegado'
-        totalContigencia ++
-      } else if (STATUS === "Autorizado") {
-        valorValido += VALOR
-        criarTr.className='autorizado'
-        totalValido ++
-        
-      }
-    
-    //Cria as Td's dentro das linhas
-    for(let j = 0; j < cabeçalhoTable.length; j++){
-      
-     
-
-     const criarTd = document.createElement('td')
-      const tdMap = {
-        "CHAVE": { headers: "chave", valor: CHAVE },
-        "DATA EMISSÃO": { headers: "data", valor: DATA_EMISSAO },
-        "NAT. OP": { headers: "nOp", valor: NAT_OP },
-        "VALOR": { headers: "valor", valor: VALOR },
-        "MODELO": { headers: "modelo", valor: MODELO },
-        "STATUS": { headers: "status", valor: STATUS },
-        "NFE NUMERO": { headers: "nNum", valor: NFE_NUMERO },
-        "Nº SERIE": { headers: "nSerie", valor: N_SERIE }
-      };
    
-      const tdInfo = tdMap[cabeçalhoTable[j]];
-      if (tdInfo) {
-        criarTd.headers = tdInfo.headers;
-        criarTd.innerHTML = tdInfo.valor;
-         
-       
-      }
-       
-      
-      criarTr.appendChild(criarTd)      
-    }
-      
-    criaTbody.appendChild(criarTr)
-     /* if(STATUS === "Contigencia"){
-          totalContigencia ++
-        }*/
-
-       
-      
-      
+          tArquivos[0].innerHTML = input.files.length
   }
   
- //////// Informações dinamicas Barra de Totalizadores
-  //valorTabela = document.querySelectorAll('td[headers="valor"]')
-  tArquivos[0].innerHTML = input.files.length
-  vTotal[0].innerHTML = valorTotal.toFixed(2)
-  vValido[0].innerHTML = valorValido.toFixed(2)
-  vContigencia[0].innerHTML= valorContigencia.toFixed(2)
-  tArquivosValidos[0].innerHTML= totalValido
-  tContigencia[0].innerHTML= totalContigencia
- 
+
 
 
 
@@ -308,32 +307,6 @@ function debug(){
   criarTabela.appendChild(criaTbody)
   dados.appendChild(criarTabela)
 
-  ///////  Debugs ////////////
-
-  /*
-  ///////Função para leitura dos arquivos////////
-  const arquivo = input.files[1]  //seleciona o arquivo com base no indice
-  const leitor = new FileReader()  //cria uma nova instancia do Leitor de Arquivos
-
-  leitor.onload = function (event) {
-    const conteudo = event.target.result; // O conteúdo do arquivo como texto
-    
-    //Paeser e exibição do conteudo no console
-    const parser = new DOMParser()
-    const DOMxml = parser.parseFromString(conteudo, 'text/xml')
-    console.log(DOMxml)
-  };
-
-  leitor.readAsText(arquivo)
-  ///////Função para leitura dos arquivos////////
-  
-*/
-
-
-
-  //console.log(leitor)
-  //console.log(arquivo)
-
 }
 
 
@@ -341,29 +314,6 @@ function debug(){
 
 
 
-
-/*let aleatorio = prompt('Teste aqui')
-//toString() /parseInt() /parseFloat
-
-console.log(tArquivos[0].textContent)
-console.log(tArquivos[0])
-console.log(tArquivos)
-
-
-//const teste = document.querySelectorAll('tr[class="autorizado"]')
-//console.log(teste)*/
-
-
-//let ternario = <condição ex. 5>2> ? <condicição se verdadeiro> : <condição se falso>
-
-/*
-function mostrarArquivos() {
-  const input = document.getElementById("file");
-  const arquivos = input.files; // FileList
-  const lista = document.getElementById("listaArquivos");
-  lista.innerHTML = ""; // Limpa o conteúdo anterior
-  const dados = document.getElementById("dados");
-  dados.innerHTML=""
 
 
   /*
