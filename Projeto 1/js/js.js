@@ -196,15 +196,14 @@ function debug(){
       NFE_NUMERO= nNF[0].textContent;
       N_SERIE= serie[0].textContent;
       valorTotal += tot
-      if (STATUS === '100') {
+
+      
+      if (STATUS === '100' || STATUS === '150') {
          valorValido += tot
-         totalValido ++
-         
-       }else if (STATUS == 2){
-        
+         totalValido ++ 
+      }else if (STATUS == 2){
         valorContigencia += tot
-        totalContigencia ++
-        
+        totalContigencia ++  
       }
 
       vTotal[0].innerHTML = valorTotal.toFixed(2)
@@ -223,10 +222,14 @@ function debug(){
      
        
        
-       if (STATUS === '100') {
-         STATUS = "Autorizado"
-         criarTr.className='autorizado'
-       } else if (STATUS == 2){
+       if (STATUS === '100' || '150') {
+          criarTr.className='autorizado'
+          if(STATUS==='150'){
+            STATUS = "Autorizado NF-e, fora de prazo"
+          }else{
+          STATUS = "Autorizado"
+          }
+        }else if (STATUS == 2){
          STATUS = "Contigencia"
          criarTr.className= "text-danger"
        }else if (STATUS == 3){
