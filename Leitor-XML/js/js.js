@@ -1,5 +1,4 @@
 
-  //alert('Passou por ai');
   //seletores barra totalizadores
   const tArquivos = document.querySelectorAll('#tArquivos');
   const vTotal = document.querySelectorAll('#vTotal');
@@ -13,59 +12,7 @@
   const input = document.getElementById("file")
   ///////////////////////////////
 
-  /*
-  input.addEventListener("change", function() {
-    const arquivo = input.files[0];
-    if (!arquivo) return;
-
-    <script>
-    const input = document.getElementById("arquivoXML");
-    const dados = document.getElementById("dados");
-    ///////button//////
-    botao.addEventListener("click", function() {
-      const arquivo = input.files[0];
-      if (!arquivo) {
-        alert("Por favor, selecione um arquivo XML primeiro.");
-        return;
-      }
-
-
-
-    /////////////////
-
-    input.addEventListener("change", function() {
-      const arquivo = input.files[0];
-      if (!arquivo) return;
-
-      const leitor = new FileReader();
-
-      // Quando o arquivo for carregado
-      leitor.onload = function(event) {
-        const conteudo = event.target.result; // Texto do XML
-        dados.textContent = conteudo; // Exibe o conteúdo bruto no HTML
-
-        // Faz o parse do XML
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(conteudo, "text/xml");
-
-        console.log("Documento XML:", xmlDoc); // Exibe o objeto XML no console
-
-        // Exemplo: acessar elementos do XML
-        const elementos = xmlDoc.getElementsByTagName("nome"); // Altere para a tag desejada
-        for (let i = 0; i < elementos.length; i++) {
-          console.log("Elemento <nome>:", elementos[i].textContent);
-        }
-      };
-
-      leitor.readAsText(arquivo); // Inicia a leitura do arquivo
-    });
-  </script>
-
-
-
-
-  */
-
+  
 
 
   
@@ -153,7 +100,7 @@
       criarTrThead.appendChild(criarTh)
     };
     // Adicionar a linha ao thead
-  criarThead.appendChild(criarTrThead);
+    criarThead.appendChild(criarTrThead);
 
     // 4. Criar o tbody (corpo da tabela)
     const criaTbody = document.createElement('tbody')
@@ -211,25 +158,19 @@
         vContigencia[0].innerHTML= valorContigencia.toFixed(2)
         tArquivosValidos[0].innerHTML= totalValido
         tContigencia[0].innerHTML= totalContigencia
-      /////////TESTES//////////
+       /////////TESTES//////////
 
       
-      const criarTr = document.createElement('tr')
-      
-        
-      
-        
-      
-        
-        
+       const criarTr = document.createElement('tr')
+
         if (STATUS === '100' || '150') {
-            criarTr.className='autorizado'
-            if(STATUS==='150'){
-              STATUS = "Autorizado NF-e, fora de prazo"
-            }else{
+          criarTr.className='autorizado'
+          if(STATUS==='150'){
+            STATUS = "Autorizado NF-e, fora de prazo"
+          }else{
             STATUS = "Autorizado"
-            }
-          }else if (STATUS == 2){
+          }
+        }else if (STATUS == 2){
           STATUS = "Contigencia"
           criarTr.className= "text-danger"
         }else if (STATUS == 3){
@@ -249,8 +190,8 @@
           totalContigencia ++
         }
       
-      //Cria as Td's dentro das linhas
-      for(let j = 0; j < cabeçalhoTable.length; j++){
+        //Cria as Td's dentro das linhas
+        for(let j = 0; j < cabeçalhoTable.length; j++){
         
         
   
@@ -279,17 +220,8 @@
       }
         
       criaTbody.appendChild(criarTr)
-    
-  
-          
-        
-      
-
-
-
-
-        
-      };
+            
+    };
       leitor.readAsText(arquivo)
     
       ///////FIM-Função para leitura dos arquivos////////
@@ -305,11 +237,10 @@
 
 
 
-  ////////Montando a tabela com os dados////////
+   ////////Montando a tabela com os dados////////
     criarTabela.appendChild(criarThead)
     criarTabela.appendChild(criaTbody)
     dados.appendChild(criarTabela)
-
   }
 
 
@@ -319,118 +250,6 @@
 
 
 
-    /*
-    const arquivo = arquivos[0]; // Apenas o primeiro arquivo, no caso de múltiplos uploads
-    const leitor = new FileReader();
-
-    // Define o comportamento após o arquivo ser carregado
-    leitor.onload = function (event) {
-      const conteudo = event.target.result; // O conteúdo do arquivo como texto
-      console.log(conteudo); // Exibe o conteúdo do XML no console
-    };
-
-    // Lê o arquivo como texto
-    leitor.readAsText(arquivo);*/
-
-    /*
-    for (let i = 0; i < arquivos.length; i++) {
-      const item = document.createElement("p");
-      item.textContent = `Arquivo ${i + 1}: ${arquivos[i].name} - (${
-        arquivos[i].type
-      }, ${arquivos[i].size} bytes)`;
-      lista.appendChild(item);
-    }
-    console.log(leitor);
-
-  };*/
-
-
-  /*
-  function VerCancelado() {
-
-    const c = document.querySelectorAll('td[headers="valor"]');
-    b = c[0].textContent
-
-
-    tArquivos[0].innerHTML = ""
-    vTotal[0].innerHTML = ""
-    vValido[0].innerHTML = ""
-    vContigencia[0].innerHTML=""
-    tModelo[0].innerHTML=""
-    tContigencia[0].innerHTML=""
-
-    tArquivos[0].innerHTML = input.files.length
-    vTotal[0].innerHTML = valorTotal
-    vValido[0].innerHTML = valorValido
-    vContigencia[0].innerHTML= valorContigencia
-    tModelo[0].innerHTML=tipoModelo
-    tContigencia[0].innerHTML= totalContigencia
-
-
     
-    console.log(tArquivos[0].textContent)
-    console.log(tArquivos[0])
-    console.log(tArquivos)
 
-    tArquivos[0].innerHTML = testando
-    vValido[0].innerHTML = testando2
-
-    console.log(tArquivos[0].textContent)
-    console.log(tArquivos[0])
-    console.log(tArquivos)
-
-
-    console.log(c.value)
-
-
-
-    console.log(input.files.length)
-
-
-
-
-    const c = document.querySelectorAll('td[headers="status"]');
-    const b = c[10];
-    console.log(b.textContent);
-    //let ternario = <condição ex. 5>2> ? <condicição se verdadeiro> : <condição se falso>
-    if (b.textContent == "Cancelamento NF" || 
-      b.textContent == 'Cancelamento, Fora do Prazo') {
-      cancelado = true;
-    } else {
-      cancelado = false;
-    }
-    console.log(cancelado);
-  }*/
-
-
-  //manipular string
-  /*
-  if (Nome XML text.lenght > 44){
-  não valida o xml
-  } else{
-    pode validar}
-
-  .trim() para tirar espaços
-
-    */
-
-
-  //selecionando o elemento e mudando seu estilo
-
-  //document.getElementById('id elemento').style.elementostyle = valor de elemento
-
-  //modificar a classe do elemento
-  //document.getElementById(Id elemento).className = 'Nome_Class'
-
-  // Exemplo com for...of (recomendado para coleções)
-  //for (const file of meuFileList) {
-  //  console.log(file.name);
-  //}
-    /*
-    // Exemplo com for tradicional (recomendado)
-  for (let i = 0; i < meuFileList.length; i++) {
-    const file = meuFileList[i];
-    console.log(file.name);
-  }arguments
-    */ 
-
+  

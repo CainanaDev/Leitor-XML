@@ -10,6 +10,9 @@
   <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+<!--APP-->
+  <script src="js/oo.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   
@@ -41,7 +44,7 @@
         XML<span class="font-italic">Analyse</span>
       </div>
       <div  id="texto">
-        <h2 class="font-weight-bold text-uppercase">Leitor XML - v1.1</h2>
+        <h2 class="font-weight-bold text-uppercase">Leitor XML </h2>
       </div>
       <div  id="cadastro">
         <a class="btn btn-light" href="#">Login</a> <span id="marcador">|</span>
@@ -78,7 +81,7 @@
 
           <br>
           <div>
-            <button id="meu" class="btn btn-danger" onclick="mostrarArquivos()">Analisar informações</button>
+            <button id="meu" class="btn btn-danger" >Analisar informações</button>
           </div>
           <div>
             <button class="btn btn-success m-2" onclick="debug()">Debug</button>
@@ -135,6 +138,6 @@
 
 </body>
 
-<script src="js/js.js"></script>
+<!--<script src="js/js.js"></script>-->
 
 </html>
