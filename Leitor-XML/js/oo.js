@@ -15,7 +15,7 @@ $(document).ready(()=>{
       this._parsedXml = null;       // Armazena o XML já parseado
       this._produtos = [];
 
-    };
+    }
     //Ler o retorno de FileRead como string
     lerXML(_xmlString){
       this._xmlString = _xmlString;
@@ -32,8 +32,7 @@ $(document).ready(()=>{
       
       //Povoando as informações do objeto com os dados dos arquivos analisados
       this._cnpj = this._parsedXml.querySelector("CNPJ")?.textContent || this._cnpj;
-      this.chave = this._parsedXml.querySelector("chNFe")?.textContent || this.
-      chave;
+      this.chave = this._parsedXml.querySelector("chNFe")?.textContent || this.chave;
       this.dataEmissao = this._parsedXml.querySelector("dhEmi")?.textContent || this.dataEmissao;
       this.naturaOp = this._parsedXml.querySelector("natOp")?.textContent || this.naturaOp;
       this.modelo = this._parsedXml.querySelector("mod")?.textContent || this.modelo;
@@ -49,9 +48,9 @@ $(document).ready(()=>{
     }; 
   }; 
 
-  const input = $('#file')[0].files //FileList
+  const arquivos = $('#file')[0].files //FileList
 
-  for (let i= 0; i < input.length; i++) {
+  for (let i= 0; i < arquivos.length; i++) {
     
     const reader = new FileReader() //leitura do Arquivo formato texto.
     let xml = new Xml() //a cada interação do laço, um novo objeto XML é criado 
@@ -62,7 +61,7 @@ $(document).ready(()=>{
         xml.parserXml()
         console.log(xml.chave)
         //console.log(xml)
-    }; reader.readAsText(input[i]) //arquivo a ser lido
+    }; reader.readAsText(arquivos[i]) //arquivo a ser lido
     
     
   }
@@ -84,4 +83,4 @@ $(document).ready(()=>{
 });
 
 
-//const input = $('#file')[0].files //FileList
+//const arquivos = $('#file')[0].files //FileList
