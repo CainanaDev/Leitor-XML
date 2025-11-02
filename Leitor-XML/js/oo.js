@@ -44,8 +44,39 @@ $(document).ready(()=>{
 
     };
 
-    verficaCancelado(chave) {
+    verficaCancelado(chave, status) {
+      this.status= status
+      this.chave = chave
+      if (status == 100 || status == 150) {
+          //criarTr.className='autorizado'
+          if(status==150){
+           console.log("Ai sim, pow: Autorizado NF-e, fora de prazo") 
+          }else{
+            console.log ( "Ai sim, pow: Autorizado")          
+          }
+        }else if (status == 10){
+          console.log(`Isso é tudo, menos autorizado`)
+        //  criarTr.className= "text-danger"
+        }else if (status == 3){
+          status = "Cancelamento NF"
+          //valorContigencia += VALOR
+          //criarTr.className='text-info'
+          //totalContigencia ++
+        }else if (status == 4){
+          status = "Inutilização Nº"
+          //valorContigencia += VALOR
+          //criarTr.className='text-secondary'
+          //totalContigencia ++
+        }else if (status == 5){
+          status = "Denegado"
+         // valorContigencia += VALOR
+          //criarTr.className='denegado'
+          //totalContigencia ++
+        }
+
     }; 
+
+    
   }; 
 
   const arquivos = $('#file')[0].files //FileList
@@ -59,7 +90,10 @@ $(document).ready(()=>{
       const xmlString = event.target.result    
         xml.lerXML(xmlString)
         xml.parserXml()
-        console.log(xml.chave)
+        xml.verficaCancelado(xml.chave, xml.status)
+        console.log('Chave do XML: '+ xml.chave)
+        console.log('Codigo do Status: '+ xml.status)
+        console.log('--------------')
         //console.log(xml)
     }; reader.readAsText(arquivos[i]) //arquivo a ser lido
     

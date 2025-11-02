@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 
   <!--Font Awesome-->
-  <script src="https://kit.fontawesome.com/1b112f6203.js" crossorigin="anonymous"></script>
+ <!-- <script src="https://kit.fontawesome.com/1b112f6203.js" crossorigin="anonymous"></script>-->
 
   
   
