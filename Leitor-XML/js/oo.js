@@ -22,6 +22,7 @@ $(document).ready(()=>{
       
       //console.log(this._xmlString)
     };
+
     parserXml() {
       if(!this._xmlString){
         throw new Error ("Arquivo não carregado")
@@ -45,7 +46,7 @@ $(document).ready(()=>{
     };
 
     verficaCancelado(chave, status) {
-      this.status= status
+      this.status = status
       this.chave = chave
       if (status == 100 || status == 150) {
           //criarTr.className='autorizado'
