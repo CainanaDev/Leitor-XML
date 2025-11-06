@@ -176,23 +176,23 @@ function debug(){
       //console.log(contador)
       const testeXML = DOMxml.documentElement
 
-      const chNFe = testeXML.querySelectorAll("chNFe");
+      const cNF = testeXML.querySelectorAll("cNF");
       const dhEmi = testeXML.querySelectorAll('dhEmi')
       const natOp = testeXML.querySelectorAll('natOp')
       const mod   = testeXML.querySelectorAll('mod')
-      const cStat = testeXML.querySelectorAll('cStat')
+      //const cStat = testeXML.querySelectorAll('cStat')
       const vNF   = testeXML.querySelectorAll('vNF')
       const nNF   = testeXML.querySelectorAll('nNF')
       const serie = testeXML.querySelectorAll('serie')
 
       //Informações para alimentar a tabela
-      CHAVE = chNFe[0].textContent ;
+      CHAVE = cNF[0].textContent ; //por enquanto buscando o codigo numerico ao invés da chave NFe
       DATA_EMISSAO= dhEmi[0].textContent;
       NAT_OP= natOp[0].textContent;
       VALOR = vNF[0].textContent;
       let tot = parseFloat(VALOR)
       MODELO= mod[0].textContent;
-      STATUS= cStat[0].textContent;
+      STATUS= "2"    //cStat[0].textContent;
       NFE_NUMERO= nNF[0].textContent;
       N_SERIE= serie[0].textContent;
       valorTotal += tot
@@ -201,7 +201,7 @@ function debug(){
       if (STATUS === '100' || STATUS === '150') {
          valorValido += tot
          totalValido ++ 
-      }else if (STATUS == 2){
+      }else if (STATUS === "2"){
         valorContigencia += tot
         totalContigencia ++  
       }
@@ -222,16 +222,17 @@ function debug(){
      
        
        
-       if (STATUS === '100' || '150') {
-          criarTr.className='autorizado'
-          if(STATUS==='150'){
-            STATUS = "Autorizado NF-e, fora de prazo"
-          }else{
-          STATUS = "Autorizado"
-          }
-        }else if (STATUS == 2){
+      /* if (STATUS === '100' || '150') {
+          //criarTr.className='autorizado'
+          //if(STATUS==='150'){
+           // STATUS = "Autorizado NF-e, fora de prazo"
+         // }else{
+          //STATUS = "Autorizado"
+         // }
+        }*/ if (STATUS === "2"){
          STATUS = "Contigencia"
          criarTr.className= "text-danger"
+        
        }else if (STATUS == 3){
          STATUS = "Cancelamento NF"
          valorContigencia += VALOR
