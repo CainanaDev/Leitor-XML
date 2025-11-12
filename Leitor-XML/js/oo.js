@@ -79,6 +79,20 @@ $(document).ready(()=>{
 
     }; 
 
+    toTableRow() {
+      return [
+        this._cnpj,
+        this.chave,
+        this.dataEmissao, 
+        this.naturaOp,
+        this.valor,
+        this.modelo,
+        this.status,
+        this.nfeNumero,
+        this.numSerie
+      ]
+    };
+
     
   }; 
   //Seleção do input file
@@ -123,3 +137,146 @@ $(document).ready(()=>{
 
 
 //const arquivos = $('#file')[0].files //FileList
+
+
+
+
+/*
+////////////Promise e outras funções necessarias a serem implementadas futuramente
+
+// Função para processar uma lista de arquivos e retornar uma Promise
+function processFiles(fileList) {
+  const promises = [];
+  const xmlInstances = [];
+
+  for (let i = 0; i < fileList.length; i++) {
+    const promise = new Promise((resolve) => {
+      const reader = new FileReader();
+      let xml = new Xml();
+
+      reader.onload = (event) => {
+        const xmlString = event.target.result;
+        xml.lerXML(xmlString);
+        xml.parserXml();
+        xml.verficaCancelado(xml.chave, xml.status);
+
+        console.log('Chave do XML: ' + xml.chave);
+        console.log('Codigo do Status: ' + xml.status);
+        console.log('--------------');
+
+        xmlInstances.push(xml);
+        resolve();
+      };
+
+      reader.readAsText(fileList[i]);
+    });
+
+    promises.push(promise);
+  }
+
+  return Promise.all(promises).then(() => xmlInstances);
+}
+
+
+
+////////////tabela////////////////////
+// Função para renderizar a tabela a partir do array de instâncias de Xml
+function renderTable(xmlInstances) {
+    const tableBody = document.getElementById('tabela-body'); // Supondo que exista um <tbody id="tabela-body">
+
+    // Converter cada instância em uma linha de array
+    const tableData = xmlInstances.map(xml => xml.toTableRow());
+
+    // Limpar o corpo da tabela
+    tableBody.innerHTML = '';
+
+    // Para cada linha de dados, criar uma linha na tabela
+    tableData.forEach(rowArray => {
+        const tr = document.createElement('tr');
+
+        rowArray.forEach(cellValue => {
+            const td = document.createElement('td');
+            td.textContent = cellValue;
+            tr.appendChild(td);
+        });
+
+        tableBody.appendChild(tr);
+    });
+}
+
+
+
+// Uso: quando o input de arquivo muda
+document.getElementById('file').addEventListener('change', async (e) => {
+    const files = e.target.files;
+    const xmlInstances = await processFiles(files);
+    renderTable(xmlInstances);
+});
+
+
+
+
+
+
+
+class Xml {
+    // ... SEU CÓDIGO ATUAL (já está bom)
+}
+
+// PROCESSAMENTO CORRETO:
+async function processarArquivos() {
+    const arquivos = $('#file')[0].files;
+    const xmlInstances = []; // ARMAZENA TODAS AS INSTÂNCIAS
+    const promises = [];
+
+    for (let i = 0; i < arquivos.length; i++) {
+        const promise = new Promise((resolve) => {
+            const reader = new FileReader();
+            const xml = new Xml();
+
+            reader.onload = (event) => {
+                const xmlString = event.target.result;
+                xml.lerXML(xmlString);
+                xml.parserXml();
+                // xml.verficaCancelado(xml.chave, xml.status); // Desconsiderado
+                
+                xmlInstances.push(xml); // ARMAZENA A INSTÂNCIA
+                resolve();
+            };
+            reader.readAsText(arquivos[i]);
+        });
+        promises.push(promise);
+    }
+
+    // AGUARDA TODOS OS ARQUIVOS
+    await Promise.all(promises);
+    
+    // CONVERTE PARA ARRAY DE ARRAYS E RENDERIZA
+    renderizarTabela(xmlInstances);
+}
+
+// FUNÇÃO DE RENDERIZAÇÃO:
+function renderizarTabela(xmlInstances) {
+    const tableBody = document.getElementById('table-body');
+    tableBody.innerHTML = '';
+
+    // CONVERTE CADA INSTÂNCIA EM ARRAY
+    const tableData = xmlInstances.map(xml => xml.toTableRow());
+
+    // CRIA AS LINHAS DA TABELA
+    tableData.forEach(rowData => {
+        const tr = document.createElement('tr');
+        
+        rowData.forEach(cellData => {
+            const td = document.createElement('td');
+            td.textContent = cellData;
+            tr.appendChild(td);
+        });
+        
+        tableBody.appendChild(tr);
+    });
+}
+
+// EXECUTAR QUANDO SELECIONAR ARQUIVOS:
+document.getElementById('file').addEventListener('change', processarArquivos);
+*/
