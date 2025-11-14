@@ -78,7 +78,8 @@ $(document).ready(()=>{
         }
 
     }; 
-
+    
+    //retorna as informações do objeto em questão em formato de array.
     toTableRow() {
       return [
         this._cnpj,
@@ -95,6 +96,8 @@ $(document).ready(()=>{
 
     
   }; 
+
+ 
   //Seleção do input file
   const arquivos = $('#file')[0].files //FileList
   
@@ -113,7 +116,8 @@ $(document).ready(()=>{
         console.log('Chave do XML: '+ xml.chave)
         console.log('Codigo do Status: '+ xml.status)
         console.log('--------------')
-        //console.log(xml)
+       
+        console.log(xml.toTableRow())
     }; reader.readAsText(arquivos[i]) //arquivo a ser lido
     
     

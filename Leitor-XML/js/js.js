@@ -190,8 +190,8 @@
           totalContigencia ++
         }
       
-        //Cria as Td's dentro das linhas
-        for(let j = 0; j < cabeçalhoTable.length; j++){
+      //Cria as Td's dentro das linhas
+      for(let j = 0; j < cabeçalhoTable.length; j++){
         
         
   
