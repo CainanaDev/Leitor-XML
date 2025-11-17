@@ -48,8 +48,8 @@ $(document).ready(()=>{
     };
     //Verifica o status do XML
     verficaCancelado(chave, status) {
-      this.status = status
-      this.chave = chave
+      this.status
+      this.chave
       if (status == 100 || status == 150) {
           //criarTr.className='autorizado'
           if(status==150){
