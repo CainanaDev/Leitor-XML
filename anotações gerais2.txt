@@ -1,0 +1,159 @@
+Perfeito! Vou montar um **guia de estudo progressivo sobre `addEventListener`** para você usar como trilha de aprendizado. Pense nele como um roteiro: você pode seguir passo a passo, praticando cada parte até se sentir confortável.  
+
+---
+
+# 📘 Guia de Estudo: `addEventListener` em JavaScript
+
+## 1. Fundamentos
+- **Objetivo**: entender o que é um evento e como o navegador reage a ele.
+- **Estude**:
+  - O que são **eventos do DOM** (cliques, teclas, rolagem, etc.).
+  - Diferença entre `onclick` e `addEventListener`.
+- **Pratique**:
+  ```html
+  <button id="meuBotao">Clique aqui</button>
+  <script>
+    document.getElementById("meuBotao")
+      .addEventListener("click", function() {
+        alert("Botão clicado!");
+      });
+  </script>
+  ```
+
+---
+
+## 2. Tipos de eventos
+- **Objetivo**: conhecer os eventos mais comuns.
+- **Estude**:
+  - `click`, `change`, `input`, `submit`, `keydown`, `mouseover`, `scroll`.
+- **Pratique**:
+  - Crie um campo de texto que mostra em tempo real o que você digita.
+  - Faça um botão mudar de cor quando o mouse passa por cima.
+
+---
+
+## 3. Funções de callback
+- **Objetivo**: entender que o segundo parâmetro do `addEventListener` é uma função.
+- **Estude**:
+  - Funções anônimas vs funções nomeadas.
+- **Pratique**:
+  ```javascript
+  function mostrarMensagem() {
+    console.log("Chamou a função!");
+  }
+
+  document.addEventListener("keydown", mostrarMensagem);
+  ```
+
+---
+
+## 4. Objeto `event`
+- **Objetivo**: aprender a usar informações do evento.
+- **Estude**:
+  - Propriedades como `event.target`, `event.type`, `event.key`.
+- **Pratique**:
+  - Mostrar qual tecla foi pressionada no console.
+  - Exibir o valor de um campo de texto sempre que mudar.
+
+---
+
+## 5. Múltiplos ouvintes
+- **Objetivo**: perceber que você pode adicionar vários ouvintes ao mesmo elemento.
+- **Estude**:
+  - Como adicionar mais de um `addEventListener` no mesmo botão.
+- **Pratique**:
+  ```javascript
+  const btn = document.getElementById("meuBotao");
+
+  btn.addEventListener("click", () => console.log("Primeira ação"));
+  btn.addEventListener("click", () => console.log("Segunda ação"));
+  ```
+
+---
+
+## 6. Removendo ouvintes
+- **Objetivo**: aprender `removeEventListener`.
+- **Estude**:
+  - Diferença entre funções anônimas e nomeadas (só funções nomeadas podem ser removidas).
+- **Pratique**:
+  ```javascript
+  function alerta() {
+    alert("Clique detectado!");
+  }
+
+  btn.addEventListener("click", alerta);
+  btn.removeEventListener("click", alerta);
+  ```
+
+---
+
+## 7. Fases do evento (captura e bolha)
+- **Objetivo**: entender como os eventos “descem” e “sobem” na árvore do DOM.
+- **Estude**:
+  - `useCapture` (terceiro parâmetro do `addEventListener`).
+  - Diferença entre **capturing** e **bubbling**.
+- **Pratique**:
+  - Coloque ouvintes em um `<div>` e em um `<button>` dentro dele, e veja a ordem em que os eventos disparam.
+
+---
+
+## 8. Delegação de eventos
+- **Objetivo**: aprender a ouvir eventos em elementos “pais” em vez de em cada filho.
+- **Estude**:
+  - Como usar `event.target` para descobrir qual filho foi clicado.
+- **Pratique**:
+  ```javascript
+  document.getElementById("lista").addEventListener("click", function(e) {
+    if (e.target.tagName === "LI") {
+      console.log("Clicou no item:", e.target.textContent);
+    }
+  });
+  ```
+
+---
+
+## 9. Exercícios finais
+- Criar uma **lista de tarefas** (to-do list) onde cada item pode ser marcado como concluído ao clicar.
+- Criar um **formulário** que mostra mensagens de validação em tempo real.
+- Criar um **contador de cliques** que para de contar após 5 cliques (usando `removeEventListener`).
+
+---
+
+## 🔗 Referências para aprofundar
+- [MDN Web Docs – addEventListener](https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget/addEventListener)  
+- [FreeCodeCamp – Guia prático](https://www.freecodecamp.org/portuguese/news/o-metodo-addeventlistener-exemplo-de-codigo-com-listener-de-eventos-em-javascript/)  
+- [W3Schools – Event Listener](https://www.w3schools.com/js/js_htmldom_eventlistener.asp)  
+
+---
+
+👉 Esse guia é como um **mapa de estudos**: você pode seguir na ordem, praticando cada etapa, e no final terá domínio sólido de eventos no JavaScript.  
+
+Quer que eu prepare também uma **sequência de desafios práticos** (tipo exercícios de fixação) para você treinar cada etapa?
+
+
+https://developer.mozilla.org/pt-BR/docs/Web/API/EventTarget/addEventListener
+https://www.freecodecamp.org/portuguese/news/o-metodo-addeventlistener-exemplo-de-codigo-com-listener-de-eventos-em-javascript/
+https://www.w3schools.com/js/js_htmldom_eventlistener.asp
+
+
+
+
+
+O evento DOMContentLoaded é disparado quando o documento HTML inicial é completamente carregado e analisado, sem esperar por folhas de estilo, imagens e outros recursos. É o evento ideal para garantir que todo o HTML estático esteja disponível para ser manipulado. 
+3. Detectar a adição de elementos dinâmicos (MutationObserver) 
+Para elementos que são adicionados ao DOM dinamicamente por um script (por exemplo, após uma chamada de API), o MutationObserver é a ferramenta mais poderosa e eficiente. Ele permite que você observe mudanças na árvore do DOM
+
+
+
+
+
+
+
+29251059130522000150550010000000341062839544
+
+
+
+
+
+29251017546450000187650010000000661574649502 cupom
+29251017546450000187650010000000681049854314 cupom

@@ -122,8 +122,29 @@
 
     
     <!--Tabela informções-->
-    <div id="dados" class="table-responsive">
-     
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive">
+          <table class="d-none">
+            <thead>
+              <tr>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+                <th>g</th>
+                <th>h</th>
+                <th>i</th>
+              </tr>
+            </thead>
+            <tbody id="view">
+
+            </tbody>
+          </table>        
+        </div>
+      </div>
     </div>
     <!--Tabela informções /fim-->
 
