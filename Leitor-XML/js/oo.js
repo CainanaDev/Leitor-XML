@@ -102,7 +102,7 @@ $(document).ready(()=>{
 
     
   }; 
-
+////////// Ajustes do sincronismo das funções//////
  
   //Seleção do input file
   const arquivos = $('#file')[0].files //FileList
