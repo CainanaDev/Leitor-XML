@@ -1,3 +1,208 @@
+Claro — aqui está **o checklist completo**, organizado e direto ao ponto, para que seu leitor de XML em JavaScript consiga lidar com **qualquer XML de NFC‑e (modelo 65)**, inclusive:
+
+- XML válido  
+- XML inválido  
+- XML de contingência  
+- XML sem retorno da SEFAZ  
+- XML gerado por ERP mesmo sem autorização  
+
+Esse checklist é **prático**, pensado para implementação.
+
+---
+
+# ✅ **CHECKLIST COMPLETO PARA LEITURA DE XML NFC‑e (MODELO 65)**  
+### *Inclui todos os casos em que um XML pode existir mesmo sem ser válido.*
+
+---
+
+# ✅ 1. **Identificar se é NFC‑e (modelo 65)**
+Verifique:
+
+- `<mod>` = **65**
+- `<tpAmb>` = 1 (produção) ou 2 (homologação)
+
+Se não houver `<mod>`, trate como **XML inválido**, mas continue o parsing.
+
+---
+
+# ✅ 2. **Detectar se é XML de contingência**
+A NFC‑e só possui **um tipo oficial de contingência**:
+
+### ✅ **Contingência Offline da NFC‑e**
+Verifique:
+
+- `<tpEmis>` = **9**
+- `<dhCont>` presente  
+- `<xJust>` presente  
+
+Se `<tpEmis>` = 9 → **XML pode existir mesmo sem autorização**.
+
+Seu leitor deve aceitar:
+
+- XML sem `<protNFe>`
+- XML sem `<cStat>`
+- XML sem `<retEnviNFe>`
+- XML com assinatura incompleta
+- XML com erros de schema
+
+---
+
+# ✅ 3. **Detectar XML gerado pelo ERP sem validação da SEFAZ**
+ERPs geram XML mesmo quando:
+
+### ✅ 3.1. **Não houve envio para a SEFAZ**
+- Ausência total de `<protNFe>`
+- Ausência de `<retEnviNFe>`
+- Ausência de `<cStat>`
+
+### ✅ 3.2. **Houve envio, mas sem resposta**
+- `<cStat>` ausente
+- `<xMotivo>` ausente
+- `<protNFe>` vazio
+
+### ✅ 3.3. **XML gerado apenas para impressão**
+Exemplo comum:  
+**“emitida em contingência”** no nome do arquivo.
+
+Seu leitor deve aceitar:
+
+- XML sem protocolo  
+- XML sem assinatura  
+- XML com campos obrigatórios faltando  
+
+---
+
+# ✅ 4. **Detectar XML inválido mas existente (muito comum em PDVs)**
+
+Seu leitor deve aceitar XMLs com:
+
+### ✅ 4.1. **Erros de schema**
+- Tags fora de ordem  
+- Tags faltando  
+- Campos obrigatórios vazios  
+- Tipos incorretos (ex.: número onde deveria ser string)
+
+### ✅ 4.2. **Assinatura inválida**
+- `<Signature>` ausente  
+- `<Signature>` incompleta  
+- Certificado expirado  
+- Certificado errado  
+
+### ✅ 4.3. **Dados fiscais inválidos**
+- CNPJ inválido  
+- IE inválida  
+- NCM inexistente  
+- CFOP incorreto  
+- CST incompatível  
+
+### ✅ 4.4. **Numeração inválida**
+- Número duplicado  
+- Série inexistente  
+- Numeração fora da faixa  
+- Numeração já inutilizada  
+
+### ✅ 4.5. **Datas inválidas**
+- Data futura  
+- Data muito antiga  
+- Data fora do horário permitido  
+
+---
+
+# ✅ 5. **Detectar XML parcialmente preenchido**
+Seu leitor deve aceitar XMLs com:
+
+- `<infNFe>` incompleto  
+- `<det>` incompleto  
+- `<total>` faltando  
+- `<pag>` faltando  
+- `<transp>` faltando  
+- `<emit>` incompleto  
+- `<dest>` incompleto  
+
+---
+
+# ✅ 6. **Detectar XML de eventos (não fiscal)**
+Seu leitor deve aceitar:
+
+- XML de cancelamento sem vínculo (cStat 136)  
+- XML de evento aceito (cStat 135)  
+- XML de denegação (301, 302, 303)  
+
+Mesmo que:
+
+- Não exista NF‑e correspondente  
+- Não exista protocolo  
+- O XML esteja incompleto  
+
+---
+
+# ✅ 7. **Detectar XML de contingência que nunca foi transmitido**
+Esse é o caso mais crítico.
+
+Seu leitor deve aceitar XMLs:
+
+- Sem `<protNFe>`  
+- Sem `<cStat>`  
+- Sem `<retEnviNFe>`  
+- Com `<tpEmis>9</tpEmis>`  
+- Com `<xJust>` e `<dhCont>`  
+- Com erros de schema  
+- Com assinatura inválida  
+
+Esses XMLs **existem fisicamente**, mas **não são válidos fiscalmente**.
+
+---
+
+# ✅ 8. **Detectar XML de contingência que foi transmitido e rejeitado**
+Seu leitor deve aceitar XMLs com:
+
+- `<cStat>` = rejeição (2xx, 5xx etc.)  
+- `<protNFe>` presente mas sem autorização  
+- `<xMotivo>` indicando erro  
+
+Mesmo assim, o XML original existe.
+
+---
+
+# ✅ 9. **Detectar XML de contingência autorizado fora do prazo**
+Se depois o contribuinte transmitir e receber:
+
+- `<cStat>` = **150** (autorizado fora do prazo)
+
+Seu leitor deve:
+
+- Manter o XML original  
+- Anexar o `<protNFe>` ao XML  
+
+---
+
+# ✅ 10. **Detectar XML de contingência que nunca será válido**
+Seu leitor deve aceitar XMLs que:
+
+- Nunca foram enviados  
+- Nunca serão enviados  
+- Foram rejeitados permanentemente  
+- Foram substituídos por outra numeração  
+
+---
+
+# ✅ Quer que eu gere agora um **algoritmo em JavaScript** baseado nesse checklist?
+
+Posso montar:
+
+✅ Função `parseNFCe(xml)`  
+✅ Função `detectContingency(xml)`  
+✅ Função `detectInvalidButExisting(xml)`  
+✅ Função `detectERPGenerated(xml)`  
+✅ Função `detectEventXML(xml)`  
+
+É só me pedir.
+
+
+
+
+
+/////////////////////////////////////////////////
 Perfeito! Vou montar um **guia de estudo progressivo sobre `addEventListener`** para você usar como trilha de aprendizado. Pense nele como um roteiro: você pode seguir passo a passo, praticando cada parte até se sentir confortável.  
 
 ---

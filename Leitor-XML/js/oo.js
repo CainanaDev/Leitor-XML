@@ -2,7 +2,7 @@ $(document).ready(()=>{
  //Entidade XML
   class Xml {
     constructor(){
-      this._cnpj = ''
+      this.cnpj = ''
       this.chave = ''
       this.dataEmissao = ''
       this.naturaOp = ''
@@ -34,7 +34,7 @@ $(document).ready(()=>{
       
       
       //Povoando as informações do objeto com os dados dos arquivos analisados
-      this._cnpj = this._parsedXml.querySelector("CNPJ")?.textContent || this._cnpj;
+      this.cnpj = this._parsedXml.querySelector("CNPJ")?.textContent || this.cnpj;
       this.chave = this._parsedXml.querySelector("chNFe")?.textContent || this.chave;
       this.dataEmissao = this._parsedXml.querySelector("dhEmi")?.textContent || this.dataEmissao;
       this.naturaOp = this._parsedXml.querySelector("natOp")?.textContent || this.naturaOp;
@@ -82,7 +82,7 @@ $(document).ready(()=>{
     //retorna as informações do objeto em questão em formato de array.
     toTableRow() {
       return  [
-        this._cnpj,
+        this.cnpj,
         this.chave,
         this.dataEmissao, 
         this.naturaOp,
@@ -102,14 +102,14 @@ $(document).ready(()=>{
 
     
   }; 
-////////// Ajustes do sincronismo das funções//////
+ ////////// Ajustes do sincronismo das funções//////
   async function processarArquivos() {
     const arquivos = $('#file')[0].files //FileList - Seleciona os arquivos carregados
     const xmlInst = []; //Amazena as intancias de XML
     const promises = []; //Guarda as promises das funções
 
     for (let i= 0; i < arquivos.length; i++) {
-      const promise = new Promise((resolve)=>{
+      const promise = new Promise( (resolve) => {
 
         //Instancia de FeleReader que transforma o arquivo carregado em texto bruto
         const reader = new FileReader() //leitura do Arquivo formato texto.
@@ -137,7 +137,7 @@ $(document).ready(()=>{
     // AGUARDA TODOS OS ARQUIVOS
     await Promise.all(promises);
     console.log(xmlInst)
-    console.log(promises)
+    //console.log(promises)
   }
 
  document.getElementById('debug').addEventListener('click', processarArquivos);
