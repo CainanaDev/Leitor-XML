@@ -14,13 +14,11 @@ $(document).ready(()=>{
       this._xmlString = null;       // Armazena o XML bruto
       this._parsedXml = null;       // Armazena o XML já parseado
       this._produtos = [];
-
     }
     //Ler o retorno de FileRead como string
     lerXML(xmlString){
       this._xmlString = xmlString  ;
       
-      //console.log(this._xmlString)
     };
 
     parserXml() {
@@ -31,8 +29,8 @@ $(document).ready(()=>{
       //Faz o Parse do txt do XML para um elemento DOM
       const parser = new DOMParser()
       this._parsedXml = parser.parseFromString(this._xmlString, 'text/xml')
-      
-      
+      //console.log(this._parsedXml)
+  
       //Povoando as informações do objeto com os dados dos arquivos analisados
       this.cnpj = this._parsedXml.querySelector("CNPJ")?.textContent || this.cnpj;
       this.chave = this._parsedXml.querySelector("chNFe")?.textContent || this.chave;
@@ -43,9 +41,20 @@ $(document).ready(()=>{
       this.status = this._parsedXml.querySelector("cStat")?.textContent || this.status;
       this.nfeNumero = this._parsedXml.querySelector("nNF")?.textContent || this.nfeNumero;
       this.numSerie = this._parsedXml.querySelector("serie")?.textContent || this.numSerie;
+      this._produtos = this._parsedXml.querySelectorAll("det") //?.textContent || this._produtos;
       
-
     };
+
+    processaProdutos(){
+      for (let i = 0; i < this._produtos.length; i++) {
+        const produtos = this._produtos[i].children[0].children;
+        const impostos = this._produtos[i].children[1].children;
+        console.log(produtos)
+        console.log(impostos)
+        
+      }
+    }
+
     //Verifica o status do XML
     verficaCancelado(chave, status) {
       this.status
@@ -90,7 +99,8 @@ $(document).ready(()=>{
         this.modelo,
         this.status,
         this.nfeNumero,
-        this.numSerie
+        this.numSerie,
+        this._produtos
       ]
     };
 
@@ -120,15 +130,17 @@ $(document).ready(()=>{
           xml.lerXML(xmlString)
           xml.parserXml()
           //xml.verficaCancelado(xml.chave, xml.status)
+          xml.processaProdutos()
           
           xmlInst.push(xml.toTableRow())
 
           //console.log('Chave do XML: '+ xml.chave)
           //console.log('Codigo do Status: '+ xml.status)
+          
           resolve()
         };reader.readAsText(arquivos[i]);
         
-        
+       
        
       });
       promises.push(promise)  
@@ -136,12 +148,23 @@ $(document).ready(()=>{
     }
     // AGUARDA TODOS OS ARQUIVOS
     await Promise.all(promises);
-    console.log(xmlInst)
+   // console.log(xmlInst)
     //console.log(promises)
+     
+    
   }
 
  document.getElementById('debug').addEventListener('click', processarArquivos);
 
+
+
+
+ function PersetoJson(obj){
+  const json = JSON.ststringify(obj)
+  return console.log(json)
+  
+
+ }
 
 
 
