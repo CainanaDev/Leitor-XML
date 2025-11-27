@@ -13,7 +13,7 @@ $(document).ready(()=>{
       this.numSerie = ''
       this._xmlString = null;       // Armazena o XML bruto
       this._parsedXml = null;       // Armazena o XML já parseado
-      this._produtos = [];
+      this._produtos = [];          // Amarzena os produtos para futura analise
     }
     //Ler o retorno de FileRead como string
     lerXML(xmlString){
@@ -49,8 +49,8 @@ $(document).ready(()=>{
       for (let i = 0; i < this._produtos.length; i++) {
         const produtos = this._produtos[i].children[0].children;
         const impostos = this._produtos[i].children[1].children;
-        console.log(produtos)
-        console.log(impostos)
+        //console.log(produtos)
+        //console.log(impostos)
         
       }
     }
@@ -100,7 +100,7 @@ $(document).ready(()=>{
         this.status,
         this.nfeNumero,
         this.numSerie,
-        this._produtos
+        
       ]
     };
 
@@ -148,44 +148,35 @@ $(document).ready(()=>{
     }
     // AGUARDA TODOS OS ARQUIVOS
     await Promise.all(promises);
-   // console.log(xmlInst)
-    //console.log(promises)
-     
+    // console.log(xmlInst)
+    //Atualiza Barra de totalizadores
+    const tArquivos = document.querySelectorAll('#tArquivos');
+    const vTotal = document.querySelectorAll('#vTotal');
+    const vValido = document.querySelectorAll('#vValido');
+    const vContigencia = document.querySelectorAll('#vContigencia');
+    const tArquivosValidos = document.querySelectorAll('#tArquivosValidos');
+    const tContigencia = document.querySelectorAll('#tContigencia');
+
+   console.log(promises)
+
     
+    tArquivos[0].innerHTML= arquivos.length
+    //vTotal[0].innerHTML = valorTotal.toFixed(2)
+    //vValido[0].innerHTML = valorValido.toFixed(2)
+    //vContigencia[0].innerHTML= valorContigencia.toFixed(2)
+    //tArquivosValidos[0].innerHTML= totalValido
+    //tContigencia[0].innerHTML= totalContigencia
+
+
+
+
   }
 
  document.getElementById('debug').addEventListener('click', processarArquivos);
-
-
-
-
- function PersetoJson(obj){
-  const json = JSON.ststringify(obj)
-  return console.log(json)
-  
-
- }
-
-
-
-
-
-
-
- 
-
  
 
 
-  
-  
-  
 
-
-
-
-
- 
 
 
 });
