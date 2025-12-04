@@ -191,6 +191,26 @@ $(document).ready(()=>{
 
 //const arquivos = $('#file')[0].files //FileList
 
+/*
+const reader = new FileReader();
+
+reader.onprogress = (event) => {
+  if (event.lengthComputable) {
+    const percent = (event.loaded / event.total) * 100;
+    console.log("Progresso:", percent);
+  }
+};
+
+reader.onload = () => {
+  const text = reader.result;
+  const doc = new DOMParser().parseFromString(text, "text/xml");
+  console.log("Processamento concluído");
+};
+
+reader.readAsText(file);
+*/
+
+
 
 
 
