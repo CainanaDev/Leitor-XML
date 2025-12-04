@@ -117,35 +117,42 @@ $(document).ready(()=>{
     const arquivos = $('#file')[0].files //FileList - Seleciona os arquivos carregados
     const xmlInst = []; //Amazena as intancias de XML
     const promises = []; //Guarda as promises das funções
+    
+    
 
     for (let i= 0; i < arquivos.length; i++) {
-      const promise = new Promise( (resolve) => {
+      try{
+        const promise = new Promise( (resolve) => {
 
-        //Instancia de FeleReader que transforma o arquivo carregado em texto bruto
-        const reader = new FileReader() //leitura do Arquivo formato texto.
-        let xml = new Xml() //a cada interação do laço, um novo objeto XML é criado 
+            //Instancia de FeleReader que transforma o arquivo carregado em texto bruto
+            const reader = new FileReader() //leitura do Arquivo formato texto.
+            let xml = new Xml() //a cada interação do laço, um novo objeto XML é criado 
 
-        reader.onload = (event)=>{
-          const xmlString = event.target.result    
-          xml.lerXML(xmlString)
-          xml.parserXml()
-          //xml.verficaCancelado(xml.chave, xml.status)
-          xml.processaProdutos()
+            reader.onload = (event)=>{
+              const xmlString = event.target.result    
+              xml.lerXML(xmlString)
+              xml.parserXml()
+              //xml.verficaCancelado(xml.chave, xml.status)
+              xml.processaProdutos()
+              
+              xmlInst.push(xml.toTableRow())
+
+              //console.log('Chave do XML: '+ xml.chave)
+              //console.log('Codigo do Status: '+ xml.status)
+              
+              resolve()
+            };reader.readAsText(arquivos[i]);
+            
           
-          xmlInst.push(xml.toTableRow())
-
-          //console.log('Chave do XML: '+ xml.chave)
-          //console.log('Codigo do Status: '+ xml.status)
           
-          resolve()
-        };reader.readAsText(arquivos[i]);
-        
-       
-       
-      });
-      promises.push(promise)  
-      
-    }
+          });
+          promises.push(promise)  
+      }catch(e){
+        console.log(e)
+      }
+    }//fim do loop
+
+    
     // AGUARDA TODOS OS ARQUIVOS
     await Promise.all(promises);
     // console.log(xmlInst)
