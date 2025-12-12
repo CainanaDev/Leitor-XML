@@ -45,7 +45,7 @@ $(document).ready(()=>{
       
     };
 
-    processaProdutos(){
+    buscaProduto(){
       for (let i = 0; i < this._produtos.length; i++) {
         const produtos = this._produtos[i].children[0].children;
         const impostos = this._produtos[i].children[1].children;
@@ -132,30 +132,34 @@ $(document).ready(()=>{
               const xmlString = event.target.result    
               xml.lerXML(xmlString)
               xml.parserXml()
-              //xml.verficaCancelado(xml.chave, xml.status)
-              xml.processaProdutos()
+              xml.verficaCancelado(xml.chave, xml.status)
+              xml.buscaProduto()
               
               xmlInst.push(xml.toTableRow())
 
-              //console.log('Chave do XML: '+ xml.chave)
+             // console.log('Chave do XML: '+ xml._produtos)
               //console.log('Codigo do Status: '+ xml.status)
               
               resolve()
             };reader.readAsText(arquivos[i]);
-            
-          
-          
-          });
-          promises.push(promise)  
+    
+        }); //fim promise
+        promises.push(promise)  
       }catch(e){
         console.log(e)
       }
     }//fim do loop
 
-    
+
+
     // AGUARDA TODOS OS ARQUIVOS
     await Promise.all(promises);
-    // console.log(xmlInst)
+    console.log(xmlInst);
+
+
+
+    
+
     //Atualiza Barra de totalizadores
     const tArquivos = document.querySelectorAll('#tArquivos');
     const vTotal = document.querySelectorAll('#vTotal');
@@ -164,7 +168,7 @@ $(document).ready(()=>{
     const tArquivosValidos = document.querySelectorAll('#tArquivosValidos');
     const tContigencia = document.querySelectorAll('#tContigencia');
 
-   console.log(promises)
+   
 
     
     tArquivos[0].innerHTML= arquivos.length
@@ -184,10 +188,18 @@ $(document).ready(()=>{
 
 
 
+ ////////////////////teste com include////////////
+ function procuraDuplicado(chave){
+  const verificador = xmlInst.includes(chave)
+  console.log(verificador)
+
+ }
 
 
 });
 
+
+ 
 
 //const arquivos = $('#file')[0].files //FileList
 
