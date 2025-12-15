@@ -115,7 +115,7 @@ function debug(){
   
   //nomes dos th's a serem criados no loop
   const cabeçalhoTable = [
-    "CHAVE", 
+    "COD. NUM", 
     "DATA EMISSÃO",
     "NAT. OP",
     "VALOR",
@@ -135,7 +135,7 @@ function debug(){
 
    //Logica para id de cada Th
    const idMap = {
-    "CHAVE": "chave",
+    "COD. NUM": "chave",
     "DATA EMISSÃO": "data",
     "NAT. OP": "nOp",
     "VALOR": "valor",
@@ -180,7 +180,7 @@ function debug(){
       const dhEmi = testeXML.querySelectorAll('dhEmi')
       const natOp = testeXML.querySelectorAll('natOp')
       const mod   = testeXML.querySelectorAll('mod')
-      //const cStat = testeXML.querySelectorAll('cStat')
+      const cStat = testeXML.querySelectorAll('cStat')
       const vNF   = testeXML.querySelectorAll('vNF')
       const nNF   = testeXML.querySelectorAll('nNF')
       const serie = testeXML.querySelectorAll('serie')
@@ -188,20 +188,27 @@ function debug(){
       //Informações para alimentar a tabela
       CHAVE = cNF[0].textContent ; //por enquanto buscando o codigo numerico ao invés da chave NFe
       DATA_EMISSAO= dhEmi[0].textContent;
-      NAT_OP= natOp[0].textContent;
+      //NAT_OP= natOp[0].textContent;
       VALOR = vNF[0].textContent;
       let tot = parseFloat(VALOR)
       MODELO= mod[0].textContent;
-      STATUS= "2"    //cStat[0].textContent;
+      try {
+        STATUS= cStat[0].textContent;
+      } catch (error) {
+        if(error !== null){
+          STATUS= "ausente"
+        } 
+      }
       NFE_NUMERO= nNF[0].textContent;
       N_SERIE= serie[0].textContent;
       valorTotal += tot
 
+    
       
       if (STATUS === '100' || STATUS === '150') {
          valorValido += tot
          totalValido ++ 
-      }else if (STATUS === "2"){
+      }else {
         valorContigencia += tot
         totalContigencia ++  
       }
@@ -222,18 +229,18 @@ function debug(){
      
        
        
-      /* if (STATUS === '100' || '150') {
-          //criarTr.className='autorizado'
-          //if(STATUS==='150'){
-           // STATUS = "Autorizado NF-e, fora de prazo"
-         // }else{
-          //STATUS = "Autorizado"
-         // }
-        }*/ if (STATUS === "2"){
+       if (STATUS === '100') {
+          criarTr.className='autorizado'
+          if(STATUS==='150'){
+            STATUS = "Autorizado NF-e, fora de prazo"
+          }else{
+          STATUS = "Autorizado"
+          }
+        }else if (STATUS === "2"){
          STATUS = "Contigencia"
          criarTr.className= "text-danger"
         
-       }else if (STATUS == 3){
+       }else if (STATUS == '101'){
          STATUS = "Cancelamento NF"
          valorContigencia += VALOR
          criarTr.className='text-info'
@@ -248,6 +255,8 @@ function debug(){
          valorContigencia += VALOR
          criarTr.className='denegado'
          totalContigencia ++
+       }else{
+        STATUS = "Ausente"
        }
      
      //Cria as Td's dentro das linhas
@@ -257,7 +266,7 @@ function debug(){
  
       const criarTd = document.createElement('td')
        const tdMap = {
-         "CHAVE": { headers: "chave", valor: CHAVE },
+         "COD. NUM": { headers: "chave", valor: CHAVE },
          "DATA EMISSÃO": { headers: "data", valor: DATA_EMISSAO },
          "NAT. OP": { headers: "nOp", valor: NAT_OP },
          "VALOR": { headers: "valor", valor: VALOR },
