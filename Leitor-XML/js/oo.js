@@ -2,18 +2,18 @@ $(document).ready(()=>{
  //Entidade XML
   class Xml {
     constructor(){
-      this.cnpj = ''
-      this.chave = ''
-      this.dataEmissao = ''
-      this.naturaOp = ''
-      this.valor = ''
-      this.modelo = ''
-      this.status = ''
-      this.nfeNumero = ''
-      this.numSerie = ''
+      this.cnpj = 'Ausente'
+      this.chave = 'Ausente'
+      this.dataEmissao = 'Ausente'
+      this.naturaOp = 'Ausente'
+      this.valor = 'Ausente'
+      this.modelo = 'Ausente'
+      this.status = 'Ausente'
+      this.nfeNumero = 'Ausente'
+      this.numSerie = 'Ausente'
       this._xmlString = null;       // Armazena o XML bruto
       this._parsedXml = null;       // Armazena o XML já parseado
-      this._produtos = [];          // Amarzena os produtos para futura analise
+      this._produtos = 'Ausente';          // Amarzena os produtos para futura analise
     }
     //Ler o retorno de FileRead como string
     lerXML(xmlString){
@@ -22,35 +22,37 @@ $(document).ready(()=>{
     };
 
     parserXml() {
-      //Recebe a String do XML bruto
-      if(!this._xmlString){
-        throw new Error ("Arquivo não carregado")
-      };
-      //Faz o Parse do txt do XML para um elemento DOM
-      const parser = new DOMParser()
-      this._parsedXml = parser.parseFromString(this._xmlString, 'text/xml')
-      //console.log(this._parsedXml)
-  
-      //Povoando as informações do objeto com os dados dos arquivos analisados
-      this.cnpj = this._parsedXml.querySelector("CNPJ")?.textContent || this.cnpj;
-      this.chave = this._parsedXml.querySelector("chNFe")?.textContent || this.chave;
-      this.dataEmissao = this._parsedXml.querySelector("dhEmi")?.textContent || this.dataEmissao;
-      this.naturaOp = this._parsedXml.querySelector("natOp")?.textContent || this.naturaOp;
-      this.modelo = this._parsedXml.querySelector("mod")?.textContent || this.modelo;
-      this.valor = this._parsedXml.querySelector("vNF")?.textContent || this.valor;
-      this.status = this._parsedXml.querySelector("cStat")?.textContent || this.status;
-      this.nfeNumero = this._parsedXml.querySelector("nNF")?.textContent || this.nfeNumero;
-      this.numSerie = this._parsedXml.querySelector("serie")?.textContent || this.numSerie;
-      this._produtos = this._parsedXml.querySelectorAll("det") //?.textContent || this._produtos;
       
-    };
+        //Recebe a String do XML bruto
+        if(!this._xmlString){
+          throw new Error ("Arquivo não carregado")
+        };
+        //Faz o Parse do txt do XML para um elemento DOM
+        const parser = new DOMParser()
+        this._parsedXml = parser.parseFromString(this._xmlString, 'text/xml')
+        //console.log(this._parsedXml)
+    
+        //Povoando as informações do objeto com os dados dos arquivos analisados
+        this.cnpj = this._parsedXml.querySelector("CNPJ")?.textContent || this.cnpj;
+        this.chave = this._parsedXml.querySelector("chNFe")?.textContent || this.chave;
+        this.dataEmissao = this._parsedXml.querySelector("dhEmi")?.textContent || this.dataEmissao;
+        this.naturaOp = this._parsedXml.querySelector("natOp")?.textContent || this.naturaOp;
+        this.modelo = this._parsedXml.querySelector("mod")?.textContent || this.modelo;
+        this.valor = this._parsedXml.querySelector("vNF")?.textContent || this.valor;
+        this.status = this._parsedXml.querySelector("cStat")?.textContent || this.status;
+        this.nfeNumero = this._parsedXml.querySelector("nNF")?.textContent || this.nfeNumero;
+        this.numSerie = this._parsedXml.querySelector("serie")?.textContent || this.numSerie;
+        this._produtos = this._parsedXml.querySelectorAll("det") //?.textContent || this._produtos;
+        
+     
+    }
 
     buscaProduto(){
       for (let i = 0; i < this._produtos.length; i++) {
         const produtos = this._produtos[i].children[0].children;
         const impostos = this._produtos[i].children[1].children;
-        //console.log(produtos)
-        //console.log(impostos)
+        console.log(produtos)
+        console.log(impostos)
         
       }
     }
@@ -60,30 +62,25 @@ $(document).ready(()=>{
       this.status
       this.chave
       if (status == 100 || status == 150) {
-          //criarTr.className='autorizado'
+          
           if(status==150){
            console.log("Ai sim, pow: Autorizado NF-e, fora de prazo") 
           }else{
             console.log ( "Ai sim, pow: Autorizado")          
           }
-        }else if (status == 10){
+        }else if (status == 101){
           console.log(`Isso é tudo, menos autorizado`)
-        //  criarTr.className= "text-danger"
+        // 
         }else if (status == 3){
           //status = "Cancelamento NF"
-          //valorContigencia += VALOR
-          //criarTr.className='text-info'
-          //totalContigencia ++
+          
+         
         }else if (status == 4){
           //status = "Inutilização Nº"
-          //valorContigencia += VALOR
-          //criarTr.className='text-secondary'
-          //totalContigencia ++
+          
         }else if (status == 5){
           //status = "Denegado"
-         // valorContigencia += VALOR
-          //criarTr.className='denegado'
-          //totalContigencia ++
+         
         }
 
     }; 
@@ -127,35 +124,46 @@ $(document).ready(()=>{
             //Instancia de FeleReader que transforma o arquivo carregado em texto bruto
             const reader = new FileReader() //leitura do Arquivo formato texto.
             let xml = new Xml() //a cada interação do laço, um novo objeto XML é criado 
-
             reader.onload = (event)=>{
               const xmlString = event.target.result    
               xml.lerXML(xmlString)
               xml.parserXml()
-              xml.verficaCancelado(xml.chave, xml.status)
-              xml.buscaProduto()
+             // xml.verficaCancelado(xml.chave, xml.status)
+              //xml.buscaProduto()
+              //xml.validaDados()
+              
               
               xmlInst.push(xml.toTableRow())
 
-             // console.log('Chave do XML: '+ xml._produtos)
-              //console.log('Codigo do Status: '+ xml.status)
+              console.log('Chave do XML: '+ xml.chave)
+              //console.log('Codigo do Status: '+ xml.status)  
               
               resolve()
             };reader.readAsText(arquivos[i]);
-    
+            
         }); //fim promise
         promises.push(promise)  
+       // procuraDuplicado(xml.chave)
       }catch(e){
         console.log(e)
       }
+
+
     }//fim do loop
 
-
+    procuraDuplicado()
 
     // AGUARDA TODOS OS ARQUIVOS
     await Promise.all(promises);
-    console.log(xmlInst);
+    
 
+        function procuraDuplicado(chave){
+         const verificador = xmlInst
+         verificador.includes(chave)
+          
+        
+          console.log(verificador)
+        }; 
 
 
     
@@ -171,17 +179,25 @@ $(document).ready(()=>{
    
 
     
-    tArquivos[0].innerHTML= arquivos.length
+    tArquivos[0].innerHTML = arquivos.length
     //vTotal[0].innerHTML = valorTotal.toFixed(2)
     //vValido[0].innerHTML = valorValido.toFixed(2)
     //vContigencia[0].innerHTML= valorContigencia.toFixed(2)
     //tArquivosValidos[0].innerHTML= totalValido
-    //tContigencia[0].innerHTML= totalContigencia
+    //tContigencia[0].innerHTML= totalContigencia 
 
 
 
 
-  }
+      
+              
+      
+
+ }; //Fim função async
+
+
+
+  
 
  document.getElementById('debug').addEventListener('click', processarArquivos);
  
@@ -189,11 +205,7 @@ $(document).ready(()=>{
 
 
  ////////////////////teste com include////////////
- function procuraDuplicado(chave){
-  const verificador = xmlInst.includes(chave)
-  console.log(verificador)
 
- }
 
 
 });
