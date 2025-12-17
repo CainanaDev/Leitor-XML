@@ -130,7 +130,7 @@ $(document).ready(()=>{
               xml.parserXml()
              // xml.verficaCancelado(xml.chave, xml.status)
               //xml.buscaProduto()
-              //xml.validaDados()
+              xml.validaDados()
               
               
               xmlInst.push(xml.toTableRow())
