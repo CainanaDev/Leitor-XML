@@ -119,7 +119,7 @@ $(document).ready(()=>{
 
     for (let i= 0; i < arquivos.length; i++) {
       try{
-        const promise = new Promise( (resolve) => {
+      const promise = await new Promise( (resolve) => {
 
             //Instancia de FeleReader que transforma o arquivo carregado em texto bruto
             const reader = new FileReader() //leitura do Arquivo formato texto.
@@ -130,20 +130,18 @@ $(document).ready(()=>{
               xml.parserXml()
              // xml.verficaCancelado(xml.chave, xml.status)
               //xml.buscaProduto()
-              xml.validaDados()
-              
-              
+              //xml.validaDados()
               xmlInst.push(xml.toTableRow())
-
-              console.log('Chave do XML: '+ xml.chave)
+              //console.log('Chave do XML: '+ xml.chave)
               //console.log('Codigo do Status: '+ xml.status)  
               
               resolve()
             };reader.readAsText(arquivos[i]);
             
         }); //fim promise
+        
         promises.push(promise)  
-       // procuraDuplicado(xml.chave)
+       
       }catch(e){
         console.log(e)
       }
@@ -151,18 +149,19 @@ $(document).ready(()=>{
 
     }//fim do loop
 
-    procuraDuplicado()
+    
 
     // AGUARDA TODOS OS ARQUIVOS
     await Promise.all(promises);
+    console.log(xmlInst)
     
 
-        function procuraDuplicado(chave){
-         const verificador = xmlInst
-         verificador.includes(chave)
-          
+        function procuraDuplicado(i,chave){
         
-          console.log(verificador)
+         const verificador = xmlInst.includes(chave)
+         console.log(chave)
+         console.log(i)
+         console.log(verificador)
         }; 
 
 
