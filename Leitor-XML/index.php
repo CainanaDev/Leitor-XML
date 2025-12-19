@@ -131,18 +131,17 @@
     <div class="row">
       <div class="col">
         <div class="table-responsive">
-          <table class="d-none">
-            <thead>
+          <table id='table' class="d-none">
+            <thead class="thead-light">
               <tr>
-                <th>a</th>
-                <th>b</th>
-                <th>c</th>
-                <th>d</th>
-                <th>e</th>
-                <th>f</th>
-                <th>g</th>
-                <th>h</th>
-                <th>i</th>
+                <th id="chave">CHAVE</th>
+                <th id="data">DATA EMISSAO</th>
+                <th id="nOp">NAT. OP</th>
+                <th id="valor">VALOR</th>
+                <th id="modelo">MODELO</th>
+                <th id="status">STATUS</th>
+                <th id="nNum">NFE NUMERO</th>
+                <th id="nSerie">SERIE</th>
               </tr>
             </thead>
             <tbody id="view">

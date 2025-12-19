@@ -114,9 +114,6 @@ $(document).ready(()=>{
     const arquivos = $('#file')[0].files //FileList - Seleciona os arquivos carregados
     const xmlInst = []; //Amazena as intancias de XML
     const promises = []; //Guarda as promises das funções
-    
-    
-
     for (let i= 0; i < arquivos.length; i++) {
       try{
         const promise = await new Promise( (resolve) => {
@@ -132,95 +129,118 @@ $(document).ready(()=>{
               //xml.buscaProduto()
               //xml.validaDados()
               xmlInst.push(xml.toTableRow())
-              //console.log('Chave do XML: '+ xml.chave)
-              //console.log('Codigo do Status: '+ xml.status)  
-              
               resolve()
-            };reader.readAsText(arquivos[i]);
-            
+            };reader.readAsText(arquivos[i]);//Fim FileReader
         }); //fim promise
-        promises.push(promise)  
-       
-      }catch{
-        console.log('Tu Caiu no catch - hum....')
-      }
-
-
+        promises.push(promise)   
+      }catch{console.log('Tu Caiu no catch - hum....')};
     }//fim do loop
-
-    
-
     // AGUARDA TODOS OS ARQUIVOS
     await Promise.all(promises);
-    atualizador(arquivos, xmlInst)
+    procuraDuplicado(xmlInst, arquivos.length)
  }; //Fim função async
  
+//procura valores duplicados
+  async function procuraDuplicado(inst, qtd){
+    const confere = new Set();
+    const filtrado = inst.filter(([a, chave]) => {
+    if (confere.has(chave)) return false; // já vimos essa chave = descarta
+    confere.add(chave);                   // primeira vez → guarda
+    return true;
+   });
+   atualizador(qtd, filtrado)
+   viewer(filtrado)
+   
+  }; 
+  ////Atualiza Barra de Totalizadores///////
   function atualizador(qtd,arq){
     let vT = 0
     let vV = 0
     let vC = 0
     let tV = 0
     let tC = 0
+
     for(let i in arq){
+      
       const vX = arq[i][4]
-      const sX = arq[i][6]
       let valor = parseFloat(vX)
+      const sX = arq[i][6]
       vT += valor
       if(!(sX === "100" || sX === "150")){
-        console.log('Vamos verificar isso')
-        console.log(sX)
+       // console.log('Vamos verificar isso')
+        //console.log(sX)
         vC +=valor
         tC +=1
       } else{
-        console.log('Autorizado fresco')
-         console.log(sX)
+        //console.log('Autorizado fresco')
+         //console.log(sX)
          vV += valor
          tV +=1
       }
-    }
-     
-      
-    
- 
-      //Atualiza Barra de totalizadores
-      const tArquivos = document.querySelectorAll('#tArquivos');
-      const vTotal = document.querySelectorAll('#vTotal');
-      const vValido = document.querySelectorAll('#vValido');
-      const vContigencia = document.querySelectorAll('#vContigencia');
-      const tArquivosValidos = document.querySelectorAll('#tArquivosValidos');
-      const tContigencia = document.querySelectorAll('#tContigencia');
+    };//Fim do Loop
 
-   
+    //Selecionando elementos da barra de totalizadores
+    const tArquivos = document.querySelectorAll('#tArquivos');
+    const vTotal = document.querySelectorAll('#vTotal');
+    const vValido = document.querySelectorAll('#vValido');
+    const vContigencia = document.querySelectorAll('#vContigencia');
+    const tArquivosValidos = document.querySelectorAll('#tArquivosValidos');
+    const tContigencia = document.querySelectorAll('#tContigencia');
 
-    
-    tArquivos[0].innerHTML = qtd.length
+    //Atribução dinamica de valores da barra
+    tArquivos[0].innerHTML = qtd
     vTotal[0].innerHTML = vT.toFixed(2)
     vValido[0].innerHTML = vV.toFixed(2)
     vContigencia[0].innerHTML= vC.toFixed(2)
     tArquivosValidos[0].innerHTML= tV
     tContigencia[0].innerHTML= tC 
 
+  };
 
+  ///Renderização da tabela pra vizualização
+  function viewer(xmlInst){
+    //console.log(xmlInst)
+    const criarTabela = document.getElementById('table')
+    const criaTbody = document.createElement('view')
+    criaTbody.innerHTML=''
+    criaTr = document.createElement('tr')
+
+    for (const key in xmlInst) {
+      const chave = xmlInst[key][1]
+      const data = xmlInst[key][2]
+      const nOp = xmlInst[key][3]
+      const valor = xmlInst[key][4]
+      const modelo = xmlInst[key][5]
+      const status = xmlInst[key][6]
+      const nNum = xmlInst[key][7]
+      const nSerie = xmlInst[key][8]
+
+      console.log (chave)
+      console.log (data)
+      console.log (valor)
+      console.log (modelo)
+      console.log('----------')
+
+      
+      
+      //console.log(key, xmlInst)
+      
+      
+    }
+   
+
+   //console.log(tableData)
+
+
+
+
+
+
+
+
+
+    criarTabela.className = "table table-hover table-sm"
   }
-
-  function procuraDuplicado(i,chave){
-        
-   const verificador = xmlInst.includes(chave)
-   console.log(chave)
-   console.log(i)
-   console.log(verificador)
-   }; 
-
-
-
-
-
-  
-
-
- 
-
-
 
  document.getElementById('debug').addEventListener('click', processarArquivos);
 
@@ -232,67 +252,10 @@ $(document).ready(()=>{
 
  
 
-//const arquivos = $('#file')[0].files //FileList
-
-/*
-const reader = new FileReader();
-
-reader.onprogress = (event) => {
-  if (event.lengthComputable) {
-    const percent = (event.loaded / event.total) * 100;
-    console.log("Progresso:", percent);
-  }
-};
-
-reader.onload = () => {
-  const text = reader.result;
-  const doc = new DOMParser().parseFromString(text, "text/xml");
-  console.log("Processamento concluído");
-};
-
-reader.readAsText(file);
-*/
-
-
 
 
 
 /*
-////////////Promise e outras funções necessarias a serem implementadas futuramente
-
-// Função para processar uma lista de arquivos e retornar uma Promise
-function processFiles(fileList) {
-  const promises = [];
-  const xmlInstances = [];
-
-  for (let i = 0; i < fileList.length; i++) {
-    const promise = new Promise((resolve) => {
-      const reader = new FileReader();
-      let xml = new Xml();
-
-      reader.onload = (event) => {
-        const xmlString = event.target.result;
-        xml.lerXML(xmlString);
-        xml.parserXml();
-        xml.verficaCancelado(xml.chave, xml.status);
-
-        console.log('Chave do XML: ' + xml.chave);
-        console.log('Codigo do Status: ' + xml.status);
-        console.log('--------------');
-
-        xmlInstances.push(xml);
-        resolve();
-      };
-
-      reader.readAsText(fileList[i]);
-    });
-
-    promises.push(promise);
-  }
-
-  return Promise.all(promises).then(() => xmlInstances);
-}
-
 
 
 ////////////tabela////////////////////
