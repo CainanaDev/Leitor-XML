@@ -119,7 +119,7 @@ $(document).ready(()=>{
 
     for (let i= 0; i < arquivos.length; i++) {
       try{
-      const promise = await new Promise( (resolve) => {
+        const promise = await new Promise( (resolve) => {
 
             //Instancia de FeleReader que transforma o arquivo carregado em texto bruto
             const reader = new FileReader() //leitura do Arquivo formato texto.
@@ -139,11 +139,10 @@ $(document).ready(()=>{
             };reader.readAsText(arquivos[i]);
             
         }); //fim promise
-        
         promises.push(promise)  
        
-      }catch(e){
-        console.log(e)
+      }catch{
+        console.log('Tu Caiu no catch - hum....')
       }
 
 
@@ -153,62 +152,83 @@ $(document).ready(()=>{
 
     // AGUARDA TODOS OS ARQUIVOS
     await Promise.all(promises);
-    console.log(xmlInst)
+    atualizador(arquivos, xmlInst)
+ }; //Fim função async
+ 
+  function atualizador(qtd,arq){
+    let vT = 0
+    let vV = 0
+    let vC = 0
+    let tV = 0
+    let tC = 0
+    for(let i in arq){
+      const vX = arq[i][4]
+      const sX = arq[i][6]
+      let valor = parseFloat(vX)
+      vT += valor
+      if(!(sX === "100" || sX === "150")){
+        console.log('Vamos verificar isso')
+        console.log(sX)
+        vC +=valor
+        tC +=1
+      } else{
+        console.log('Autorizado fresco')
+         console.log(sX)
+         vV += valor
+         tV +=1
+      }
+    }
+     
+      
     
-
-        function procuraDuplicado(i,chave){
-        
-         const verificador = xmlInst.includes(chave)
-         console.log(chave)
-         console.log(i)
-         console.log(verificador)
-        }; 
-
-
-    
-
-    //Atualiza Barra de totalizadores
-    const tArquivos = document.querySelectorAll('#tArquivos');
-    const vTotal = document.querySelectorAll('#vTotal');
-    const vValido = document.querySelectorAll('#vValido');
-    const vContigencia = document.querySelectorAll('#vContigencia');
-    const tArquivosValidos = document.querySelectorAll('#tArquivosValidos');
-    const tContigencia = document.querySelectorAll('#tContigencia');
+ 
+      //Atualiza Barra de totalizadores
+      const tArquivos = document.querySelectorAll('#tArquivos');
+      const vTotal = document.querySelectorAll('#vTotal');
+      const vValido = document.querySelectorAll('#vValido');
+      const vContigencia = document.querySelectorAll('#vContigencia');
+      const tArquivosValidos = document.querySelectorAll('#tArquivosValidos');
+      const tContigencia = document.querySelectorAll('#tContigencia');
 
    
 
     
-    tArquivos[0].innerHTML = arquivos.length
-    //vTotal[0].innerHTML = valorTotal.toFixed(2)
-    //vValido[0].innerHTML = valorValido.toFixed(2)
-    //vContigencia[0].innerHTML= valorContigencia.toFixed(2)
-    //tArquivosValidos[0].innerHTML= totalValido
-    //tContigencia[0].innerHTML= totalContigencia 
+    tArquivos[0].innerHTML = qtd.length
+    vTotal[0].innerHTML = vT.toFixed(2)
+    vValido[0].innerHTML = vV.toFixed(2)
+    vContigencia[0].innerHTML= vC.toFixed(2)
+    tArquivosValidos[0].innerHTML= tV
+    tContigencia[0].innerHTML= tC 
 
 
+  }
+
+  function procuraDuplicado(i,chave){
+        
+   const verificador = xmlInst.includes(chave)
+   console.log(chave)
+   console.log(i)
+   console.log(verificador)
+   }; 
 
 
-      
-              
-      
-
- }; //Fim função async
 
 
 
   
 
- document.getElementById('debug').addEventListener('click', processarArquivos);
+
  
 
 
 
- ////////////////////teste com include////////////
+ document.getElementById('debug').addEventListener('click', processarArquivos);
 
 
 
 });
 
+ 
 
  
 
