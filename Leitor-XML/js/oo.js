@@ -57,33 +57,6 @@ $(document).ready(()=>{
       }
     }
 
-    //Verifica o status do XML
-    verficaCancelado(chave, status) {
-      this.status
-      this.chave
-      if (status == 100 || status == 150) {
-          
-          if(status==150){
-           console.log("Ai sim, pow: Autorizado NF-e, fora de prazo") 
-          }else{
-            console.log ( "Ai sim, pow: Autorizado")          
-          }
-        }else if (status == 101){
-          console.log(`Isso é tudo, menos autorizado`)
-        // 
-        }else if (status == 3){
-          //status = "Cancelamento NF"
-          
-         
-        }else if (status == 4){
-          //status = "Inutilização Nº"
-          
-        }else if (status == 5){
-          //status = "Denegado"
-         
-        }
-
-    }; 
     
     //retorna as informações do objeto em questão em formato de array.
     toTableRow() {
