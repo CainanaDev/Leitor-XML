@@ -130,7 +130,7 @@
     <!--Tabela informções-->
     <div class="row">
       <div class="col">
-        <div class="table-responsive">
+        <div id = dados class="table-responsive">
           <table id='table' class="d-none">
             <thead class="thead-light">
               <tr>

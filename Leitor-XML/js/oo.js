@@ -141,7 +141,7 @@ $(document).ready(()=>{
  }; //Fim função async
  
 //procura valores duplicados
-  async function procuraDuplicado(inst, qtd){
+  function procuraDuplicado(inst, qtd){
     const confere = new Set();
     const filtrado = inst.filter(([a, chave]) => {
     if (confere.has(chave)) return false; // já vimos essa chave = descarta
@@ -198,28 +198,63 @@ $(document).ready(()=>{
   };
 
   ///Renderização da tabela pra vizualização
-  function viewer(xmlInst){
+  async function viewer(xmlInst){
     //console.log(xmlInst)
     const criarTabela = document.getElementById('table')
-    const criaTbody = document.createElement('view')
+    const criaTbody = document.getElementById('view')
     criaTbody.innerHTML=''
-    criaTr = document.createElement('tr')
+    criarTabela.className = "table table-hover table-sm"
 
-    for (const key in xmlInst) {
-      const chave = xmlInst[key][1]
-      const data = xmlInst[key][2]
-      const nOp = xmlInst[key][3]
-      const valor = xmlInst[key][4]
-      const modelo = xmlInst[key][5]
-      const status = xmlInst[key][6]
-      const nNum = xmlInst[key][7]
-      const nSerie = xmlInst[key][8]
+    
 
-      console.log (chave)
-      console.log (data)
-      console.log (valor)
-      console.log (modelo)
-      console.log('----------')
+
+     for (const key in xmlInst) {
+        criaTr = document.createElement('tr')
+         
+      /* const CHAVE = xmlInst[key][1]
+        const DATA = xmlInst[key][2]
+        const NAT_OP = xmlInst[key][3]
+        const VALOR = xmlInst[key][4]
+        const MODELO = xmlInst[key][5]
+        let status = xmlInst[key][6]
+        const NFE_NUMERO = xmlInst[key][7]
+        const N_SERIE = xmlInst[key][8]
+        */
+        //Tratativa Retorno Status
+        if(xmlInst[key][6] == 100 ||xmlInst[key][6] == 150 ){
+          xmlInst[key][6] = 'Autorizado'
+           criaTr.className='autorizado'
+        }else if (xmlInst[key][6] == 2){
+          xmlInst[key][6] = "Consultar SEFAZ"
+          criaTr.className= "text-danger"
+        }else if (xmlInst[key][6] == 3){
+          xmlInst[key][6] = "Cancelamento NF"
+          valorContigencia += VALOR
+          criarT.className='text-info'
+        }
+        //Tratativa Retorno Modelo
+        if(xmlInst[key][5] == 65){
+          xmlInst[key][5] = 'NFCe'
+        }else if(xmlInst[key][5]== 55){
+          xmlInst[key][5] = 'NFe'
+        }else(
+          xmlInst[key][5] = 'NOTA FISCAL'
+        )
+      
+        for(let i = 1; i<9; i++){
+          const criarTd = document.createElement('td')
+        
+          criarTd.innerHTML = xmlInst[key][i];
+          
+          criaTr.appendChild(criarTd)
+        }
+    
+
+     
+     await  criaTbody.appendChild(criaTr)
+
+
+      
 
       
       
@@ -239,7 +274,7 @@ $(document).ready(()=>{
 
 
 
-    criarTabela.className = "table table-hover table-sm"
+   
   }
 
  document.getElementById('debug').addEventListener('click', processarArquivos);
