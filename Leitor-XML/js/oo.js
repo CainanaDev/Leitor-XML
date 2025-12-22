@@ -1,20 +1,20 @@
 $(document).ready(()=>{
  //Entidade XML
   class Xml {
-    constructor(){
-      this.cnpj = 'Ausente'
-      this.chave = 'Ausente'
-      this.dataEmissao = 'Ausente'
-      this.naturaOp = 'Ausente'
-      this.valor = 'Ausente'
-      this.modelo = 'Ausente'
-      this.status = 'Ausente'
-      this.nfeNumero = 'Ausente'
-      this.numSerie = 'Ausente'
-      this._xmlString = null;       // Armazena o XML bruto
-      this._parsedXml = null;       // Armazena o XML já parseado
-      this._produtos = 'Ausente';          // Amarzena os produtos para futura analise
-    }
+      #infProt = null
+      cnpj = 'Ausente'
+      chave = 'Ausente'
+      dataEmissao = 'Ausente'
+      naturaOp = 'Ausente'
+      valor = 'Ausente'
+      modelo = 'Ausente'
+      status = 'Ausente'
+      nfeNumero = 'Ausente'
+      numSerie = 'Ausente'
+      _xmlString = null;       // Armazena o XML bruto
+      _parsedXml = null;       // Armazena o XML já parseado
+      _produtos = 'Ausente';          // Amarzena os produtos para futura analise
+    
     //Ler o retorno de FileRead como string
     lerXML(xmlString){
       this._xmlString = xmlString  ;
@@ -33,7 +33,7 @@ $(document).ready(()=>{
         //console.log(this._parsedXml)
     
         //Povoando as informações do objeto com os dados dos arquivos analisados
-        this.cnpj = this._parsedXml.querySelector("CNPJ")?.textContent || this.cnpj;
+        this.cnpj = this._parsedXml.querySelector("CNPJ")?.textContent ?? this.cnpj;
         this.chave = this._parsedXml.querySelector("chNFe")?.textContent || this.chave;
         this.dataEmissao = this._parsedXml.querySelector("dhEmi")?.textContent || this.dataEmissao;
         this.naturaOp = this._parsedXml.querySelector("natOp")?.textContent || this.naturaOp;
@@ -43,6 +43,8 @@ $(document).ready(()=>{
         this.nfeNumero = this._parsedXml.querySelector("nNF")?.textContent || this.nfeNumero;
         this.numSerie = this._parsedXml.querySelector("serie")?.textContent || this.numSerie;
         this._produtos = this._parsedXml.querySelectorAll("det") //?.textContent || this._produtos;
+        this.#infProt = this._parsedXml.querySelector('infProt')?.childNodes
+        console.log(this.#infProt) 
         
      
     }
@@ -113,7 +115,7 @@ $(document).ready(()=>{
     procuraDuplicado(xmlInst, arquivos.length)
  }; //Fim função async
  
-//procura valores duplicados
+  //procura valores duplicados
   function procuraDuplicado(inst, qtd){
     const confere = new Set();
     const filtrado = inst.filter(([a, chave]) => {
@@ -133,25 +135,6 @@ $(document).ready(()=>{
     let tV = 0
     let tC = 0
 
-    for(let i in arq){
-      
-      const vX = arq[i][4]
-      let valor = parseFloat(vX)
-      const sX = arq[i][6]
-      vT += valor
-      if(!(sX === "100" || sX === "150")){
-       // console.log('Vamos verificar isso')
-        //console.log(sX)
-        vC +=valor
-        tC +=1
-      } else{
-        //console.log('Autorizado fresco')
-         //console.log(sX)
-         vV += valor
-         tV +=1
-      }
-    };//Fim do Loop
-
     //Selecionando elementos da barra de totalizadores
     const tArquivos = document.querySelectorAll('#tArquivos');
     const vTotal = document.querySelectorAll('#vTotal');
@@ -159,6 +142,24 @@ $(document).ready(()=>{
     const vContigencia = document.querySelectorAll('#vContigencia');
     const tArquivosValidos = document.querySelectorAll('#tArquivosValidos');
     const tContigencia = document.querySelectorAll('#tContigencia');
+
+    //Loop para soma dos valores  
+    for(let i in arq){
+      
+      const vX = arq[i][4]
+      let valor = parseFloat(vX)
+      const sX = arq[i][6]
+      vT += valor
+      if(!(sX === "100" || sX === "150")){
+        vC +=valor
+        tC +=1
+      }else{
+         vV += valor
+         tV +=1
+      }
+    };//Fim do Loop
+
+  
 
     //Atribução dinamica de valores da barra
     tArquivos[0].innerHTML = qtd
@@ -181,17 +182,17 @@ $(document).ready(()=>{
     
 
 
-     for (const key in xmlInst) {
+    for (const key in xmlInst) {
         criaTr = document.createElement('tr')
          
-      /* const CHAVE = xmlInst[key][1]
-        const DATA = xmlInst[key][2]
-        const NAT_OP = xmlInst[key][3]
-        const VALOR = xmlInst[key][4]
-        const MODELO = xmlInst[key][5]
-        let status = xmlInst[key][6]
-        const NFE_NUMERO = xmlInst[key][7]
-        const N_SERIE = xmlInst[key][8]
+        /* kaymap = [CHAVE = xmlInst[key][1]
+         DATA = xmlInst[key][2]
+         NAT_OP = xmlInst[key][3]
+         VALOR = xmlInst[key][4]
+         MODELO = xmlInst[key][5]
+         status = xmlInst[key][6]
+         NFE_NUMERO = xmlInst[key][7]
+         N_SERIE = xmlInst[key][8]]
         */
         //Tratativa Retorno Status
         if(xmlInst[key][6] == 100 ||xmlInst[key][6] == 150 ){
@@ -213,7 +214,6 @@ $(document).ready(()=>{
         }else(
           xmlInst[key][5] = 'NOTA FISCAL'
         )
-      
         for(let i = 1; i<9; i++){
           const criarTd = document.createElement('td')
         

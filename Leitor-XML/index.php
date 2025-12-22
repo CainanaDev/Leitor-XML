@@ -83,8 +83,8 @@
       <div class=" col-lg-9 conteudo bg-light align-center">   <!--Forms e Buttons-->
         <div class="form-group">
           <label for="file">Clique no botão PROCURAR para carregar o arquivo:</label><br>
-          <input class="btn form-control bg-light" type="file" id="file" name="file[]" multiple accept=".xml" />
-
+          <input class="btn form-control bg-light" type="file" id="file" name="file[]" multiple accept=".xml" data-max-files="5"/>
+        
           <br>
           <div>
             <button id="meu" class="btn btn-danger" >Analisar informações</button>
