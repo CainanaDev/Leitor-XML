@@ -86,11 +86,9 @@
           <input class="btn form-control bg-light" type="file" id="file" name="file[]" multiple accept=".xml" data-max-files="5"/>
         
           <br>
+          
           <div>
-            <button id="meu" class="btn btn-danger" >Analisar informações</button>
-          </div>
-          <div>
-            <button class="btn btn-success m-2" id="debug">Debug</button>
+            <button class="btn btn-success m-2" id="debug">Analisar informações</button>
           </div>
         </div>
       </div>  <!--Forms e Buttons /fim-->

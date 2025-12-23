@@ -44,7 +44,7 @@ $(document).ready(()=>{
         this.numSerie = this._parsedXml.querySelector("serie")?.textContent || this.numSerie;
         this._produtos = this._parsedXml.querySelectorAll("det") //?.textContent || this._produtos;
         this.#infProt = this._parsedXml.querySelector('infProt')?.childNodes
-        console.log(this.#infProt) 
+       
         
      
     }
@@ -86,7 +86,13 @@ $(document).ready(()=>{
   }; 
  ////////// Ajustes do sincronismo das funções//////
   async function processarArquivos() {
+    
     const arquivos = $('#file')[0].files //FileList - Seleciona os arquivos carregados
+    const maxFile = $('#file')[0].dataset.maxFiles
+    if(arquivos.length > maxFile){
+      alert('Quantidade maior que a permitida. Por favor reduza a quantidade!!')
+       throw new Error ("Quantidade Maior que a permitida")
+    }
     const xmlInst = []; //Amazena as intancias de XML
     const promises = []; //Guarda as promises das funções
     for (let i= 0; i < arquivos.length; i++) {
@@ -250,10 +256,21 @@ $(document).ready(()=>{
    
   }
 
- document.getElementById('debug').addEventListener('click', processarArquivos);
+ document.getElementById('debug').addEventListener('click', processarArquivos)
 
+ /*
+  function verificaQtd (){
 
+  const maxFile = $('#file')[0].dataset.maxFiles
+  const qtdInput = $('#file')[0].files.length
+  
 
+  if(qtdInput > maxFile ){
+    console.log('Quantidade Maior que a permitida')
+  } else(
+    document.getElementById('debug').addEventListener('click', processarArquivos)
+  )
+  }*/
 });
 
  
