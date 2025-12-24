@@ -85,10 +85,9 @@ $(document).ready(()=>{
  ////////// Ajustes do sincronismo das funções//////
   async function processarArquivos() {
     const arquivos = $('#file')[0].files //FileList - Seleciona os arquivos carregados
-    const maxFile = $('#file')[0].dataset.maxFiles
-    if(arquivos.length > maxFile){
+    if(arquivos.length > 10_000){
       alert('Quantidade maior que a permitida. Por favor reduza a quantidade!!')
-      throw new Error ("Quantidade Maior que a permitida")
+      throw new Error ("Quantidade maior que a permitida")
     };
     const xmlInst = []; //Amazena as intancias de XML
     const promises = []; //Guarda as promises das funções

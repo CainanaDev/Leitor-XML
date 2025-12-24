@@ -83,15 +83,14 @@
       <div class=" col-lg-9 conteudo bg-light align-center">   <!--Forms e Buttons-->
         <div class="form-group">
           <label for="file">Clique no botão PROCURAR para carregar o arquivo:</label><br>
-          <input class="btn form-control bg-light" type="file" id="file" name="file[]" multiple accept=".xml" data-max-files="5"/>
-        
+          <input class="btn form-control bg-light" type="file" id="file" name="file[]" multiple accept=".xml" data-max-files="10"/>
           <br>
-          
           <div>
             <button class="btn btn-success m-2" id="debug">Analisar informações</button>
           </div>
         </div>
       </div>  <!--Forms e Buttons /fim-->
+      
     </div><!--Parte Central do Site /fim-->
     <br>
 
@@ -157,11 +156,11 @@
   </footer>
 
   
-  <!-- JavaScript (Opcional) -->
+
   
 
 </body>
 
-<!--<script src="js/js.js"></script>-->
+
 
 </html>
